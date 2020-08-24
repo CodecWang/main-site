@@ -2,7 +2,7 @@
 
 * [首页](/ "CodecWang's blog")
 * 全栈
-  * [浏览器](browser)
+  * [Web](web)
   * [React](react)
 * [OpenCV](opencv/)
 * [About](about)

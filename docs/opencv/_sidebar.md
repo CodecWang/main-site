@@ -2,7 +2,7 @@
 
 * [目录](opencv/)
 * 入门篇
-  * [简介与安装](/opencv/start/01-introduction-and-installation)
+  * [简介与安装](opencv/start/01-introduction-and-installation)
   * [基本元素: 图片](opencv/start/02-basic-element-image)
   * [打开摄像头](opencv/start/03-open-camera)
   * [图像基本操作](opencv/start/04-basic-operations)

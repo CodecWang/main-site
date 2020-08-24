@@ -8,7 +8,7 @@
 
 | 标题 | 简介 |
 | :--- | :--- |
-| [简介与安装](/opencv/start/01-introduction-and-installation) | 了解和安装OpenCV-Python |
+| [简介与安装](opencv/start/01-introduction-and-installation) | 了解和安装OpenCV-Python |
 | [番外篇: 代码性能优化](opencv/start/extra-01-code-optimization) | 度量运行时间/提升效率的几种方式 |
 | [基本元素: 图片](opencv/start/02-basic-element-image) | 图片的载入/显示和保存 |
 | [番外篇: 无损保存和Matplotlib使用](opencv/start/extra-02-high-quality-save-and-matplotlib) | 高保真保存图片、Matplotlib库的简单使用 |
