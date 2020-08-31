@@ -1,5 +1,8 @@
 # 禁用浏览器的同源策略
 
+- Author: Codec.Wang
+- Date: 2020/08/25
+
 ![](
 http://cos.codec.wang/disable-browser-same-origin-policy.png)
 

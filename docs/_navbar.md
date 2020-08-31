@@ -2,7 +2,7 @@
 
 * [首页](/ "CodecWang's blog")
 * 全栈
-  * [Web](web)
+  * [Web](web/polyfill-and-shim)
   * [React](react)
 * [OpenCV](opencv/)
 * [About](about)
