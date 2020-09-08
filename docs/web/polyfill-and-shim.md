@@ -16,9 +16,9 @@ Number.isInteger(9);      // true
 Number.isInteger(4 / 3);  // false
 ```
 
-你在Chrome开发者工具的console中运行，没问题，但在IE上却报错了：*对象不支持“isInteger”属性或方法*。这是因为IE并不支持这一特性（你可以通过[浏览器兼容性自查](/web/compatibility-check-for-web-api)来查看）。
+你在Chrome开发者工具的console中运行，没问题，但在IE上却报错了：*对象不支持“isInteger”属性或方法*，这是因为IE并不支持这一特性（参考[浏览器兼容性自查](/web/compatibility-check-for-web-api)）。
 
-那怎么办呢？我们可以自己写一段代码来实现`Number.isInteger()`
+那怎么办呢？我们可以自己写一段代码来实现`Number.isInteger`
 
 ```javascript
 Number.isInteger = Number.isInteger || function(value) {
@@ -28,7 +28,7 @@ Number.isInteger = Number.isInteger || function(value) {
 };
 ```
 
-这样，在原生支持`isInteger`的浏览器上(如Chrome)，还是用的原生接口，而在不支持的浏览器上(如IE)就会调用我们自己写的函数。这种代码块就叫polyfill。大家在MDN上查资料的时候，上面经常会给出该接口的Polyfill代码，很贴心，如[Number.isInteger()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger#Polyfill)
+这样，在原生支持`isInteger`的Chrome浏览器上，还是用的原生接口，而在不支持的IE浏览器上就会调用我们写的函数。这种代码块就叫polyfill。MDN上也会经常给出所查询接口的Polyfill代码，很贴心，如[Number.isInteger()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger#Polyfill)
 
 ## polyfill
 
@@ -38,7 +38,7 @@ polyfill本身是一个网络词汇，意思是软质的填充物。创造者是
 
 ![](http://cos.codec.wang/polyfill-life-example.jpg)
 
-现在还没有标准的中文译法，可以理解为"**腻子代码**"，腻(ni)子是一种用来填充和清除墙面缺陷的材料：把IE和Chrome想像成两面墙，Chrome这面墙很平整，可以做很多事，IE这面墙上有各种裂缝缺陷。通过腻子可以填充这些裂缝，抹平缺陷，让两面墙用起来没差别。现在看前面的例子：IE浏览器原生不支持`Number.isInteger()`，我们自己用JavaScript代码弥补了这一缺陷，这段代码就叫polyfill。
+现在还没有标准的中文译法，可以理解为"**腻子代码**"，腻(ni)子是一种用来填充和清除墙面缺陷的材料：把IE和Chrome想像成两面墙，Chrome这面墙光滑平整，能做很多事，IE这面墙上有各种裂缝缺陷。通过腻子可以填充这些裂缝，抹平缺陷，让两面墙用起来没差别。现在看前面的例子：IE浏览器原生不支持`Number.isInteger()`，我们自己用JavaScript代码弥补了这一缺陷，这段代码就叫polyfill。
 
 下面是[维基百科](https://en.wikipedia.org/wiki/Polyfill_(programming))上的定义，我觉得相比作者Remy Sharp的定义更易理解：
 
@@ -58,9 +58,9 @@ polyfill本身是一个网络词汇，意思是软质的填充物。创造者是
 
 > A shim is a library that transparently intercepts API calls and changes the arguments passed, handles the operation itself or redirects the operation elsewhere.
 
-shim通常是一个代码库，它能够"透明地"拦截API请求并修改参数，自行处理操作或者重定向。也就是大家知道老板的话经过了秘书传达，所以秘书的拦截是"透明"的。但秘书自己做了哪些操作，老板(调用者)是不知道的，当然也不关心，他只要得到小王的项目汇报就行。
+shim通常是一个代码库，它能够"透明地"拦截API请求并修改参数，自行处理操作或者重定向。也就是大家都知道老板的话经过了秘书传达，所以秘书的拦截是"透明"的。但秘书自己做了哪些操作，老板(调用者)是不知道的，也不需要关心，他只要得到小王的项目汇报就行。
 
-回到开头那个例子，如果你自己封装了一个判断是否是整数的接口：
+回到开头那个例子，如果你把判断是否是整数的接口这样封装下：
 
 ```javascript
 function myIsInteger(value) {
@@ -83,7 +83,6 @@ function myIsInteger(value) {
 ## 使用场景
 
 前面的例子是偏向解决IE兼容问题。一来微软现在已经拥抱了Chromium，发布了基于它的Edge浏览器，二来IE的市场份额已逐步下降，所以IE类的场景会越来越少。更多的其实是Web新技术、新标准的兼容使用，有些新技术尚未纳入规范，只是提议，或者是规范刚发布，支持的浏览器很少。
-
 
 - [core-js](https://github.com/zloirock/core-js): 最新JavaScript标准库的polyfill
 
