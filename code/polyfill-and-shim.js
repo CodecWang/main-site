@@ -1,5 +1,6 @@
 /**
  * 理解polyfill和shim
+ * author: http://codec.wang
  */
 
 Number.isInteger(9);
