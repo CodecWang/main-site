@@ -5,7 +5,7 @@
 
 ![](http://cos.codec.wang/what-is-polyfill.jpg)
 
-说实话，这两个术语名字取的，真的是让人难以一下子理解。理解了之后呢，又不得不佩服这取名：妙啊。
+说实话，这两个术语名字取的，确实让人难以一下子理解。但理解了之后又不得不佩服这取名：妙啊。
 
 ## 示例
 
@@ -62,17 +62,12 @@ function myIsInteger(value) {
 };
 ```
 
-这段代码乍看上去跟Polyfill没啥区别，都能解决兼容性问题，但在架构思想上差别很大：**Polyfill并没有封装自己的API，只是实现了标准的API，开发人员不需要知道新的东西，正常用标准的Number.isInteger就行**。而上面这段代码，**你需要额外学习一个非标准的API: myIsInteger**。这就是Polyfill和Shim的区别。
-
-再举个形象的例子：小王是名新员工，老板要求他写个项目汇报。秘书看小王是新来的，所以在转达老板话的时候就加了一些提示，比如记得写上人员、排期等。
-
-![](http://cos.codec.wang/understand-what-shim-is.png)
+这段代码乍看上去跟Polyfill没啥区别，都能解决兼容性问题，但在架构思想上差别很大：**Polyfill并没有封装自己的API，只是实现了标准的API，开发人员不需要知道新的东西，正常用标准的Number.isInteger就行**。而上面这段代码，**你需要额外学习一个新的非标准API: myIsInteger**。这就是两者的区别。
 
 理解了这个例子再来看[维基百科](https://en.wikipedia.org/wiki/Shim_(computing))上的定义就容易多了：
 
 > A shim is a library that transparently intercepts API calls and changes the arguments passed, handles the operation itself or redirects the operation elsewhere.
-
-Shim通常是一个代码库，它能够"透明地"拦截API请求并修改参数，自行处理操作或者重定向。也就是大家都知道老板的话经过了秘书传达，所以秘书的拦截是"透明"的。但秘书自己做了哪些操作，老板(调用者)是不知道的，也不需要关心，他只要得到小王的项目汇报就行。
+> Shim通常是一个代码库，它能够"透明地"拦截API请求并修改参数，自行处理操作或者重定向。
 
 总结：Shim可以封装自己的API，概念比Polyfill大一点，两者并不冲突。有人也从两个单词的"软/硬"含义理解：Polyfill填充你感受不到它的存在，而Shim填充则能明显地感知到。
 
