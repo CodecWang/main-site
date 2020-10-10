@@ -2,7 +2,7 @@
 
 ![](http://cos.codec.wang/opencv-python-tutorial-amend-new-cover.png)
 
-* 博客: [http://blog.codec.wang/](http://blog.codec.wang/)
+* 博客: [http://codec.wang/#/opencv/](http://codec.wang/#/opencv/)
 
 ### 入门篇
 

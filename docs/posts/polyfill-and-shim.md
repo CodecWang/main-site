@@ -44,7 +44,7 @@ Remy Sharp有次喝咖啡的时候想着用一个词来表达这种含义："*�
 
 > A polyfill is code that implements a feature on web browsers that do not support the feature.
 
-总结：Polyfill就是代码补丁，它将缺陷功能按照标准"修复"，**如果浏览器A支持标准规定的功能，那么Polyfill可以让浏览器B的行为与浏览器A一样**。
+总结：Polyfill就是代码补丁，它将缺陷功能按照标准"修复"，使得A、B浏览器的行为一致。
 
 ## Shim
 
