@@ -1,7 +1,7 @@
 # Polyfill和Shim
 
 - Author: CodecWang
-- date: 2020/08/30
+- Date: 2020/08/30
 
 ![](http://cos.codec.wang/what-is-polyfill.jpg)
 

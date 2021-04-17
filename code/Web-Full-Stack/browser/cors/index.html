@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="content"></div>
+  <script>
+    function reqListener() {
+      document.getElementById("content").innerText = this.responseText;
+    }
+
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", reqListener);
+    oReq.open("GET", "http://localhost:8001/cors/content.json");
+    oReq.send();
+    // fetch('http://localhost:8000/cors/content.json')
+    //   .then(response => response.json())
+    //   .then(data => console.log(data));
+  </script>
+</body>
+
+</html>
