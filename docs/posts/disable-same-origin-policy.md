@@ -6,13 +6,13 @@
 ![](
 http://cos.codec.wang/disable-browser-same-origin-policy.png)
 
-> 禁用同源策略(Same Origin Policy)会降低浏览器的安全性和稳定性，建议只在部分调试场景下使用。
+> 禁用同源策略 (Same Origin Policy) 会降低浏览器的安全性和稳定性，建议只在部分调试场景下使用。
 
 如前端项目在本地开发时出现跨域问题，在不修改后端且不配置代理的情况下，临时禁用同源策略是最为简单的方式。
 
 ## MAC
 
-Chrome可以直接用启动参数--disable-web-security来禁用，打开终端或命令行：
+Chrome 可以直接用启动参数--disable-web-security 来禁用，打开终端或命令行：
 
 - Chrome
 
