@@ -9,9 +9,9 @@
 
 我们以一个通常的 Node JS 项目为例，简要说明这几种仓库管理方式，如下图：
 
-![enter image description here](https://km.woa.com/gkm/api/img/cos-file-url?url=https%3A%2F%2Fkm-pro-1258638997.cos.ap-guangzhou.myqcloud.com%2Ffiles%2Fphotos%2Fpictures%2F202111%2F1635769018-2691-617fdaba41b81-319165.png&is_redirect=1)
+![](https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/monolith-multi-repo-mono-repo.jpg)
 
-> 为便于理解，这里我从软件架构层面引出大仓，但其实仓库管理方式和软件架构并没有直接关系，大仓也并非 “银弹”。本文重点在 JS 生态的实践，关于大仓和小仓更深的讨论，请参考：[大仓沉思录](https://km.woa.com/group/11880/articles/show/478731?kmref=search&from_page=1&no=3)。
+> 为便于理解，这里我从软件架构层面引出大仓，但其实仓库管理方式和软件架构并没有直接关系，大仓也并非 “银弹”，本文重点在 JS 生态的实践。
 
 当业务系统不复杂时，通常只用一个仓库管理项目，项目为单体架构（Monolithic），依赖和工作流都是统一的。随着业务复杂度的提升，项目的复杂性会巨幅增长，由此导致了一系列问题：比如技术债务越积越多、部署效率/频率低、扩展受限等等。此时就需要业务和模块的拆分，比如从软件架构层面提出了微服务架构（Microservices），而在代码管理上通常会使用多个仓库，每个仓库都独立进行各模块的编码、测试和发版等。这种方式虽然在业务逻辑上解耦了，但却增加了项目的工程管理难度，比如：
 
@@ -81,7 +81,7 @@ mono-repo
 
 该命令会执行类似`npm install`的功能，不过 Lerna 会一次性安装所有包的所有依赖，默认将依赖安装在各个包的 node_modules 下，并不会将共同的依赖提升到顶层 node_modules，可以通过添加`--hoist`来做到：`lerna bootstrap --hoist`。
 
-![enter image description here](https://km.woa.com/gkm/api/img/cos-file-url?url=https%3A%2F%2Fkm-pro-1258638997.cos.ap-guangzhou.myqcloud.com%2Ffiles%2Fphotos%2Fpictures%2F202111%2F1635766708-291-617fd1b4470ff-684688.png&is_redirect=1)
+![](https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/lerna-hoist.jpg)
 
 每次都加上`—-hoist`会比较麻烦，可以配置 lerna.json 的 bootstrap 选项默认执行提升：
 
@@ -99,7 +99,7 @@ mono-repo
 
 **Lerna 判断版本号的字符串一模一样时才认为是同样的依赖，并不是特别的智能**（后面介绍的 Yarn Workspace 是根据语义版本判断，无此问题）。比如 pkgA 依赖的 lodash 是 4.17.21，pkgB 依赖的是 ^4.17.21，lerna 认为这是两个版本，所以仍然会保留 pkgB 的 node_modules 和 package-lock.json...
 
-![enter image description here](https://km.woa.com/gkm/api/img/cos-file-url?url=https%3A%2F%2Fkm-pro-1258638997.cos.ap-guangzhou.myqcloud.com%2Ffiles%2Fphotos%2Fpictures%2F202111%2F1635766723-5586-617fd1c38865b-566032.png&is_redirect=1)
+![](https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/lerna-hoist-version-judge.jpg)
 
 - 安装依赖
 
@@ -152,7 +152,7 @@ lerna exec -- rm -rf dist --scope=pkgA
 
 Lerna 支持两种版本发布模式，默认为固定模式，也就是所有包的版本号会跟随 lerna.json - version 字段中定义的版本号。将 version 的值更改为 independent 后，就变成了独立模式，此时对于变更的包，Lerna 会让开发者决定每个包是语义版本中的哪种变更：patch、minor 还是 major。
 
-![enter image description here](https://km.woa.com/gkm/api/img/cos-file-url?url=https%3A%2F%2Fkm-pro-1258638997.cos.ap-guangzhou.myqcloud.com%2Ffiles%2Fphotos%2Fpictures%2F202111%2F1635766741-5371-617fd1d58324f-46895.png&is_redirect=1)
+![](https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/publish-version.jpg)
 
 ```json
 {
