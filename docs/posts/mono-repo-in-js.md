@@ -16,7 +16,10 @@
 当业务系统不复杂时，通常只用一个仓库管理项目，项目为单体架构（Monolithic），依赖和工作流都是统一的。随着业务复杂度的提升，项目的复杂性会巨幅增长，由此导致了一系列问题：比如技术债务越积越多、部署效率/频率低、扩展受限等等。此时就需要业务和模块的拆分，比如从软件架构层面提出了微服务架构（Microservices），而在代码管理上通常会使用多个仓库，每个仓库都独立进行各模块的编码、测试和发版等。这种方式虽然在业务逻辑上解耦了，但却增加了项目的工程管理难度，比如：
 
 1. 代码和配置很难共享：每个仓库都需要做一些重复的工程化能力配置（如 eslint/test/ci 等）且无法统一维护
-2. 依赖治理复杂：假设有多个工程依赖 lib，每个工程都会重复安装 lib；另外，当 lib 升级时，需要对所有工程手动升级，这点很难做到，所以往往各工程的依赖版本并不一致，由此经常引发一些调试和维护问题
+2. 依赖治理复杂：
+  - 假设有多个工程依赖 lib，每个工程都会重复安装 lib
+  - lib 升级时，所有工程需各自升级，这点很难做到，往往各工程的依赖版本并不一致，由此经常引发一些调试和维护问题
+  - 多个工程间互相依赖且同时开发时调试相对困难，如 pkgA 依赖 pkgB，通常需要手动 link pkgB
 
 大仓管理正好解决了这些问题：所有包的依赖统一交由顶层 node_modules，具备统一的工作流，共享基础的库和工程化配置等。
 
@@ -27,12 +30,13 @@
 1. **依赖管理**：可管理所有 package 的依赖和彼此之间的关联，并将安装的依赖提升到顶层 node_modules
 2. **更精准的执行和发布控制**：能够进行独立或统一的测试、构建和精准发布等
 
-如果没有这两个能力，那大仓就相当于把各个项目用一个目录管理了起来，并没有什么实际用处。在 Node 生态中，主要有 NPM/Yarn 两种包管理器，两者都可以通过开启 Workspace 特性来支持能力 1 并对能力 2 提供部分支持。[Lerna](https://github.com/lerna/lerna) 和 [Bolt](https://github.com/boltpkg/bolt) 等工具对能力 2 的支持较好，综合两者在 Github 的活跃度和用量，本文选择 Lerna（主要是 Bolt 我也没用过 🙃）。使用 Lerna 的开源项目有：[jest](https://github.com/facebook/jest)、[create-react-app](https://github.com/facebook/create-react-app)、[webpack-cli](https://github.com/webpack/webpack-cli)...最后，总的方案有以下 4 种：
+如果没有这两个能力，那大仓就相当于把各个项目用一个目录管理了起来，并没有什么实际用处。在 Node 生态中，主要有 NPM/Yarn 两种包管理器，两者都可以通过开启 Workspace 特性来支持能力 1 并对能力 2 提供部分支持。[Lerna](https://github.com/lerna/lerna) 和 [Bolt](https://github.com/boltpkg/bolt) 等工具对能力 2 的支持较好，综合两者在 Github 的活跃度和用量，本文选择 Lerna（主要是 Bolt 我也没用过 🙃）。使用 Lerna 的开源项目有：[jest](https://github.com/facebook/jest)、[create-react-app](https://github.com/facebook/create-react-app)、[webpack-cli](https://github.com/webpack/webpack-cli)...最后，总的方案有以下几种：
 
-- 方案 1：Lerna + NPM
-- 方案 2：Lerna + Yarn
-- 方案 3：Lerna + NPM Workspace
-- 方案 4：Lerna + Yarn Workspace
+- 方案 1：Lerna(NPM)
+- 方案 2：Lerna(Yarn)
+- 方案 3：Yarn Workspace
+- 方案 4：NPM Workspace 
+- 方案 5：Lerna + NPM/Yarn Workspace
 
 ## 方案对比
 
