@@ -322,3 +322,5 @@ npm run test --workspaces
 ## 参考
 
 - [Why Lerna and Yarn Workspaces is a Perfect Match for Building Mono-Repos](https://doppelmutzi.github.io/monorepo-lerna-yarn-workspaces/)
+
+我的博客即将同步至腾讯云 + 社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=1j79bkouvtna8
