@@ -1,6 +1,7 @@
 <!-- _sidebar.md -->
 
 * Web
+  * [AI 结对编程：Microsoft Github Copilot 探索实践](posts/microsoft-github-copilot "microsoft github copilot")
   * [Polyfill 和 Shim](posts/polyfill-and-shim "polyfill and shim")
   * [大仓实践录：Lerna/NPM/Yarn Workspace 方案组合和性能对比](posts/mono-repo-in-js "mono-repo in js")
   * [浏览器兼容性自查](posts/compatibility-check-for-web-api "compatibility check for web")

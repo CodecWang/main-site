@@ -3,8 +3,7 @@
 - Author: Codec.Wang
 - Date: 2020/08/25
 
-![](
-http://cos.codec.wang/disable-browser-same-origin-policy.png)
+![](http://cos.codec.wang/disable-browser-same-origin-policy.png)
 
 > 禁用同源策略 (Same Origin Policy) 会降低浏览器的安全性和稳定性，建议只在部分调试场景下使用。
 
