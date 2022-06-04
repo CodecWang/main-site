@@ -1,6 +1,6 @@
 # 大仓实践录：Lerna/NPM/Yarn Workspace 方案组合和性能对比
 
-- Author: Codec.Wang
+- Author: [CodecWang](http://codec.wang)
 - Date: 2020/11/05
 
 ## 概念：单仓和大仓
@@ -11,15 +11,16 @@
 
 ![](http://cos.codec.wang/monolith-multi-repo-mono-repo.jpg)
 
-> 为便于理解，这里我从软件架构层面引出大仓，但其实仓库管理方式和软件架构并没有直接关系，大仓也并非 “银弹”，本文重点在 JS 生态的实践。
+> 为便于理解，这里我从软件架构层面引出大仓，但其实仓库管理方式和软件架构并没有直接关系，大仓也并非“银弹”，本文重点在 JS 生态的实践。
 
 当业务系统不复杂时，通常只用一个仓库管理项目，项目为单体架构（Monolithic），依赖和工作流都是统一的。随着业务复杂度的提升，项目的复杂性会巨幅增长，由此导致了一系列问题：比如技术债务越积越多、部署效率/频率低、扩展受限等等。此时就需要业务和模块的拆分，比如从软件架构层面提出了微服务架构（Microservices），而在代码管理上通常会使用多个仓库，每个仓库都独立进行各模块的编码、测试和发版等。这种方式虽然在业务逻辑上解耦了，但却增加了项目的工程管理难度，比如：
 
 1. 代码和配置很难共享：每个仓库都需要做一些重复的工程化能力配置（如 eslint/test/ci 等）且无法统一维护
 2. 依赖治理复杂：
-  - 假设有多个工程依赖 lib，每个工程都会重复安装 lib
-  - lib 升级时，所有工程需各自升级，这点很难做到，往往各工程的依赖版本并不一致，由此经常引发一些调试和维护问题
-  - 多个工程间互相依赖且同时开发时调试相对困难，如 pkgA 依赖 pkgB，通常需要手动 link pkgB
+
+- 假设有多个工程依赖 lib，每个工程都会重复安装 lib
+- lib 升级时，所有工程需各自升级，这点很难做到，往往各工程的依赖版本并不一致，由此经常引发一些调试和维护问题
+- 多个工程间互相依赖且同时开发时调试相对困难，如 pkgA 依赖 pkgB，通常需要手动 link pkgB
 
 大仓管理正好解决了这些问题：所有包的依赖统一交由顶层 node_modules，具备统一的工作流，共享基础的库和工程化配置等。
 
@@ -35,7 +36,7 @@
 - 方案 1：Lerna(NPM)
 - 方案 2：Lerna(Yarn)
 - 方案 3：Yarn Workspace
-- 方案 4：NPM Workspace 
+- 方案 4：NPM Workspace
 - 方案 5：Lerna + NPM/Yarn Workspace
 
 ## 方案对比
@@ -305,16 +306,16 @@ npm run test --workspaces
 
 ## 结论
 
-| 命令                   | 能力                                      | Lerna(NPM)                                                  | NPM Workspace                                              | Yarn Workspace                                                                                |
-| :--------------------- | :---------------------------------------- | :---------------------------------------------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| 依赖管理               | 依赖初始化和提升                          | `lerna bootstrap`                                           | `npm install`                                              | `yarn`                                                                                        |
-|                        | 安装依赖                                  | `lerna add xxx --scope=pkg`                                 | `npm install xxx -w pkg`                                   | `yarn workspace pkg add xxx`                                                                  |
-|                        | 移除依赖                                  | 无                                                          | `npm uninstall xxx -w pkg`                                 | `yarn workspace pkg remove xxx`                                                               |
-| 更精准的执行和发布控制 | 全局执行 scipts 指令                      | `lerna run xxx --scope=pkg`                                 | `npm run xxx -w pkg`                                       | `yarn workspace pkg run xxx`                                                                  |
-|                        | 统一执行 scipts 指令                      | `lerna run xxx`                                             | `npm run xxx --ws`                                         | `yarn workspaces run xxx`                                                                     |
-|                        | 在每个包下动态执行指令                    | `lerna exec -- command`                                     | `npm exec -c 'command' --ws`                               | `yarn workspaces foreach command`（[需插件支持](https://yarnpkg.com/cli/workspaces/foreach)） |
-|                        | 统一发布配置、changelog、tag 和 commit 等 | lerna.json/`lerna publish`                                  | 无                                                         | 无                                                                                            |
-| 依赖初始化耗时         | /                                         | 65.6626s、61.8620s、62.9221s                                | 72.9516s、83.0750s、86.5041s                               | 51.9236s、59.0584s、58.1938s                                                                  |
+| 命令                   | 能力                                      | Lerna(NPM)                                       | NPM Workspace                                              | Yarn Workspace                                                                                |
+| :--------------------- | :---------------------------------------- | :----------------------------------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| 依赖管理               | 依赖初始化和提升                          | `lerna bootstrap`                                | `npm install`                                              | `yarn`                                                                                        |
+|                        | 安装依赖                                  | `lerna add xxx --scope=pkg`                      | `npm install xxx -w pkg`                                   | `yarn workspace pkg add xxx`                                                                  |
+|                        | 移除依赖                                  | 无                                               | `npm uninstall xxx -w pkg`                                 | `yarn workspace pkg remove xxx`                                                               |
+| 更精准的执行和发布控制 | 全局执行 scipts 指令                      | `lerna run xxx --scope=pkg`                      | `npm run xxx -w pkg`                                       | `yarn workspace pkg run xxx`                                                                  |
+|                        | 统一执行 scipts 指令                      | `lerna run xxx`                                  | `npm run xxx --ws`                                         | `yarn workspaces run xxx`                                                                     |
+|                        | 在每个包下动态执行指令                    | `lerna exec -- command`                          | `npm exec -c 'command' --ws`                               | `yarn workspaces foreach command`（[需插件支持](https://yarnpkg.com/cli/workspaces/foreach)） |
+|                        | 统一发布配置、changelog、tag 和 commit 等 | lerna.json/`lerna publish`                       | 无                                                         | 无                                                                                            |
+| 依赖初始化耗时         | /                                         | 65.6626s、61.8620s、62.9221s                     | 72.9516s、83.0750s、86.5041s                               | 51.9236s、59.0584s、58.1938s                                                                  |
 | 相对缺点               | /                                         | 1. 无法一次安装多个依赖<br>2. 未提供依赖移除能力 | 1. 未提供更为精细的发布控制配置<br>2. 依赖安装耗时相对较长 | 1. 未提供更为精细的发布控制配置<br>2. 不原生支持在每个包下动态执行指令                        |
 
 综上，只使用 Lerna 和只使用 Yarn/NPM Workspace 都能完成大部分大仓的管理能力，前者的依赖管理弱一些，后者的发布控制弱一些。从工作流的完整度上看，Lerna 会更全面，不过也有像[babel/babel](https://github.com/babel/babel/blob/main/doc/design/monorepo.md)这种只使用了 Yarn Workspace，然后再额外开发一些插件的用法。**当然日常最佳实践就是将两者结合，依赖管理/测试/构建等统一交由 Workspace 处理，发布统一用 Lerna。**至于 NPM 和 Yarn 的选择，就是另一个话题了，Yarn 稍快，但选择通常看个人风格，我会更加倾向于 NPM。至于大仓下的工程化能力搭建和最佳实践，我们下个话题见～

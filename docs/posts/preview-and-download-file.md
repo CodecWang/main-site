@@ -1,6 +1,6 @@
 # H5 文件预览和下载
 
-- Author: Codec.Wang
+- Author: [CodecWang](http://codec.wang)
 - Date: 2020/06/04
 
 今天前端小伙伴遇到这么一个问题：a 标签指向非同源的一个文件，点击后会在浏览器中打开并预览该文件而不是下载它。嗯…很有意思，纪录于此。<!-- more -->
@@ -32,7 +32,7 @@ index 中我写了两个 anchor 标签：
 分别点击两个 a 标签，你会发现不加 download 的会在浏览器中预览 config.json 文件，而加了 download 就会下载。各浏览器对 download 的兼容性可参考[Can I use](https://caniuse.com/#search=download%20attribute)。另外，也可以给它赋值，表示下载后保存的文件名，如：
 
 ```html
-<a href="config.json" download='imcute.json'>加了 download 并重命名</a>
+<a href="config.json" download="imcute.json">加了 download 并重命名</a>
 ```
 
 OK，so far so good。但并没有解决我们的问题，因为很多人忽略了同源这一点，[同源](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)表示拥有相同的协议、域名和端口。MDN 上也写的很明确：
@@ -50,15 +50,21 @@ download only works for same-origin URLs.
 
 那有没有即使不同源，a 标签照样点击下载的方法呢？有：配置服务端文件的 HTTP Headers。因为 a 标签点击时也是发送了 HTTP 请求，所以可通过设置响应头方式实现。
 
-首先了解下 Content-Disposition，参考[MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition)，它表示响应的内容以何种形式展示。如果值是 inline，表示是网页的一部分；值为 attachment，表示以附件的形式下载文件。
+首先了解下 Content-Disposition，参考 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition)，它表示响应的内容以何种形式展示。如果值是 inline，表示是网页的一部分；值为 attachment，表示以附件的形式下载文件。
 
 比如下面两个链接文件内容完全一致，都放在我的对象存储 COS 上面。第二个设置了 Content-Disposition 为 attachment。（腾讯云 COS 请求头的设置方式请参考：[上传和下载](https://cloud.tencent.com/document/product/436/30740)）
 
 - index.html
 
 ```html
-<a href="https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/download-instead-preview.json">没设置请求头</a>
-<a href="https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/download-instead-preview-attachment.json">设置了请求头</a>
+<a
+  href="https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/download-instead-preview.json"
+  >没设置请求头</a
+>
+<a
+  href="https://techblog-1253540739.cos.ap-chengdu.myqcloud.com/download-instead-preview-attachment.json"
+  >设置了请求头</a
+>
 ```
 
 运行后分别点击这两个 a 标签。第一个还是预览，第二个就直接下载了。搞定！

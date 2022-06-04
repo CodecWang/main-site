@@ -1,6 +1,6 @@
 # AI 结对编程：Microsoft Github Copilot 探索实践
 
-- Author: Codec.Wang
+- Author: [CodecWang](http://codec.wang)
 - Date: 2021/07/24
 
 ## 总览

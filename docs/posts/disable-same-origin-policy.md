@@ -1,6 +1,6 @@
 # 禁用浏览器的同源策略
 
-- Author: Codec.Wang
+- Author: [CodecWang](http://codec.wang)
 - Date: 2020/08/25
 
 ![](http://cos.codec.wang/disable-browser-same-origin-policy.png)
@@ -30,7 +30,6 @@ open -n -a /Applications/Microsoft\ Edge.app/Contents/MacOS/Microsoft\ Edge --ar
 菜单栏 - 开发 - 停用跨源限制
 
 ![](http://cos.codec.wang/safari-disable-same-origin-policy.jpg)
-
 
 ## 引用
 

@@ -1,9 +1,9 @@
 # 实例：小程序工程结构
 
-- Author: Codec.Wang
+- Author: [CodecWang](http://codec.wang)
 - Date: 2020/04/13
 
-我是去年 10 月开始负责小程序的开发维护工作，一开始我是冲着 UI/UX 去改的，因为旧版在设计和交互上存在太多问题，为此我用 Sketch 重新设计了一套全新 UI/UX。但阅读代码时，发现代码实在写的...太烂了，接口调用、基础配置、数据处理、页面逻辑、日志处理等等都写在一起，随便一个函数就是百来行，看的我简直不要太崩溃……咋办呢？唉，作为一名强迫症患者，重~~构~~写走起呗🙃<!-- more -->
+我是去年 10 月开始负责小程序的开发维护工作，一开始我是冲着 UI/UX 去改的，因为旧版在设计和交互上存在太多问题，为此我用 Sketch 重新设计了一套全新 UI/UX。但阅读代码时，发现代码实在写的...太烂了，接口调用、基础配置、数据处理、页面逻辑、日志处理等等都写在一起，随便一个函数就是百来行，看的我简直不要太崩溃……咋办呢？唉，作为一名强迫症患者，重~~构~~写走起呗 🙃<!-- more -->
 
 ---
 
@@ -30,7 +30,7 @@
     └── home.wxml
 ```
 
-这也是新手常常写出来的代码，大家要不要尝试阅读下🤒(看不下去可以直接略过)：
+这也是新手常常写出来的代码，大家要不要尝试阅读下 🤒(看不下去可以直接略过)：
 
 - home.js
 
@@ -116,23 +116,22 @@ onLoad: function () {
  * @author: codec.wang
  */
 module.exports = {
-    ENV: 'test',
+  ENV: "test",
 
-    GetEnv: function () {
-        return envConfig[this.ENV];
-    }
+  GetEnv: function () {
+    return envConfig[this.ENV];
+  },
 };
 
-
 const envConfig = {
-    test: {
-        domain: 'http://api.jl.com/test/',
-        debug: true,
-    },
-    prod: {
-        domain: 'http://api.jl.com/prod/',
-        debug: false,
-    }
+  test: {
+    domain: "http://api.jl.com/test/",
+    debug: true,
+  },
+  prod: {
+    domain: "http://api.jl.com/prod/",
+    debug: false,
+  },
 };
 ```
 
@@ -141,7 +140,8 @@ const envConfig = {
 这部分是 2.0 架构重构中的关键：`onLoad`中主要执行的是接口调用，大量重复代码集中在这里，比如接口调用成功的判断：
 
 ```javascript
-if (result.statusCode == 200 && result.data.Status === 'Succeed') {}
+if (result.statusCode == 200 && result.data.Status === "Succeed") {
+}
 ```
 
 接口调用成功或失败时的处理 (日志打印)：
@@ -168,7 +168,7 @@ fail(error) {console.log('error: ', error);}
     └── home.wxml
 ```
 
-  要封装一层小程序的 HTTP 请求，需要用到[Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)。此处逻辑其实也比较简单，但需要对 Promise 有所了解：
+要封装一层小程序的 HTTP 请求，需要用到[Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)。此处逻辑其实也比较简单，但需要对 Promise 有所了解：
 
 - request.js
 
@@ -179,79 +179,73 @@ fail(error) {console.log('error: ', error);}
  */
 
 class Request {
-    constructor(params) {
-        this.baseUrl = params.baseUrl;	// API 根地址
-        this.enableBaseUrl = params.enableBaseUrl; // 是否启用根地址
-    }
+  constructor(params) {
+    this.baseUrl = params.baseUrl; // API 根地址
+    this.enableBaseUrl = params.enableBaseUrl; // 是否启用根地址
+  }
 
-    get(url, data) {
-        return this.request(url, data, 'GET');
-    }
+  get(url, data) {
+    return this.request(url, data, "GET");
+  }
 
-    post(url, data) {
-        return this.request(url, data, 'POST');
-    }
+  post(url, data) {
+    return this.request(url, data, "POST");
+  }
 
-    put(url, data) {
-        return this.request(url, data, 'PUT');
-    }
+  put(url, data) {
+    return this.request(url, data, "PUT");
+  }
 
-    request(url, data, method = 'GET') {
-        const actualUrl = this.enableBaseUrl ? this.baseUrl + url : url;
+  request(url, data, method = "GET") {
+    const actualUrl = this.enableBaseUrl ? this.baseUrl + url : url;
 
-        return new Promise(
-            (resolve, reject) => {
-                wx.request({
-                    url: actualUrl,
-                    data,
-                    header: {},
-                    method: method,
-                    dataType: 'json',
-                    responseType: 'text',
-                    success: function (res) {
-                        // 简化小程序请求，Promise 的 then 即为请求 + 数据正常，catch 为请求失败或数据有无
-                        if (res.statusCode === 200 && res.data.Status === 'succeed')
-                            resolve(res.data.Data);
-                        else {
-                            console.log(`${url} Return failed: ${JSON.stringify(res.data)}`);
-                            reject(res.data);
-                        }
-                    },
-                    fail: function (res) {
-                        console.log(`${url} Request failed: ${JSON.stringify(res)}`);
-                        reject(res.data);
-                    },
-                    complete: function (res) {
-                        /* Do Nothing. */
-                    },
-                })
-            }
-        )
-    }
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: actualUrl,
+        data,
+        header: {},
+        method: method,
+        dataType: "json",
+        responseType: "text",
+        success: function (res) {
+          // 简化小程序请求，Promise 的 then 即为请求 + 数据正常，catch 为请求失败或数据有无
+          if (res.statusCode === 200 && res.data.Status === "succeed")
+            resolve(res.data.Data);
+          else {
+            console.log(`${url} Return failed: ${JSON.stringify(res.data)}`);
+            reject(res.data);
+          }
+        },
+        fail: function (res) {
+          console.log(`${url} Request failed: ${JSON.stringify(res)}`);
+          reject(res.data);
+        },
+        complete: function (res) {
+          /* Do Nothing. */
+        },
+      });
+    });
+  }
 }
 
 /* 小程序的 Promise 没有 finally 方法，需要自己扩展 */
 Promise.prototype.finally = function (callback) {
-    let Promise = this.constructor;
-    return this.then(
-        function (value) {
-            Promise.resolve(callback()).then(
-                function () {
-                    return value;
-                }
-            );
-        },
-        function (reason) {
-            Promise.resolve(callback()).then(
-                function () {
-                    throw reason;
-                }
-            );
-        }
-    );
+  let Promise = this.constructor;
+  return this.then(
+    function (value) {
+      Promise.resolve(callback()).then(function () {
+        return value;
+      });
+    },
+    function (reason) {
+      Promise.resolve(callback()).then(function () {
+        throw reason;
+      });
+    }
+  );
 };
 
-export {Request};
+export { Request };
 ```
 
 这段代码是整个接口层的重点，大家细品下。封装好之后，在`api.js`中统一编写接口调用：
@@ -264,18 +258,23 @@ export {Request};
  * @author: codec.wang
  */
 
-import {Request} from 'request';
-const CONFIG = require('../config/config');
-const REQUEST = new Request({baseUrl: CONFIG.GetEnv().domain, enableBaseUrl: true});
+import { Request } from "request";
+const CONFIG = require("../config/config");
+const REQUEST = new Request({
+  baseUrl: CONFIG.GetEnv().domain,
+  enableBaseUrl: true,
+});
 
 const API = {
-    Login(data) { /* 登陆 */
-      return REQUEST.get('/v1/login/', data);
-    },
-  
-    GetNews(data) { /* 获取新闻列表 */
-      return REQUEST.get('/v1/getNews', data);
-    },
+  Login(data) {
+    /* 登陆 */
+    return REQUEST.get("/v1/login/", data);
+  },
+
+  GetNews(data) {
+    /* 获取新闻列表 */
+    return REQUEST.get("/v1/getNews", data);
+  },
 };
 
 export default API;
@@ -331,28 +330,28 @@ getNews: function () {
  * 小程序实时日志（本地调试打印）
  * @author: codec.wang
  */
-const CONFIG = require('../config/config');
+const CONFIG = require("../config/config");
 let _log = wx.getRealtimeLogManager ? wx.getRealtimeLogManager() : null;
 const _isLogMode = CONFIG.GetEnv().debug;
 
 module.exports = {
-    Info() {
-        if (!_log) return;
-        if (!_isLogMode) _log.info.apply(_log, arguments);
-        else console.log(arguments[0]);
-    },
+  Info() {
+    if (!_log) return;
+    if (!_isLogMode) _log.info.apply(_log, arguments);
+    else console.log(arguments[0]);
+  },
 
-    Warn() {
-        if (!_log) return;
-        if (!_isLogMode) _log.warn.apply(_log, arguments);
-        else console.log(arguments[0]);
-    },
+  Warn() {
+    if (!_log) return;
+    if (!_isLogMode) _log.warn.apply(_log, arguments);
+    else console.log(arguments[0]);
+  },
 
-    Error() {
-        if (!_log) return;
-        if (!_isLogMode) _log.error.apply(_log, arguments);
-        else console.log(arguments[0]);
-    },
+  Error() {
+    if (!_log) return;
+    if (!_isLogMode) _log.error.apply(_log, arguments);
+    else console.log(arguments[0]);
+  },
 };
 ```
 
@@ -381,7 +380,7 @@ module.exports = {
 
 ## 3.0
 
-在前面的重构中，我们忽略了这样一个处理：大家看下 1.0 版本获取新闻列表后的操作 (25～30 行)。这里是对后端返回数据的校验 + 预处理。实际开发中，我发现基本所有接口数据都需要在前端做一次单独的校验和预处理，那么为什么不把它提取到一个模块中呢？
+在前面的重构中，我们忽略了这样一个处理：大家看下 1.0 版本获取新闻列表后的操作 (25 ～ 30 行)。这里是对后端返回数据的校验 + 预处理。实际开发中，我发现基本所有接口数据都需要在前端做一次单独的校验和预处理，那么为什么不把它提取到一个模块中呢？
 
 ![](http://cos.codec.wang/my-mini-program-architecture-3-data-pre.png_webp)
 
@@ -447,10 +446,9 @@ request(url, data, method = 'GET', fNormIn, fNormOut) {
     └── utils.js
 ```
 
-当然这只是我自己定的架构，还有很多需要优化的地方，向各位大佬学习👊
+当然这只是我自己定的架构，还有很多需要优化的地方，向各位大佬学习 👊
 
 ## 引用
 
 - [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [小程序：实时日志](https://developers.weixin.qq.com/miniprogram/dev/framework/realtimelog/)
-
