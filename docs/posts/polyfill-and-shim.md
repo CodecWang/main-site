@@ -12,20 +12,24 @@
 比如你想判断一个数是不是整数，那么你可能会用到 JavaScript 的`Number.isInteger()`
 
 ```javascript
-Number.isInteger(9);      // true
-Number.isInteger(4 / 3);  // false
+Number.isInteger(9); // true
+Number.isInteger(4 / 3); // false
 ```
 
-你在 Chrome 开发者工具的 console 中运行，没问题，但在 IE 上却报错了：*对象不支持 “isInteger” 属性或方法*，这是因为 IE 并不支持这一特性（[浏览器兼容性自查](/posts/compatibility-check-for-web-api)）。
+你在 Chrome 开发者工具的 console 中运行，没问题，但在 IE 上却报错了：_对象不支持“isInteger”属性或方法_，这是因为 IE 并不支持这一特性（[浏览器兼容性自查](/posts/compatibility-check-for-web-api)）。
 
 那怎么办呢？我们可以自己写一段代码来实现`Number.isInteger`
 
 ```javascript
-Number.isInteger = Number.isInteger || function(value) {
-  return typeof value === "number" && 
-         isFinite(value) && 
-         Math.floor(value) === value;
-};
+Number.isInteger =
+  Number.isInteger ||
+  function (value) {
+    return (
+      typeof value === "number" &&
+      isFinite(value) &&
+      Math.floor(value) === value
+    );
+  };
 ```
 
 这样，在原生支持`isInteger`的 Chrome 浏览器上，还是用的原生接口，而在不支持的 IE 浏览器上就会调用我们写的函数。这种代码块就叫 Polyfill。MDN 上有时会给出所查询接口的 Polyfill 代码，很贴心，如[Number.isInteger()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger#Polyfill)
@@ -34,13 +38,13 @@ Number.isInteger = Number.isInteger || function(value) {
 
 Polyfill 本身是一个网络词汇，意思是软质的填充物。创造者是 Remy Sharp，在他的网站上做了详细的解释：[What is a Polyfill?](https://remysharp.com/2010/10/08/what-is-a-polyfill)
 
-Remy Sharp 有次喝咖啡的时候想着用一个词来表达这种含义："*如果浏览器没有原生实现某个 API，就用 JavaScript(或 flash 或其他手段) 来实现它*"。于是他就从一个叫 Polyfilla 的墙料产品上获得灵感，拍脑袋造了这个词🤣……
+Remy Sharp 有次喝咖啡的时候想着用一个词来表达这种含义："_如果浏览器没有原生实现某个 API，就用 JavaScript(或 flash 或其他手段) 来实现它_"。于是他就从一个叫 Polyfilla 的墙料产品上获得灵感，拍脑袋造了这个词 🤣……
 
 ![](http://cos.codec.wang/polyfill-life-example.jpg)
 
 现在还没有标准的中文译法，可以理解为"**腻子代码**"，腻 (ni) 子是一种用来填充和清除墙面缺陷的材料：把 IE 和 Chrome 想像成两面墙，Chrome 这面墙光滑平整，能做很多事，IE 这面墙上有各种裂缝缺陷。通过腻子可以填充这些裂缝，抹平缺陷，让两面墙用起来没差别。
 
-下面是[维基百科](https://en.wikipedia.org/wiki/Polyfill_(programming)) 上的定义，我觉得相比作者 Remy Sharp 的定义更易理解：
+下面是[维基百科](<https://en.wikipedia.org/wiki/Polyfill_(programming)>) 上的定义，我觉得相比作者 Remy Sharp 的定义更易理解：
 
 > A polyfill is code that implements a feature on web browsers that do not support the feature.
 
@@ -54,17 +58,17 @@ Remy Sharp 有次喝咖啡的时候想着用一个词来表达这种含义："*�
 function myIsInteger(value) {
   // 重定向
   if (Number.isInteger) return Number.isInteger(value);
-  
+
   // 自行操作
-  return typeof value === "number" && 
-         isFinite(value) && 
-         Math.floor(value) === value;
-};
+  return (
+    typeof value === "number" && isFinite(value) && Math.floor(value) === value
+  );
+}
 ```
 
 这段代码乍看上去跟 Polyfill 没啥区别，都能解决兼容性问题，但在架构思想上差别很大：**Polyfill 并没有封装自己的 API，只是实现了标准的 API，开发人员不需要知道新的东西，正常用标准的 Number.isInteger 就行**。而上面这段代码，**你需要额外学习一个新的非标准 API: myIsInteger**。这就是两者的区别。
 
-理解了这个例子再来看[维基百科](https://en.wikipedia.org/wiki/Shim_(computing)) 上的定义就容易多了：
+理解了这个例子再来看[维基百科](<https://en.wikipedia.org/wiki/Shim_(computing)>) 上的定义就容易多了：
 
 > A shim is a library that transparently intercepts API calls and changes the arguments passed, handles the operation itself or redirects the operation elsewhere.
 > Shim 通常是一个代码库，它能够"透明地"拦截 API 请求并修改参数，自行处理操作或者重定向。
@@ -83,7 +87,7 @@ function myIsInteger(value) {
 
 ```javascript
 import "core-js/features/promise"; // 按需引入 core-js
-Promise.resolve(32).then(x => console.log(x)); // 32
+Promise.resolve(32).then((x) => console.log(x)); // 32
 ```
 
 - [HTML5 Cross Browser Polyfills](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills): 收集了 Web 各类 Polyfill 库
@@ -93,4 +97,4 @@ Promise.resolve(32).then(x => console.log(x)); // 32
 - [本节源码](https://github.com/CodecWang/Blog/tree/master/code/polyfill-and-shim.js)
 - [What is a Polyfill?](https://remysharp.com/2010/10/08/what-is-a-polyfill)
 - [A short recap on polyfills](https://javascript.christmas/2019/21)
-- [HTML5 逸事：一袋 “腻子粉” 的故事](https://www.ituring.com.cn/article/details/766)
+- [HTML5 逸事：一袋“腻子粉”的故事](https://www.ituring.com.cn/article/details/766)

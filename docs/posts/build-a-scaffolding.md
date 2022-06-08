@@ -7,7 +7,7 @@
 
 ## 引用
 
-- [维基百科：脚手架](https://en.wikipedia.org/wiki/Scaffold_(programming))
+- [维基百科：脚手架](<https://en.wikipedia.org/wiki/Scaffold_(programming)>)
 
 ## 概念
 
