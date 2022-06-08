@@ -3,6 +3,13 @@
 - Author: [CodecWang](http://codec.wang)
 - Date: 2022/06/04
 
+<iframe src="https://codesandbox.io/embed/memorized-function-vybjf8?expanddevtools=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2Ffactorial.js&theme=dark&view=editor"
+     style="width:100%; height:325px; border:0; border-radius: 4px; overflow:hidden;"
+     title="memorized-function"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
 ## 记忆化
 
 [记忆化](https://en.wikipedia.org/wiki/Memoization)，Memorization（简写 memo），是一种提高程序执行速度的优化技术，简单来说就是把需要重复计算的结果缓存在内存中，下次要用时直接取出来就行，不用再计算一次，属于典型的空间换时间的优化方案，通常会用在有大计算量或者递归、循环应用等一些场景。
