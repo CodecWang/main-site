@@ -1,13 +1,18 @@
+---
+date: 2017-11-08
+authors: codecwang
+image: http://cos.codec.wang/cartier_bresson_photo1.png
+tags: [摄影]
+---
+
 # 摄影之魅：瞬间是一面"镜子"
 
-- Author: [CodecWang](http://codec.wang)
-- Date: 2017/11/08
-
-![](http://cos.codec.wang/cartier_bresson_photo1.png)
-
-> 本篇是我 16 年读研一时《摄影艺术》课上的小论文，小作分享。
+:::tip 这是我 16 年读研一时“摄影艺术”课上的小论文，小作分享~
+:::
 
 19 世纪 30 年代末期，[达盖尔](https://baike.baidu.com/item/达盖尔)发明银版照相法，[尼埃普斯](https://baike.baidu.com/item/尼埃普斯)拍摄了世界上第一张照片，影像开始可以被记录下来。[卢米埃尔兄弟](https://baike.baidu.com/item/卢米埃尔兄弟)在《[火车进站](https://baike.baidu.com/item/火车进站/7413603)》中开启了 24 帧的艺术之旅——“电影”。如今，影像无处不在，传递着无穷无尽、千变万化的讯息。这一切都源于定格影像的瞬间——摄影术的独特魅力。
+
+<!--truncate-->
 
 ---
 
@@ -41,6 +46,10 @@
 
 不过，摄影终归是自由的表现力、创造力的象征，这也是摄影术的魅力所在。我们需要不断学习和模仿经典作品的拍摄，但却不能有所束缚，当深刻地了解了这些规则后，就可以尝试打破这些规则，形成自己的风格！
 
-> “Not everyone can become a great artist, but a great artist can come from anywhere.”, “Everyone Can Cook！”（《料理鼠王》电影台词）
+:::tip[《料理鼠王》](https://movie.douban.com/subject/1793491/)
+人人皆可烹饪。不是每个人都能成为伟大的艺术家，但伟大的艺术家却可能来自任何地方。
+
+Everyone can cook. Not everyone can become a great artist, but a great artist can come from anywhere.
+:::
 
 “摄影艺术”这门课程改变了我很多的认识和想法，或许最大的感受便是：“Everyone Can Shoot！”每个人都有对其生活环境、人生观、世界观、价值观的独特理解，每个人也都可以拿起手中的设备拍出自己独特的风格。对大师作品的品鉴和艺术赏析都有助于提升自身的艺术品位，但关键在于去拍、去学习、去发现、去创造。我想这门课程给了我信心可以站在巨人的肩膀上努力拍出自己的作品，毕竟**摄影是自由的，这才是摄影术之魅力！**

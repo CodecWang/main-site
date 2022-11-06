@@ -1,9 +1,11 @@
+---
+date: 2021-07-24
+authors: codecwang
+image: http://cos.codec.wang/copilot-overview.png
+tags: [Copilot, AI, 自动生成]
+---
+
 # AI 结对编程：Microsoft Github Copilot 探索实践
-
-- Author: [CodecWang](http://codec.wang)
-- Date: 2021/07/24
-
-## 总览
 
 - [官网](https://copilot.github.com/)
 - [Introducing GitHub Copilot: your AI pair programmer](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/)
@@ -14,6 +16,8 @@
 比如你要编写一个从 URL 中获取查询参数的方法，通常我们就面向 Google 和 StackOverflow 编程了，而现在，你只需要写个好的函数名即可：
 
 ![](http://cos.codec.wang/copilot-overview.png)
+
+<!--truncate-->
 
 ## 注册申请
 

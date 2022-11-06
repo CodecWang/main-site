@@ -1,11 +1,17 @@
-# Polyfill 和 Shim
+---
+date: 2020-08-30
+authors: codecwang
+image: http://cos.codec.wang/what-is-polyfill.jpg
+tags: [Polyfill, Shim]
+---
 
-- Author: CodecWang
-- Date: 2020/08/30
+# Polyfill 和 Shim
 
 ![](http://cos.codec.wang/what-is-polyfill.jpg)
 
 说实话，这两个术语名字取的，确实让人难以一下子理解。但理解了之后又不得不佩服这取名：妙啊。
+
+<!--truncate-->
 
 ## 示例
 

@@ -91,7 +91,7 @@ plt.show()
 
 三个点我已经在图中标记了出来。用`cv2.getAffineTransform()`生成变换矩阵，接下来再用`cv2.warpAffine()`实现变换。
 
-> 思考：三个点我标记的是红色，为什么Matplotlib显示出来是下面这种颜色？（[练习]()）
+> 思考：三个点我标记的是红色，为什么Matplotlib显示出来是下面这种颜色？（[练习](#练习)）
 
 ![&#x4EFF;&#x5C04;&#x53D8;&#x6362;&#x524D;&#x540E;&#x5BF9;&#x6BD4;&#x56FE;](http://cos.codec.wang/cv2_affine_transformation_drawing.jpg)
 
@@ -373,7 +373,7 @@ plt.subplot(122), plt.imshow(dst[:, :, ::-1]), plt.title('output')
 plt.show()
 ```
 
-> 代码中有个`img[:, :, ::-1]`还记得吗？忘记的话，请看[练习]()。
+> 代码中有个`img[:, :, ::-1]`还记得吗？忘记的话，请看[练习](#练习)。
 
 当然，我们后面学习了特征提取之后，就可以自动识别角点了。透视变换是一项很酷的功能。比如我们经常会用手机去拍身份证和文件，无论你怎么拍，貌似都拍不正或者有边框。如果你使用过手机上面一些扫描类软件，比如"[扫描全能王](https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E5%85%A8%E8%83%BD%E7%8E%8B)"，"[Office Lens](https://baike.baidu.com/item/Office%20Lens)"，它们能很好地矫正图片，这些软件就是应用透视变换实现的。
 

@@ -1,13 +1,19 @@
-# 浏览器兼容性自查
+---
+date: 2020-08-29
+authors: codecwang
+image: http://cos.codec.wang/can-i-use-browser-compatiblity-fetch.jpg
+tags: [兼容性, 浏览器]
+---
 
-- Author: [CodecWang](http://codec.wang)
-- Date: 2020/08/29
+# 浏览器兼容性自查
 
 在解决浏览器兼容性问题或使用一些较新的 Web 技术时，经常需要查看各浏览器对 HTML/CSS/JS/SVG/Web/HTTP 等某些接口的支持程度。以下是两种不错的自查方式：
 
 ## CanIUse
 
-- https://caniuse.com/
+https://caniuse.com/
+
+<!--truncate-->
 
 ![](http://cos.codec.wang/can-i-use-browser-compatiblity-fetch.jpg)
 
@@ -22,6 +28,6 @@
 
 在 MDN(Mozilla Developer Network) 上查看接口的相关资料时，一般都会在最后给出浏览器的兼容数据，如：
 
-- https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API
+https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API
 
 ![](http://cos.codec.wang/mdn-browser-compatiblity-fetch-api.jpg)

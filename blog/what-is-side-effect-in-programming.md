@@ -1,11 +1,17 @@
-# 什么是 Side Effect？
+---
+date: 2021-04-17
+authors: codecwang
+image: http://cos.codec.wang/understand-side-effect.jpg
+tags: [Side Effect, 副作用, useEffect]
+---
 
-- Author: CodecWang
-- Date: 2021/04/17
+# 什么是 Side Effect？
 
 ![](http://cos.codec.wang/understand-side-effect.jpg)
 
 [Side effect](https://en.wikipedia.org/wiki/Side_effect_%28computer_science%29)，中文可以叫“副作用”。这个词第一次听的话有种负面的感觉，但如果你使用过 React Hooks 中的`useEffect`或接触过函数式编程，对它应该不陌生。
+
+<!--truncate-->
 
 ## 概念
 

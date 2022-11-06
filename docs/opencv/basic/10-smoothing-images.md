@@ -72,7 +72,7 @@ blur = cv2.boxFilter(img, -1, (3, 3), normalize=True)
 
 ![](http://cos.codec.wang/cv2_gaussian_kernel_function_theory.jpg)
 
-显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用[2维的高斯函数](https://en.wikipedia.org/wiki/Gaussian_filter)，比如OpenCV中默认的3×3的高斯卷积核（具体原理和卷积核生成方式请参考文末的[番外小篇]()）：
+显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用[2维的高斯函数](https://en.wikipedia.org/wiki/Gaussian_filter)，比如OpenCV中默认的3×3的高斯卷积核（具体原理和卷积核生成方式请参考文末的[番外小篇](#番外小篇高斯滤波卷积核)）：
 
 $$
 k = \left[
