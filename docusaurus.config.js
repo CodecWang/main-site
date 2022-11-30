@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "CodecWang's Blog",
+  title: "个人技术分享",
   tagline: "Dinosaurs are cool",
   url: "https://codec.wang",
   baseUrl: "/",
@@ -111,6 +111,11 @@ const config = {
                 label: "Twitter",
                 href: "https://twitter.com/docusaurus",
               },
+              {
+                 // autocorrect: false
+                 label: "粤ICP备20002165号-1",
+                 href: "https://beian.miit.gov.cn/",
+              }
             ],
           },
           {
