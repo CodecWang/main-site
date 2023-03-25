@@ -1,12 +1,12 @@
-# 番外篇: 仿射变换与透视变换
+# 番外篇：仿射变换与透视变换
 
 ![](http://cos.codec.wang/cv2_image_transformation_sample.jpg)
 
-常见的2D图像变换从原理上讲主要包括基于2×3矩阵的[仿射变换](https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2)和基于3×3矩阵[透视变换](https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2)。
+常见的 2D 图像变换从原理上讲主要包括基于 2×3 矩阵的[仿射变换](https://baike.baidu.com/item/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2)和基于 3×3 矩阵[透视变换](https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2)。
 
 ## 仿射变换
 
-基本的图像变换就是二维坐标的变换：从一种二维坐标\(x,y\)到另一种二维坐标\(u,v\)的线性变换：
+基本的图像变换就是二维坐标的变换：从一种二维坐标\(x,y\) 到另一种二维坐标\(u,v\) 的线性变换：
 
 $$
 \begin{matrix}
@@ -21,22 +21,22 @@ $$
 \left[
  \begin{matrix}
    u \newline
-   v 
+   v
   \end{matrix}
   \right]  = \left[
  \begin{matrix}
    a_1 & b_1  \newline
-   a_2 & b_2 
+   a_2 & b_2
   \end{matrix}
   \right] \left[
  \begin{matrix}
    x \newline
-   y 
+   y
   \end{matrix}
   \right]+\left[
  \begin{matrix}
    c_1 \newline
-   c_2 
+   c_2
   \end{matrix}
   \right]
 $$
@@ -47,12 +47,12 @@ $$
 R=\left[
  \begin{matrix}
    a_1 & b_1  \newline
-   a_2 & b_2 
+   a_2 & b_2
   \end{matrix}
   \right], t=\left[
  \begin{matrix}
    c_1 \newline
-   c_2 
+   c_2
   \end{matrix}
   \right],T=\left[
  \begin{matrix}
@@ -61,11 +61,11 @@ R=\left[
   \right]
 $$
 
-矩阵T\(2×3\)就称为仿射变换的变换矩阵，R为线性变换矩阵，t为平移矩阵，简单来说，仿射变换就是线性变换+平移。变换后直线依然是直线，平行线依然是平行线，直线间的相对位置关系不变，因此**非共线的三个对应点便可确定唯一的一个仿射变换**，线性变换4个自由度+平移2个自由度→**仿射变换自由度为6**。
+矩阵 T\(2×3\) 就称为仿射变换的变换矩阵，R 为线性变换矩阵，t 为平移矩阵，简单来说，仿射变换就是线性变换 + 平移。变换后直线依然是直线，平行线依然是平行线，直线间的相对位置关系不变，因此**非共线的三个对应点便可确定唯一的一个仿射变换**，线性变换 4 个自由度 + 平移 2 个自由度 →**仿射变换自由度为 6**。
 
 ![](http://cos.codec.wang/cv2_warp_affine_image_sample_introduction2.jpg)
 
-来看下OpenCV中如何实现仿射变换：
+来看下 OpenCV 中如何实现仿射变换：
 
 ```python
 import cv2
@@ -91,9 +91,9 @@ plt.show()
 
 三个点我已经在图中标记了出来。用`cv2.getAffineTransform()`生成变换矩阵，接下来再用`cv2.warpAffine()`实现变换。
 
-> 思考：三个点我标记的是红色，为什么Matplotlib显示出来是下面这种颜色？（[练习](#练习)）
+> 思考：三个点我标记的是红色，为什么 Matplotlib 显示出来是下面这种颜色？（[练习](#练习)）
 
-![&#x4EFF;&#x5C04;&#x53D8;&#x6362;&#x524D;&#x540E;&#x5BF9;&#x6BD4;&#x56FE;](http://cos.codec.wang/cv2_affine_transformation_drawing.jpg)
+![仿射变换前后对比图](http://cos.codec.wang/cv2_affine_transformation_drawing.jpg)
 
 其实平移、旋转、缩放和翻转等变换就是对应了不同的仿射变换矩阵，下面分别来看下。
 
@@ -103,28 +103,28 @@ plt.show()
 
 ![](http://cos.codec.wang/cv2_warp_affine_shift_sample.jpg)
 
-平移就是x和y方向上的直接移动，可以上下/左右移动，自由度为2，变换矩阵可以表示为：
+平移就是 x 和 y 方向上的直接移动，可以上下/左右移动，自由度为 2，变换矩阵可以表示为：
 
 $$
 \left[
  \begin{matrix}
    u \newline
-   v 
+   v
   \end{matrix}
   \right]  = \left[
  \begin{matrix}
    1 & 0  \newline
-   0 & 1 
+   0 & 1
   \end{matrix}
   \right] \left[
  \begin{matrix}
    x \newline
-   y 
+   y
   \end{matrix}
   \right]+\left[
  \begin{matrix}
    t_x \newline
-   t_y 
+   t_y
   \end{matrix}
   \right]
 $$
@@ -133,28 +133,28 @@ $$
 
 ![](http://cos.codec.wang/cv2_warp_affine_rotation_sample.jpg)
 
-旋转是坐标轴方向饶原点旋转一定的角度θ，自由度为1，不包含平移，如顺时针旋转可以表示为：
+旋转是坐标轴方向饶原点旋转一定的角度 θ，自由度为 1，不包含平移，如顺时针旋转可以表示为：
 
 $$
 \left[
  \begin{matrix}
    u \newline
-   v 
+   v
   \end{matrix}
   \right]  = \left[
  \begin{matrix}
    \cos \theta & -\sin \theta \newline
-   \sin \theta & \cos \theta  
+   \sin \theta & \cos \theta
   \end{matrix}
   \right] \left[
  \begin{matrix}
    x \newline
-   y 
+   y
   \end{matrix}
   \right]+\left[
  \begin{matrix}
    0 \newline
-   0 
+   0
   \end{matrix}
   \right]
 $$
@@ -163,13 +163,13 @@ $$
 
 ### 翻转
 
-翻转是x或y某个方向或全部方向上取反，自由度为2，比如这里以垂直翻转为例：
+翻转是 x 或 y 某个方向或全部方向上取反，自由度为 2，比如这里以垂直翻转为例：
 
 $$
 \left[
  \begin{matrix}
    u \newline
-   v 
+   v
   \end{matrix}
   \right]  = \left[
  \begin{matrix}
@@ -179,40 +179,40 @@ $$
   \right] \left[
  \begin{matrix}
    x \newline
-   y 
+   y
   \end{matrix}
   \right]+\left[
  \begin{matrix}
    0 \newline
-   0 
+   0
   \end{matrix}
   \right]
 $$
 
 ### 刚体变换
 
-旋转+平移也称刚体变换（Rigid Transform），就是说如果**图像变换前后两点间的距离仍然保持不变**，那么这种变化就称为刚体变换。刚体变换包括了平移、旋转和翻转，自由度为3。变换矩阵可以表示为：
+旋转 + 平移也称刚体变换（Rigid Transform），就是说如果**图像变换前后两点间的距离仍然保持不变**，那么这种变化就称为刚体变换。刚体变换包括了平移、旋转和翻转，自由度为 3。变换矩阵可以表示为：
 
 $$
 \left[
  \begin{matrix}
    u \newline
-   v 
+   v
   \end{matrix}
   \right]  = \left[
  \begin{matrix}
    \cos \theta & -\sin \theta \newline
-   \sin \theta & \cos \theta  
+   \sin \theta & \cos \theta
   \end{matrix}
   \right] \left[
  \begin{matrix}
    x \newline
-   y 
+   y
   \end{matrix}
   \right]+\left[
  \begin{matrix}
    t_x  \newline
-   t_y 
+   t_y
   \end{matrix}
   \right]
 $$
@@ -223,13 +223,13 @@ $$
 
 ![](http://cos.codec.wang/cv2_warp_affine_scale_sampel.jpg)
 
-缩放是x和y方向的尺度（倍数）变换，在有些资料上非等比例的缩放也称为拉伸/挤压，等比例缩放自由度为1，非等比例缩放自由度为2，矩阵可以表示为：
+缩放是 x 和 y 方向的尺度（倍数）变换，在有些资料上非等比例的缩放也称为拉伸/挤压，等比例缩放自由度为 1，非等比例缩放自由度为 2，矩阵可以表示为：
 
 $$
 \left[
  \begin{matrix}
    u \newline
-   v 
+   v
   \end{matrix}
   \right]  = \left[
  \begin{matrix}
@@ -239,42 +239,42 @@ $$
   \right] \left[
  \begin{matrix}
    x \newline
-   y 
+   y
   \end{matrix}
   \right]+\left[
  \begin{matrix}
    0 \newline
-   0 
+   0
   \end{matrix}
   \right]
 $$
 
 ### 相似变换
 
-相似变换又称缩放旋转，相似变换包含了旋转、等比例缩放和平移等变换，自由度为4。在OpenCV中，旋转就是用相似变换实现的：
+相似变换又称缩放旋转，相似变换包含了旋转、等比例缩放和平移等变换，自由度为 4。在 OpenCV 中，旋转就是用相似变换实现的：
 
-若缩放比例为scale，旋转角度为θ，旋转中心是$ \(center\_x,center\_y\) $，则仿射变换可以表示为：
+若缩放比例为 scale，旋转角度为 θ，旋转中心是$ \(center_x,center_y\) $，则仿射变换可以表示为：
 
 $$
 \left[
  \begin{matrix}
    u \newline
-   v 
+   v
   \end{matrix}
   \right]  = \left[
  \begin{matrix}
    \alpha & \beta \newline
-   -\beta & \alpha  
+   -\beta & \alpha
   \end{matrix}
   \right] \left[
  \begin{matrix}
    x \newline
-   y 
+   y
   \end{matrix}
   \right]+\left[
  \begin{matrix}
    (1-\alpha)center_x-\beta center_y \newline
-   \beta center_x+(1-\alpha)center_y 
+   \beta center_x+(1-\alpha)center_y
   \end{matrix}
   \right]
 $$
@@ -287,17 +287,17 @@ $$
 
 **相似变换相比刚体变换加了缩放，所以并不会保持欧氏距离不变，但直线间的夹角依然不变。**
 
-> 经验之谈：OpenCV中默认按照逆时针旋转噢~
+> 经验之谈：OpenCV 中默认按照逆时针旋转噢~
 
-总结一下（[原图\[\#计算机视觉：算法与应用p39\]](http://cos.codec.wang/cv2_transformation_matrix_dof_summary.jpg)）：
+总结一下（[原图\[\#计算机视觉：算法与应用 p39\]](http://cos.codec.wang/cv2_transformation_matrix_dof_summary.jpg)）：
 
-| 变换 | 矩阵 | 自由度 | 保持性质 |
-| :---: | :---: | :---: | :---: |
-| 平移 | \[I, t\]（2×3） | 2 | 方向/长度/夹角/平行性/直线性 |
-| 刚体 | \[R, t\]（2×3） | 3 | 长度/夹角/平行性/直线性 |
-| 相似 | \[sR, t\]（2×3） | 4 | 夹角/平行性/直线性 |
-| 仿射 | \[T\]（2×3） | 6 | 平行性/直线性 |
-| 透视 | \[T\]（3×3） | 8 | 直线性 |
+| 变换 |       矩阵       | 自由度 |           保持性质           |
+| :--: | :--------------: | :----: | :--------------------------: |
+| 平移 | \[I, t\]（2×3）  |   2    | 方向/长度/夹角/平行性/直线性 |
+| 刚体 | \[R, t\]（2×3）  |   3    |   长度/夹角/平行性/直线性    |
+| 相似 | \[sR, t\]（2×3） |   4    |      夹角/平行性/直线性      |
+| 仿射 |   \[T\]（2×3）   |   6    |        平行性/直线性         |
+| 透视 |   \[T\]（3×3）   |   8    |            直线性            |
 
 ## 透视变换
 
@@ -305,13 +305,13 @@ $$
 
 ![](http://cos.codec.wang/cv2_warp_perspective_image_sample4.jpg)
 
-[透视变换](https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2)（Perspective Transformation）是将二维的图片投影到一个三维视平面上，然后再转换到二维坐标下，所以也称为投影映射（Projective Mapping）。简单来说就是二维→三维→二维的一个过程。
+[透视变换](https://baike.baidu.com/item/%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2)（Perspective Transformation）是将二维的图片投影到一个三维视平面上，然后再转换到二维坐标下，所以也称为投影映射（Projective Mapping）。简单来说就是二维 → 三维 → 二维的一个过程。
 
 $$
 \begin{matrix}
    X=a_1 x + b_1 y + c_1 \newline
    Y=a_2 x + b_2 y + c_2  \newline
-   Z=a_3 x + b_3 y + c_3  
+   Z=a_3 x + b_3 y + c_3
   \end{matrix}
 $$
 
@@ -328,7 +328,7 @@ $$
  \begin{matrix}
    a_1 & b_1 & c_1  \newline
    a_2 & b_2 & c_2  \newline
-   a_3 & b_3 & c_3  
+   a_3 & b_3 & c_3
   \end{matrix}
   \right] \left[
  \begin{matrix}
@@ -339,7 +339,7 @@ $$
   \right]
 $$
 
-其中，$ \left\[ \begin{matrix} a\_1 & b\_1 \newline a\_2 & b\_2 \newline \end{matrix} \right\] $表示线性变换，$ \left\[ \begin{matrix} a\_3 & b\_3 \end{matrix} \right\] $产生透视变换，其余表示平移变换，因此仿射变换是透视变换的子集。接下来再通过除以Z轴转换成二维坐标：
+其中，$ \left\[ \begin{matrix} a_1 & b_1 \newline a_2 & b_2 \newline \end{matrix} \right\] $表示线性变换，$ \left\[ \begin{matrix} a_3 & b_3 \end{matrix} \right\] $产生透视变换，其余表示平移变换，因此仿射变换是透视变换的子集。接下来再通过除以 Z 轴转换成二维坐标：
 
 $$
 x^{’}=\frac{X}{Z}=\frac{a_1x+b_1y+c_1}{a_3x+b_3y+c_3 }
@@ -351,9 +351,9 @@ $$
 
 透视变换相比仿射变换更加灵活，变换后会产生一个新的四边形，但不一定是平行四边形，所以需要**非共线的四个点才能唯一确定**，原图中的直线变换后依然是直线。因为四边形包括了所有的平行四边形，所以透视变换包括了所有的仿射变换。
 
-OpenCV中首先根据变换前后的四个点用`cv2.getPerspectiveTransform()`生成3×3的变换矩阵，然后再用`cv2.warpPerspective()`进行透视变换。实战演练一下：
+OpenCV 中首先根据变换前后的四个点用`cv2.getPerspectiveTransform()`生成 3×3 的变换矩阵，然后再用`cv2.warpPerspective()`进行透视变换。实战演练一下：
 
-![&#x77EB;&#x6B63;&#x4E00;&#x9E23;&#x7684;&#x5361;&#x7247;](http://cos.codec.wang/cv2_perspective_transformations_inm.jpg)
+![矫正一鸣的卡片](http://cos.codec.wang/cv2_perspective_transformations_inm.jpg)
 
 ```python
 img = cv2.imread('card.jpg')
@@ -365,7 +365,7 @@ pts2 = np.float32([[0, 0], [320, 0], [0, 178], [320, 178]])
 
 # 生成透视变换矩阵
 M = cv2.getPerspectiveTransform(pts1, pts2)
-# 进行透视变换，参数3是目标图像大小
+# 进行透视变换，参数 3 是目标图像大小
 dst = cv2.warpPerspective(img, M, (320, 178))
 
 plt.subplot(121), plt.imshow(img[:, :, ::-1]), plt.title('input')
@@ -379,12 +379,11 @@ plt.show()
 
 ## 练习
 
-1. 请复习：[无损保存和Matplotlib使用](/番外篇02.%20无损保存和Matplotlib使用/)。
+1. 请复习：[无损保存和 Matplotlib 使用](./extra-02-high-quality-save-and-matplotlib)。
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-05-Warpaffine-Warpperspective)
-* [计算机视觉：算法与应用](http://cos.codec.wang/Computer%20Vision%EF%BC%9AAlgorithms%20and%20Applications.pdf)
-* [维基百科：仿射变换](https://zh.wikipedia.org/wiki/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2)
-* [如何通俗地讲解「仿射变换」这个概念？](https://www.zhihu.com/question/20666664)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-05-Warpaffine-Warpperspective)
+- [计算机视觉：算法与应用](http://cos.codec.wang/Computer%20Vision%EF%BC%9AAlgorithms%20and%20Applications.pdf)
+- [维基百科：仿射变换](https://zh.wikipedia.org/wiki/%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2)
+- [如何通俗地讲解「仿射变换」这个概念？](https://www.zhihu.com/question/20666664)

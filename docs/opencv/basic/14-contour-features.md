@@ -7,7 +7,7 @@
 ## 目标
 
 * 计算物体的周长、面积、质心、最小外接矩形等
-* OpenCV函数：`cv2.contourArea()`, `cv2.arcLength()`, `cv2.approxPolyDP()` 等
+* OpenCV 函数：`cv2.contourArea()`, `cv2.arcLength()`, `cv2.approxPolyDP()` 等
 
 ## 教程
 
@@ -23,7 +23,7 @@ img = cv2.imread('handwriting.jpg', 0)
 _, thresh = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
 image, contours, hierarchy = cv2.findContours(thresh, 3, 2)
 
-# 以数字3的轮廓为例
+# 以数字 3 的轮廓为例
 cnt = contours[0]
 ```
 
@@ -51,7 +51,7 @@ area = cv2.contourArea(cnt)  # 4386.5
 perimeter = cv2.arcLength(cnt, True)  # 585.7
 ```
 
-参数2表示轮廓是否封闭，显然我们的轮廓是封闭的，所以是True。
+参数 2 表示轮廓是否封闭，显然我们的轮廓是封闭的，所以是 True。
 
 ### 图像矩
 
@@ -61,7 +61,7 @@ perimeter = cv2.arcLength(cnt, True)  # 585.7
 M = cv2.moments(cnt)
 ```
 
-M中包含了很多轮廓的特征信息，比如M\['m00'\]表示轮廓面积，与前面`cv2.contourArea()`计算结果是一样的。质心也可以用它来算：
+M 中包含了很多轮廓的特征信息，比如 M\['m00'\]表示轮廓面积，与前面`cv2.contourArea()`计算结果是一样的。质心也可以用它来算：
 
 ```python
 cx, cy = M['m10'] / M['m00'], M['m01'] / M['m00']  # (205, 281)
@@ -84,7 +84,7 @@ box = np.int0(cv2.boxPoints(rect))  # 矩形的四个角点取整
 cv2.drawContours(img_color1, [box], 0, (255, 0, 0), 2)
 ```
 
-其中np.int0\(x\)是把x取整的操作，比如377.93就会变成377，也可以用x.astype\(np.int\)。
+其中 np.int0\(x\) 是把 x 取整的操作，比如 377.93 就会变成 377，也可以用 x.astype\(np.int\)。
 
 ### 最小外接圆
 
@@ -122,7 +122,7 @@ image, contours, hierarchy = cv2.findContours(thresh, 3, 2)
 img_color = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)  # 用于绘制的彩色图
 ```
 
-图中有3条轮廓，我们用A/B/C表示：
+图中有 3 条轮廓，我们用 A/B/C 表示：
 
 ```python
 cnt_a, cnt_b, cnt_c = contours[0], contours[1], contours[2]
@@ -131,13 +131,13 @@ print(cv2.matchShapes(cnt_b, cnt_c, 1, 0.0))  # 2.17e-05
 print(cv2.matchShapes(cnt_b, cnt_a, 1, 0.0))  # 0.418
 ```
 
-可以看到BC相似程度比AB高很多，并且图形的旋转或缩放并没有影响。其中，参数3是匹配方法，详情可参考：[ShapeMatchModes](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f)，参数4是OpenCV的预留参数，暂时没有实现，可以不用理会。
+可以看到 BC 相似程度比 AB 高很多，并且图形的旋转或缩放并没有影响。其中，参数 3 是匹配方法，详情可参考：[ShapeMatchModes](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f)，参数 4 是 OpenCV 的预留参数，暂时没有实现，可以不用理会。
 
-形状匹配是通过图像的Hu矩来实现的\(`cv2.HuMoments()`\)，大家如果感兴趣，可以参考：[Hu-Moments](http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments)
+形状匹配是通过图像的 Hu 矩来实现的\(`cv2.HuMoments()`\)，大家如果感兴趣，可以参考：[Hu-Moments](http://en.wikipedia.org/wiki/Image_moment#Rotation_invariant_moments)
 
 ## 练习
 
-1. 前面我们是对图片中的数字3进行轮廓特征计算的，大家换成数字1看看。
+1. 前面我们是对图片中的数字 3 进行轮廓特征计算的，大家换成数字 1 看看。
 2. （选做）用形状匹配比较两个字母或数字（这相当于很简单的一个[OCR](https://baike.baidu.com/item/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/4162921?fr=aladdin&fromid=25995&fromtitle=OCR)噢）。
 
 ## 小结

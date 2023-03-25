@@ -1,6 +1,6 @@
 ---
 date: 2017-11-08
-authors: codecwang
+authors: codec
 image: http://cos.codec.wang/cartier_bresson_photo1.png
 tags: [摄影]
 ---

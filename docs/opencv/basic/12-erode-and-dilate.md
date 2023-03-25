@@ -6,9 +6,9 @@
 
 ## 目标
 
-* 了解形态学操作的概念
-* 学习膨胀、腐蚀、开运算和闭运算等形态学操作
-* OpenCV函数：`cv2.erode()`, `cv2.dilate()`, `cv2.morphologyEx()`
+- 了解形态学操作的概念
+- 学习膨胀、腐蚀、开运算和闭运算等形态学操作
+- OpenCV 函数：`cv2.erode()`, `cv2.dilate()`, `cv2.morphologyEx()`
 
 ## 教程
 
@@ -22,13 +22,13 @@
 
 ### 腐蚀
 
-腐蚀的效果是把图片"变瘦"，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有0和255，所以小区域内有一个是0该像素点就为0：
+腐蚀的效果是把图片"变瘦"，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有 0 和 255，所以小区域内有一个是 0 该像素点就为 0：
 
 ![](http://cos.codec.wang/cv2_understand_erosion.jpg)
 
-这样原图中边缘地方就会变成0，达到了瘦身目的（小胖福利\(●ˇ∀ˇ●\)）
+这样原图中边缘地方就会变成 0，达到了瘦身目的（小胖福利\(●ˇ∀ˇ●\)）
 
-OpenCV中用`cv2.erode()`函数进行腐蚀，只需要指定核的大小就行：
+OpenCV 中用`cv2.erode()`函数进行腐蚀，只需要指定核的大小就行：
 
 ```python
 import cv2
@@ -77,13 +77,13 @@ closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  # 闭运算
 
 ![](http://cos.codec.wang/cv2_morphological_opening_closing.jpg)
 
-> 经验之谈：很多人对开闭运算的作用不是很清楚（好吧，其实是比较容易混◑﹏◐），但看上图↑，不用怕：如果我们的目标物体外面有很多无关的小区域，就用开运算去除掉；如果物体内部有很多小黑洞，就用闭运算填充掉。
+> 经验之谈：很多人对开闭运算的作用不是很清楚（好吧，其实是比较容易混 ◑﹏◐），但看上图 ↑，不用怕：如果我们的目标物体外面有很多无关的小区域，就用开运算去除掉；如果物体内部有很多小黑洞，就用闭运算填充掉。
 
-接下来的3种形态学操作并不常用，大家有兴趣可以看看（因为较短，没有做成番外篇）：
+接下来的 3 种形态学操作并不常用，大家有兴趣可以看看（因为较短，没有做成番外篇）：
 
 ### 其他形态学操作
 
-* 形态学梯度：膨胀图减去腐蚀图，`dilation - erosion`，这样会得到物体的轮廓：
+- 形态学梯度：膨胀图减去腐蚀图，`dilation - erosion`，这样会得到物体的轮廓：
 
 ```python
 img = cv2.imread('school.bmp', 0)
@@ -92,13 +92,13 @@ gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)
 
 ![](http://cos.codec.wang/cv2_morphological_gradient.jpg)
 
-* 顶帽：原图减去开运算后的图：`src - opening`
+- 顶帽：原图减去开运算后的图：`src - opening`
 
 ```python
 tophat = cv2.morphologyEx(img, cv2.MORPH_TOPHAT, kernel)
 ```
 
-* 黑帽：闭运算后的图减去原图：`closing - src`
+- 黑帽：闭运算后的图减去原图：`closing - src`
 
 ```python
 blackhat = cv2.morphologyEx(img, cv2.MORPH_BLACKHAT, kernel)
@@ -106,22 +106,21 @@ blackhat = cv2.morphologyEx(img, cv2.MORPH_BLACKHAT, kernel)
 
 ## 小结
 
-* 形态学操作就是改变物体的形状，如腐蚀使物体"变瘦"，膨胀使物体"变胖"。
-* 先腐蚀后膨胀会分离物体，所以叫开运算，常用来去除小区域物体。
-* 先膨胀后腐蚀会消除物体内的小洞，所以叫闭运算。开/闭理解了之后很容易记忆噢\(⊙o⊙\)。
+- 形态学操作就是改变物体的形状，如腐蚀使物体"变瘦"，膨胀使物体"变胖"。
+- 先腐蚀后膨胀会分离物体，所以叫开运算，常用来去除小区域物体。
+- 先膨胀后腐蚀会消除物体内的小洞，所以叫闭运算。开/闭理解了之后很容易记忆噢\(⊙o⊙\)。
 
 ## 接口文档
 
-* [cv2.erode\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaeb1e0c1033e3f6b891a25d0511362aeb)
-* [cv2.getStructuringElement\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac342a1bb6eabf6f55c803b09268e36dc)
-* [cv2.dilate\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga4ff0f3318642c4f469d0e11f242f3b6c)
-* [cv2.MorphShapes](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac2db39b56866583a95a5680313c314ad)
-* [cv2.morphologyEx\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga67493776e3ad1a3df63883829375201f)
-* [cv2.MorphTypes](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga7be549266bad7b2e6a04db49827f9f32)
+- [cv2.erode\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaeb1e0c1033e3f6b891a25d0511362aeb)
+- [cv2.getStructuringElement\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac342a1bb6eabf6f55c803b09268e36dc)
+- [cv2.dilate\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga4ff0f3318642c4f469d0e11f242f3b6c)
+- [cv2.MorphShapes](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac2db39b56866583a95a5680313c314ad)
+- [cv2.morphologyEx\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga67493776e3ad1a3df63883829375201f)
+- [cv2.MorphTypes](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga7be549266bad7b2e6a04db49827f9f32)
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/12-Erode-and-Dilate)
-* [Morphological Operations](http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm)
-* [Computer Vision: Algorithms and Applications](http://szeliski.org/Book/)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/12-Erode-and-Dilate)
+- [Morphological Operations](http://homepages.inf.ed.ac.uk/rbf/HIPR2/morops.htm)
+- [Computer Vision: Algorithms and Applications](http://szeliski.org/Book/)

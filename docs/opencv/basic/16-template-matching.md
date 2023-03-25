@@ -7,7 +7,7 @@
 ## 目标
 
 * 使用模板匹配在图像中寻找物体
-* OpenCV函数：`cv2.matchTemplate()`, `cv2.minMaxLoc()`
+* OpenCV 函数：`cv2.matchTemplate()`, `cv2.minMaxLoc()`
 
 ## 教程
 
@@ -47,16 +47,16 @@ cv2.rectangle(img, left_top, right_bottom, 255, 2)  # 画出矩形位置
 
 > 这部分可看可不看，不太理解也没关系，还记得前面的方法吗？不懂得就划掉\(✿◕‿◕✿\)
 
-模板匹配的原理其实很简单，就是不断地在原图中移动模板图像去比较，有6种不同的比较方法，详情可参考：[TemplateMatchModes](https://docs.opencv.org/3.3.1/df/dfb/group__imgproc__object.html#ga3a7850640f1fe1f58fe91a2d7583695d)
+模板匹配的原理其实很简单，就是不断地在原图中移动模板图像去比较，有 6 种不同的比较方法，详情可参考：[TemplateMatchModes](https://docs.opencv.org/3.3.1/df/dfb/group__imgproc__object.html#ga3a7850640f1fe1f58fe91a2d7583695d)
 
-* 平方差匹配CV\_TM\_SQDIFF：用两者的平方差来匹配，最好的匹配值为0
-* 归一化平方差匹配CV\_TM\_SQDIFF\_NORMED
-* 相关匹配CV\_TM\_CCORR：用两者的乘积匹配，数值越大表明匹配程度越好
-* 归一化相关匹配CV\_TM\_CCORR\_NORMED
-* 相关系数匹配CV\_TM\_CCOEFF：用两者的相关系数匹配，1表示完美的匹配，-1表示最差的匹配
-* 归一化相关系数匹配CV\_TM\_CCOEFF\_NORMED
+* 平方差匹配 CV\_TM\_SQDIFF：用两者的平方差来匹配，最好的匹配值为 0
+* 归一化平方差匹配 CV\_TM\_SQDIFF\_NORMED
+* 相关匹配 CV\_TM\_CCORR：用两者的乘积匹配，数值越大表明匹配程度越好
+* 归一化相关匹配 CV\_TM\_CCORR\_NORMED
+* 相关系数匹配 CV\_TM\_CCOEFF：用两者的相关系数匹配，1 表示完美的匹配，-1 表示最差的匹配
+* 归一化相关系数匹配 CV\_TM\_CCOEFF\_NORMED
 
-归一化的意思就是将值统一到0~1，这些方法的对比代码可到[源码处](#引用)查看。模板匹配也是应用卷积来实现的：假设原图大小为W×H，模板图大小为w×h，那么生成图大小是\(W-w+1\)×\(H-h+1\)，生成图中的每个像素值表示原图与模板的匹配程度。
+归一化的意思就是将值统一到 0~1，这些方法的对比代码可到[源码处](#引用)查看。模板匹配也是应用卷积来实现的：假设原图大小为 W×H，模板图大小为 w×h，那么生成图大小是\(W-w+1\)×\(H-h+1\)，生成图中的每个像素值表示原图与模板的匹配程度。
 
 ### 匹配多个物体
 
@@ -73,8 +73,8 @@ h, w = template.shape[:2]
 res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)
 threshold = 0.8 
 
-# 3.这边是Python/Numpy的知识，后面解释
-loc = np.where(res >= threshold)  # 匹配程度大于%80的坐标y,x
+# 3.这边是 Python/Numpy 的知识，后面解释
+loc = np.where(res >= threshold)  # 匹配程度大于%80 的坐标 y,x
 for pt in zip(*loc[::-1]):  # *号表示可选参数
     right_bottom = (pt[0] + w, pt[1] + h)
     cv2.rectangle(img_rgb, pt, right_bottom, (0, 0, 255), 2)
@@ -84,12 +84,12 @@ for pt in zip(*loc[::-1]):  # *号表示可选参数
 
 第3步有几个Python/Numpy的重要知识，来大致看下：
 
-* [np.where\(\)](https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html)在这里返回res中值大于0.8的所有坐标，如：
+* [np.where\(\)](https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html)在这里返回 res 中值大于 0.8 的所有坐标，如：
 
 ```python
 x = np.arange(9.).reshape(3, 3)
 print(np.where(x > 5))
-# 结果(先y坐标，再x坐标)：(array([2, 2, 2]), array([0, 1, 2]))
+# 结果 (先 y 坐标，再 x 坐标)：(array([2, 2, 2]), array([0, 1, 2]))
 ```
 
 ![](http://cos.codec.wang/cv2_np_where_function.jpg)
@@ -102,7 +102,7 @@ y = [4, 5, 6]
 print(list(zip(x, y)))  # [(1, 4), (2, 5), (3, 6)]
 ```
 
-这样大家就能理解前面代码的用法了吧：因为loc是先y坐标再x坐标，所以用loc\[::-1\]翻转一下，然后再用zip函数拼接在一起。
+这样大家就能理解前面代码的用法了吧：因为 loc 是先 y 坐标再 x 坐标，所以用 loc\[::-1\]翻转一下，然后再用zip函数拼接在一起。
 
 ## 练习
 

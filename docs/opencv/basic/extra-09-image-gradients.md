@@ -1,4 +1,4 @@
-# 番外篇: 图像梯度
+# 番外篇：图像梯度
 
 ![](http://cos.codec.wang/cv2_horizen_vertical_edge_detection.jpg)
 
@@ -61,20 +61,20 @@ cv2.imshow('edge', np.hstack((img, dst_v, dst_h)))
 cv2.waitKey(0)
 ```
 
-### Sobel算子
+### Sobel 算子
 
-上面的这种差分方法就叫[Sobel算子](https://baike.baidu.com/item/Sobel%E7%AE%97%E5%AD%90/11000092?fr=aladdin)，它先在垂直方向计算梯度 $$G_x=k_1×src$$，再在水平方向计算梯度 $$G_y=k_2×src$$ ，最后求出总梯度： $$G=\sqrt{Gx^2+Gy^2}$$
+上面的这种差分方法就叫[Sobel 算子](https://baike.baidu.com/item/Sobel%E7%AE%97%E5%AD%90/11000092?fr=aladdin)，它先在垂直方向计算梯度 $$G_x=k_1×src$$，再在水平方向计算梯度 $$G_y=k_2×src$$ ，最后求出总梯度： $$G=\sqrt{Gx^2+Gy^2}$$
 
-我们可以把前面的代码用Sobel算子更简单地实现：
+我们可以把前面的代码用 Sobel 算子更简单地实现：
 
 ```python
-sobelx = cv2.Sobel(img, -1, 1, 0, ksize=3)  # 只计算x方向
-sobely = cv2.Sobel(img, -1, 0, 1, ksize=3)  # 只计算y方向
+sobelx = cv2.Sobel(img, -1, 1, 0, ksize=3)  # 只计算 x 方向
+sobely = cv2.Sobel(img, -1, 0, 1, ksize=3)  # 只计算 y 方向
 ```
 
-> 经验之谈：很多人疑问，Sobel算子的卷积核这几个值是怎么来的呢？事实上，并没有规定，你可以用你自己的。
+> 经验之谈：很多人疑问，Sobel 算子的卷积核这几个值是怎么来的呢？事实上，并没有规定，你可以用你自己的。
 
-比如，最初只利用领域间的原始差值来检测边缘的[Prewitt算子](https://baike.baidu.com/item/Prewitt%E7%AE%97%E5%AD%90/8415245?fr=aladdin)：
+比如，最初只利用领域间的原始差值来检测边缘的[Prewitt 算子](https://baike.baidu.com/item/Prewitt%E7%AE%97%E5%AD%90/8415245?fr=aladdin)：
 
 $$
 K = \left[
@@ -86,7 +86,7 @@ K = \left[
   \right]
 $$
 
-还有比Sobel更好用的**Scharr算子**，大家可以了解下：
+还有比 Sobel 更好用的**Scharr 算子**，大家可以了解下：
 
 $$
 K = \left[
@@ -100,9 +100,9 @@ $$
 
 这些算法都是一阶边缘检测的代表，网上也有算子之间的对比资料，有兴趣的可参考文末引用。
 
-### Laplacian算子
+### Laplacian 算子
 
-高数中用一阶导数求极值，在这些极值的地方，二阶导数为0，所以也可以通过求二阶导计算梯度：
+高数中用一阶导数求极值，在这些极值的地方，二阶导数为 0，所以也可以通过求二阶导计算梯度：
 
 $$
 dst=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}
@@ -118,7 +118,7 @@ $$
 \frac{\partial^2 f}{\partial x^2}=f(x+1)+f(x-1)-2f(x)
 $$
 
-提取前面的系数，那么一维的Laplacian滤波核是：
+提取前面的系数，那么一维的 Laplacian 滤波核是：
 
 $$
 K=\left[
@@ -128,7 +128,7 @@ K=\left[
   \right]
 $$
 
-而对于二维函数f\(x,y\)，两个方向的二阶差分分别是：
+而对于二维函数 f\(x,y\)，两个方向的二阶差分分别是：
 
 $$
 \frac{\partial^2 f}{\partial x^2}=f(x+1,y)+f(x-1,y)-2f(x,y)
@@ -144,7 +144,7 @@ $$
 \triangledown^2 f(x,y)=f(x+1,y)+f(x-1,y)+f(x,y+1)+f(x,y-1)-4f(x,y)
 $$
 
-同样提取前面的系数，那么二维的Laplacian滤波核就是：
+同样提取前面的系数，那么二维的 Laplacian 滤波核就是：
 
 $$
 K = \left[
@@ -156,7 +156,7 @@ K = \left[
   \right]
 $$
 
-这就是Laplacian算子的图像卷积模板，有些资料中在此基础上考虑斜对角情况，将卷积核拓展为：
+这就是 Laplacian 算子的图像卷积模板，有些资料中在此基础上考虑斜对角情况，将卷积核拓展为：
 
 $$
 K = \left[
@@ -168,15 +168,15 @@ K = \left[
   \right]
 $$
 
-OpenCV中直接使用`cv2.Laplacian()`函数：
+OpenCV 中直接使用`cv2.Laplacian()`函数：
 
 ```python
-laplacian = cv2.Laplacian(img, -1)  # 使用Laplacian算子
+laplacian = cv2.Laplacian(img, -1)  # 使用 Laplacian 算子
 ```
 
 ![](http://cos.codec.wang/cv2_laplacian.jpg)
 
-Laplacian算子是二阶边缘检测的典型代表，一/二阶边缘检测各有优缺点，大家可自行了解。
+Laplacian 算子是二阶边缘检测的典型代表，一/二阶边缘检测各有优缺点，大家可自行了解。
 
 ## 练习
 
@@ -186,7 +186,7 @@ Laplacian算子是二阶边缘检测的典型代表，一/二阶边缘检测各�
 
 * [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-09-Image-Gradients)
 * [Image Gradients](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_gradients/py_gradients.html)
-* [Sobel导数](http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html#sobel-derivatives)
+* [Sobel 导数](http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html#sobel-derivatives)
 * [维基百科：边缘检测](https://zh.wikipedia.org/wiki/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B)
-* [数字图像 - 边缘检测原理 - Sobel, Laplace, Canny算子](https://www.jianshu.com/p/2334bee37de5)
+* [数字图像 - 边缘检测原理 - Sobel, Laplace, Canny 算子](https://www.jianshu.com/p/2334bee37de5)
 

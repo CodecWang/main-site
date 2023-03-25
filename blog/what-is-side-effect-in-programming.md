@@ -1,8 +1,8 @@
 ---
 date: 2021-04-17
-authors: codecwang
+authors: codec
 image: http://cos.codec.wang/understand-side-effect.jpg
-tags: [Side Effect, 副作用, useEffect]
+tags: [Side Effect, "副作用", useEffect]
 ---
 
 # 什么是 Side Effect？

@@ -1,8 +1,8 @@
-# 挑战任务: 画动态时钟
+# 挑战任务：画动态时钟
 
 ![](http://cos.codec.wang/cv2_draw_clock_dynamic_sample.gif)
 
-挑战任务：使用OpenCV绘制一个随系统时间动态变化的时钟。
+挑战任务：使用 OpenCV 绘制一个随系统时间动态变化的时钟。
 
 ## 挑战内容
 
@@ -10,7 +10,7 @@
 
 ![](http://cos.codec.wang/cv2_draw_clock_dynamic_sample.gif)
 
-其实本次任务涉及的OpenCV知识并不多，但有助于提升大家的编程实践能力。
+其实本次任务涉及的 OpenCV 知识并不多，但有助于提升大家的编程实践能力。
 
 **挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，**不然...我也没办法\(￣▽￣\)"
 
@@ -22,7 +22,7 @@
 
 ![](http://cos.codec.wang/cv2_draw_clock_actual_clock_sample.jpg)
 
-整个表盘其实只有3根表针在动，所以可以先画出静态表盘，然后获取系统当前时间，根据时间实时动态绘制3根表针就解决了。
+整个表盘其实只有 3 根表针在动，所以可以先画出静态表盘，然后获取系统当前时间，根据时间实时动态绘制 3 根表针就解决了。
 
 ### 绘制表盘
 
@@ -48,9 +48,9 @@ cv2.circle(img, center, radius, (0, 0, 0), thickness=5)
 
 ![](http://cos.codec.wang/cv2_draw_clock_blank_circle.jpg)
 
-前面我们使用OpenCV画直线的时候，需知道直线的起点和终点坐标，那么画72根线就变成了获取72组坐标。
+前面我们使用 OpenCV 画直线的时候，需知道直线的起点和终点坐标，那么画 72 根线就变成了获取 72 组坐标。
 
-在平面坐标系下，已知半径和角度的话，A点的坐标可以表示为：
+在平面坐标系下，已知半径和角度的话，A 点的坐标可以表示为：
 
 $$
 \begin{matrix}
@@ -79,25 +79,25 @@ $$
 ```python
 pt1 = []
 
-# 3. 画出60条秒和分钟的刻线
+# 3. 画出 60 条秒和分钟的刻线
 for i in range(60):
-    # 最外部圆，计算A点
+    # 最外部圆，计算 A 点
     x1 = center_x+(radius-margin)*math.cos(i*6*np.pi/180.0)
     y1 = center_y+(radius-margin)*math.sin(i*6*np.pi/180.0)
     pt1.append((int(x1), int(y1)))
 
-    # 同心小圆，计算B点
+    # 同心小圆，计算 B 点
     x2 = center_x+(radius-15)*math.cos(i*6*np.pi/180.0)
     y2 = center_y+(radius-15)*math.sin(i*6*np.pi/180.0)
 
     cv2.line(img, pt1[i], (int(x2), int(y2)), (0, 0, 0), thickness=2)
 
-# 4. 画出12条小时的刻线
+# 4. 画出 12 条小时的刻线
 for i in range(12):
-    # 12条小时刻线应该更长一点
+    # 12 条小时刻线应该更长一点
     x = center_x+(radius-25)*math.cos(i*30*np.pi/180.0)
     y = center_y+(radius-25)*math.sin(i*30*np.pi/180.0)
-    # 这里用到了前面的pt1
+    # 这里用到了前面的 pt1
     cv2.line(img, pt1[i*5], (int(x), int(y)), (0, 0, 0), thickness=5)
 
 # 到这里基本的表盘图就已经画出来了
@@ -107,34 +107,34 @@ for i in range(12):
 
 ### 角度换算
 
-接下来算是一个小难点，首先**时钟的起始坐标在正常二维坐标系的90°方向，其次时钟跟图像一样，都是顺时针计算角度的**，所以三者需要统一下：
+接下来算是一个小难点，首先**时钟的起始坐标在正常二维坐标系的 90°方向，其次时钟跟图像一样，都是顺时针计算角度的**，所以三者需要统一下：
 
 ![](http://cos.codec.wang/cv2_draw_clock_different_clock_contrast.jpg)
 
-因为角度是完全对称的，顺逆时针没有影响，所以平面坐标系完全不用理会，放在这里只是便于大家理解。对于时钟坐标和图像坐标，时钟0的0°对应图像的270°，时钟15的90°对应图像的360°，时钟30的180°对应图像的450°（360°+90°）...
+因为角度是完全对称的，顺逆时针没有影响，所以平面坐标系完全不用理会，放在这里只是便于大家理解。对于时钟坐标和图像坐标，时钟 0 的 0°对应图像的 270°，时钟 15 的 90°对应图像的 360°，时钟 30 的 180°对应图像的 450°（360°+90°）...
 
 所以两者之间的关系便是：
 
 ```text
-计算角度 = 时钟角度+270°
-计算角度 = 计算角度 if 计算角度<=360° else 计算角度-360°
+计算角度 = 时钟角度 +270°
+计算角度 = 计算角度 if 计算角度<=360° else 计算角度 -360°
 ```
 
 ### 同步时间
 
-Python中如何获取当前时间和添加日期文字都比较简单，看代码就行，我就不解释了。代码中角度计算我换了一种方式，其实是一样的，看你能不能看懂\(●ˇ∀ˇ●\)：
+Python 中如何获取当前时间和添加日期文字都比较简单，看代码就行，我就不解释了。代码中角度计算我换了一种方式，其实是一样的，看你能不能看懂\(●ˇ∀ˇ●\)：
 
 ```python
 while(1):
     # 不断拷贝表盘图，才能更新绘制，不然会重叠在一起
     temp = np.copy(img)
 
-    # 5. 获取系统时间，画出动态的时-分-秒三条刻线
+    # 5. 获取系统时间，画出动态的时 - 分-秒三条刻线
     now_time = datetime.datetime.now()
     hour, minute, second = now_time.hour, now_time.minute, now_time.second
 
     # 画秒刻线
-    # OpenCV中的角度是顺时针计算的，所以需要转换下
+    # OpenCV 中的角度是顺时针计算的，所以需要转换下
     sec_angle = second*6+270 if second <= 15 else (second-15)*6
     sec_x = center_x+(radius-margin)*math.cos(sec_angle*np.pi/180.0)
     sec_y = center_y+(radius-margin)*math.sin(sec_angle*np.pi/180.0)
@@ -158,7 +158,7 @@ while(1):
     cv2.putText(img, time_str, (135, 275), font, 1, (0, 0, 0), 2)
 
     cv2.imshow('clocking', temp)
-    if cv2.waitKey(1) == 27:  # 按下ESC键退出
+    if cv2.waitKey(1) == 27:  # 按下 ESC 键退出
         break
 ```
 

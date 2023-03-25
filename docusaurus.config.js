@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "个人技术分享",
+  title: "Welcome to ArthurWang's site",
   tagline: "Dinosaurs are cool",
   url: "https://codec.wang",
   baseUrl: "/",
@@ -23,8 +23,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "zh-Hans",
-    locales: ["zh-Hans"],
+    defaultLocale: "en",
+    locales: ["en"],
   },
   presets: [
     [
@@ -66,7 +66,7 @@ const config = {
         items: [
           {
             type: "dropdown",
-            label: "文档",
+            label: "Docs",
             position: "left",
             to: "docs/opencv",
             items: [
@@ -76,7 +76,7 @@ const config = {
               },
             ],
           },
-          { to: "blog", label: "博客", position: "left" },
+          { to: "blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/CodecWang",
             label: "GitHub",
@@ -92,7 +92,7 @@ const config = {
             items: [
               {
                 label: "Tutorial",
-                to: "/docs/intro",
+                to: "/blog",
               },
             ],
           },
@@ -112,10 +112,10 @@ const config = {
                 href: "https://twitter.com/docusaurus",
               },
               {
-                 // autocorrect: false
-                 label: "粤ICP备20002165号-1",
-                 href: "https://beian.miit.gov.cn/",
-              }
+                // autocorrect: false
+                label: "粤ICP备20002165号-1",
+                href: "https://beian.miit.gov.cn/",
+              },
             ],
           },
           {

@@ -1,6 +1,6 @@
 ---
 date: 2020-08-30
-authors: codecwang
+authors: codec
 image: http://cos.codec.wang/what-is-polyfill.jpg
 tags: [Polyfill, Shim]
 ---
@@ -22,7 +22,7 @@ Number.isInteger(9); // true
 Number.isInteger(4 / 3); // false
 ```
 
-你在 Chrome 开发者工具的 console 中运行，没问题，但在 IE 上却报错了：_对象不支持“isInteger”属性或方法_，这是因为 IE 并不支持这一特性（[浏览器兼容性自查](/posts/compatibility-check-for-web-api)）。
+你在 Chrome 开发者工具的 console 中运行，没问题，但在 IE 上却报错了：_对象不支持“isInteger”属性或方法_，这是因为 IE 并不支持这一特性（[浏览器兼容性自查](/blog/compatibility-check-for-web-api)）。
 
 那怎么办呢？我们可以自己写一段代码来实现`Number.isInteger`
 

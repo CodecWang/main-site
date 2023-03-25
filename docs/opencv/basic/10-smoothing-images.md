@@ -6,19 +6,19 @@
 
 ## 目标
 
-* 模糊/平滑图片来消除图片噪声
-* OpenCV函数：`cv2.blur()`, `cv2.GaussianBlur()`, `cv2.medianBlur()`, `cv2.bilateralFilter()`
+- 模糊/平滑图片来消除图片噪声
+- OpenCV 函数：`cv2.blur()`, `cv2.GaussianBlur()`, `cv2.medianBlur()`, `cv2.bilateralFilter()`
 
 ## 教程
 
 ### 滤波与模糊
 
-> 推荐大家先阅读：[番外篇：卷积基础\(图片边框\)](/Extra-08-Padding-and-Convolution/)，有助于理解卷积和滤波的概念。
+> 推荐大家先阅读：[番外篇：卷积基础\(图片边框\)](./extra-08-padding-and-convolution)，有助于理解卷积和滤波的概念。
 
-关于滤波和模糊，很多人分不清，我来给大家理理（虽说如此，我后面也会混着用,,ԾㅂԾ,,）：
+关于滤波和模糊，很多人分不清，我来给大家理理（虽说如此，我后面也会混着用，,ԾㅂԾ,,）：
 
-* 它们都属于卷积，不同滤波方法之间只是卷积核不同（对线性滤波而言）
-* 低通滤波器是模糊，高通滤波器是锐化
+- 它们都属于卷积，不同滤波方法之间只是卷积核不同（对线性滤波而言）
+- 低通滤波器是模糊，高通滤波器是锐化
 
 低通滤波器就是允许低频信号通过，在图像中边缘和噪点都相当于高频部分，所以低通滤波器用于去除噪点、平滑和模糊图像。高通滤波器则反之，用来增强图像边缘，进行锐化处理。
 
@@ -26,7 +26,7 @@
 
 ### 均值滤波
 
-均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用`cv2.blur()`实现，如3×3的卷积核：
+均值滤波是一种最简单的滤波处理，它取的是卷积核区域内元素的均值，用`cv2.blur()`实现，如 3×3 的卷积核：
 
 $$
 kernel = \frac{1}{9}\left[
@@ -43,11 +43,11 @@ img = cv2.imread('lena.jpg')
 blur = cv2.blur(img, (3, 3))  # 均值模糊
 ```
 
-> 所有的滤波函数都有一个可选参数borderType，这个参数就是[番外篇：卷积基础\(图片边框\)](/Extra-08-Padding-and-Convolution/)中所说的边框填充方式。
+> 所有的滤波函数都有一个可选参数 borderType，这个参数就是[番外篇：卷积基础\(图片边框\)](./extra-08-padding-and-convolution)中所说的边框填充方式。
 
 ### 方框滤波
 
-方框滤波跟均值滤波很像，如3×3的滤波核如下：
+方框滤波跟均值滤波很像，如 3×3 的滤波核如下：
 
 $$
 k = a\left[
@@ -59,7 +59,7 @@ k = a\left[
   \right]
 $$
 
-用`cv2.boxFilter()`函数实现，当可选参数normalize为True的时候，方框滤波就是均值滤波，上式中的a就等于1/9；normalize为False的时候，a=1，相当于求区域内的像素和。
+用`cv2.boxFilter()`函数实现，当可选参数 normalize 为 True 的时候，方框滤波就是均值滤波，上式中的 a 就等于 1/9；normalize 为 False 的时候，a=1，相当于求区域内的像素和。
 
 ```python
 # 前面的均值滤波也可以用方框滤波实现：normalize=True
@@ -72,7 +72,7 @@ blur = cv2.boxFilter(img, -1, (3, 3), normalize=True)
 
 ![](http://cos.codec.wang/cv2_gaussian_kernel_function_theory.jpg)
 
-显然这种处理元素间权值的方式更加合理一些。图像是2维的，所以我们需要使用[2维的高斯函数](https://en.wikipedia.org/wiki/Gaussian_filter)，比如OpenCV中默认的3×3的高斯卷积核（具体原理和卷积核生成方式请参考文末的[番外小篇](#番外小篇高斯滤波卷积核)）：
+显然这种处理元素间权值的方式更加合理一些。图像是 2 维的，所以我们需要使用[2 维的高斯函数](https://en.wikipedia.org/wiki/Gaussian_filter)，比如 OpenCV 中默认的 3×3 的高斯卷积核（具体原理和卷积核生成方式请参考文末的[番外小篇](#番外小篇高斯滤波卷积核)）：
 
 $$
 k = \left[
@@ -84,28 +84,28 @@ k = \left[
   \right]
 $$
 
-OpenCV中对应函数为`cv2.GaussianBlur(src,ksize,sigmaX)`：
+OpenCV 中对应函数为`cv2.GaussianBlur(src,ksize,sigmaX)`：
 
 ```python
 img = cv2.imread('gaussian_noise.bmp')
-# 均值滤波vs高斯滤波
+# 均值滤波 vs 高斯滤波
 blur = cv2.blur(img, (5, 5))  # 均值滤波
 gaussian = cv2.GaussianBlur(img, (5, 5), 1)  # 高斯滤波
 ```
 
-参数3 σx值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：
+参数 3 σx 值越大，模糊效果越明显。高斯滤波相比均值滤波效率要慢，但可以有效消除高斯噪声，能保留更多的图像细节，所以经常被称为最有用的滤波器。均值滤波与高斯滤波的对比结果如下（均值滤波丢失的细节更多）：
 
 ![](http://cos.codec.wang/cv2_gaussian_vs_average.jpg)
 
 ### 中值滤波
 
-[中值](https://baike.baidu.com/item/%E4%B8%AD%E5%80%BC)又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如0或255很容易消除掉，适用于去除椒盐噪声和斑点噪声。中值是一种非线性操作，效率相比前面几种线性滤波要慢。
+[中值](https://baike.baidu.com/item/%E4%B8%AD%E5%80%BC)又叫中位数，是所有数排序后取中间的值。中值滤波就是用区域内的中值来代替本像素值，所以那种孤立的斑点，如 0 或 255 很容易消除掉，适用于去除椒盐噪声和斑点噪声。中值是一种非线性操作，效率相比前面几种线性滤波要慢。
 
 比如下面这张斑点噪声图，用中值滤波显然更好：
 
 ```python
 img = cv2.imread('salt_noise.bmp', 0)
-# 均值滤波vs中值滤波
+# 均值滤波 vs 中值滤波
 blur = cv2.blur(img, (5, 5))  # 均值滤波
 median = cv2.medianBlur(img, 5)  # 中值滤波
 ```
@@ -118,7 +118,7 @@ median = cv2.medianBlur(img, 5)  # 中值滤波
 
 ```python
 img = cv2.imread('lena.jpg')
-# 双边滤波vs高斯滤波
+# 双边滤波 vs 高斯滤波
 gau = cv2.GaussianBlur(img, (5, 5), 0)  # 高斯滤波
 blur = cv2.bilateralFilter(img, 9, 75, 75)  # 双边滤波
 ```
@@ -143,24 +143,24 @@ $$
 G(x)=\frac{1}{\sqrt{2\pi}}exp(-\frac{x^2}{2})
 $$
 
-二维X/Y相互独立的高斯函数：
+二维 X/Y 相互独立的高斯函数：
 
 $$
 G(x,y)=\frac{1}{2\pi\sigma_x\sigma_y}exp(-\frac{(x-\mu_x)^2+(y-\mu_y)^2}{2\sigma_x\sigma_y})=G(x)G(y)
 $$
 
-由上可知，**二维高斯函数具有可分离性**，所以OpenCV分两步计算二维高斯卷积，先水平再垂直，每个方向上都是一维的卷积。OpenCV中这个一维卷积的计算公式类似于上面的一维高斯函数：
+由上可知，**二维高斯函数具有可分离性**，所以 OpenCV 分两步计算二维高斯卷积，先水平再垂直，每个方向上都是一维的卷积。OpenCV 中这个一维卷积的计算公式类似于上面的一维高斯函数：
 
 $$
 G(i)=\alpha *exp(-\frac{(i-\frac{ksize-1}{2})^2}{2\sigma^2})
 $$
 
-其中i=0…ksize-1，α是一个常数，也称为缩放因子，它使得\\(\sum{G\(i\)}=1\\)
+其中 i=0…ksize-1，α 是一个常数，也称为缩放因子，它使得\\(\sum{G\(i\)}=1\\)
 
 比如我们可以用[`cv2.getGaussianKernel(ksize,sigma)`](https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa)来生成一维卷积核：
 
-* sigma&lt;=0时，`sigma=0.3*((ksize-1)*0.5 - 1) + 0.8`
-* sigma&gt;0时，sigma=sigma
+- sigma&lt;=0 时，`sigma=0.3*((ksize-1)*0.5 - 1) + 0.8`
+- sigma&gt;0 时，sigma=sigma
 
 ```python
 print(cv2.getGaussianKernel(3, 0))
@@ -203,7 +203,7 @@ I×\left[
   \right]
 $$
 
-这就是OpenCV中高斯卷积核的生成方式。其实，OpenCV源码中对小于7×7的核是直接计算好放在数组里面的，这样计算速度会快一点，感兴趣的可以看下源码：[getGaussianKernel\(\)](https://github.com/ex2tron/OpenCV-Python-Tutorial/blob/master/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/cv2_source_code_getGaussianKernel.cpp)
+这就是 OpenCV 中高斯卷积核的生成方式。其实，OpenCV 源码中对小于 7×7 的核是直接计算好放在数组里面的，这样计算速度会快一点，感兴趣的可以看下源码：[getGaussianKernel\(\)](https://github.com/ex2tron/OpenCV-Python-Tutorial/blob/master/10.%20%E5%B9%B3%E6%BB%91%E5%9B%BE%E5%83%8F/cv2_source_code_getGaussianKernel.cpp)
 
 上面矩阵也可以写成：
 
@@ -219,24 +219,23 @@ $$
 
 ## 小结
 
-* 在不知道用什么滤波器好的时候，优先高斯滤波`cv2.GaussianBlur()`，然后均值滤波`cv2.blur()`。
-* 斑点和椒盐噪声优先使用中值滤波`cv2.medianBlur()`。
-* 要去除噪点的同时尽可能保留更多的边缘信息，使用双边滤波`cv2.bilateralFilter()`。
-* 线性滤波方式：均值滤波、方框滤波、高斯滤波（速度相对快）。
-* 非线性滤波方式：中值滤波、双边滤波（速度相对慢）。
+- 在不知道用什么滤波器好的时候，优先高斯滤波`cv2.GaussianBlur()`，然后均值滤波`cv2.blur()`。
+- 斑点和椒盐噪声优先使用中值滤波`cv2.medianBlur()`。
+- 要去除噪点的同时尽可能保留更多的边缘信息，使用双边滤波`cv2.bilateralFilter()`。
+- 线性滤波方式：均值滤波、方框滤波、高斯滤波（速度相对快）。
+- 非线性滤波方式：中值滤波、双边滤波（速度相对慢）。
 
 ## 接口文档
 
-* [cv2.blur\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37)
-* [cv2.boxFilter\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gad533230ebf2d42509547d514f7d3fbc3)
-* [cv2.GaussianBlur\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1)
-* [cv2.getGaussianKernel\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa)
-* [cv2.medianBlur\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga564869aa33e58769b4469101aac458f9)
-* [cv2.bilateralFilter\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed)
+- [cv2.blur\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37)
+- [cv2.boxFilter\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gad533230ebf2d42509547d514f7d3fbc3)
+- [cv2.GaussianBlur\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gaabe8c836e97159a9193fb0b11ac52cf1)
+- [cv2.getGaussianKernel\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa)
+- [cv2.medianBlur\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga564869aa33e58769b4469101aac458f9)
+- [cv2.bilateralFilter\(\)](https://docs.opencv.org/4.0.0/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed)
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/10-Smoothing-Images)
-* [Smoothing Images](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html)
-* [图像平滑处理](http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/gausian_median_blur_bilateral_filter/gausian_median_blur_bilateral_filter.html)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/10-Smoothing-Images)
+- [Smoothing Images](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html)
+- [图像平滑处理](http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/gausian_median_blur_bilateral_filter/gausian_median_blur_bilateral_filter.html)

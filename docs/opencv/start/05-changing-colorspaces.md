@@ -6,9 +6,9 @@
 
 ## 目标
 
-* 颜色空间转换，如BGR↔Gray，BGR↔HSV等
+* 颜色空间转换，如 BGR↔Gray，BGR↔HSV 等
 * 追踪视频中特定颜色的物体
-* OpenCV函数：`cv2.cvtColor()`, `cv2.inRange()`
+* OpenCV 函数：`cv2.cvtColor()`, `cv2.inRange()`
 
 ## 教程
 
@@ -26,7 +26,7 @@ cv2.imshow('gray', img_gray)
 cv2.waitKey(0)
 ```
 
-`cv2.cvtColor()`用来进行颜色模型转换，参数1是要转换的图片，参数2是转换模式， `COLOR_BGR2GRAY`表示BGR→Gray，可用下面的代码显示所有的转换模式：
+`cv2.cvtColor()`用来进行颜色模型转换，参数 1 是要转换的图片，参数 2 是转换模式， `COLOR_BGR2GRAY`表示 BGR→Gray，可用下面的代码显示所有的转换模式：
 
 ```python
 flags = [i for i in dir(cv2) if i.startswith('COLOR_')]
@@ -37,14 +37,14 @@ print(flags)
 
 ### 视频中特定颜色物体追踪
 
-[HSV](https://baike.baidu.com/item/HSV/547122)是一个常用于颜色识别的模型，相比BGR更易区分颜色，转换模式用`COLOR_BGR2HSV`表示。
+[HSV](https://baike.baidu.com/item/HSV/547122)是一个常用于颜色识别的模型，相比 BGR 更易区分颜色，转换模式用`COLOR_BGR2HSV`表示。
 
-> 经验之谈：OpenCV中色调H范围为\[0,179\]，饱和度S是\[0,255\]，明度V是\[0,255\]。虽然H的理论数值是0°~360°，但8位图像像素点的最大值是255，所以OpenCV中除以了2，某些软件可能使用不同的尺度表示，所以同其他软件混用时，记得归一化。
+> 经验之谈：OpenCV 中色调 H 范围为\[0,179\]，饱和度S是\[0,255\]，明度V是\[0,255\]。虽然H的理论数值是0°~360°，但8位图像像素点的最大值是255，所以OpenCV中除以了2，某些软件可能使用不同的尺度表示，所以同其他软件混用时，记得归一化。
 
-现在，我们实现一个使用HSV来只显示视频中蓝色物体的例子，步骤如下：
+现在，我们实现一个使用 HSV 来只显示视频中蓝色物体的例子，步骤如下：
 
 1. 捕获视频中的一帧
-2. 从BGR转换到HSV
+2. 从 BGR 转换到 HSV
 3. 提取蓝色范围的物体
 4. 只显示蓝色物体
 
@@ -63,10 +63,10 @@ while(True):
     # 1.捕获视频中的一帧
     ret, frame = capture.read()
 
-    # 2.从BGR转换到HSV
+    # 2.从 BGR 转换到 HSV
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    # 3.inRange()：介于lower/upper之间的为白色，其余黑色
+    # 3.inRange()：介于 lower/upper 之间的为白色，其余黑色
     mask = cv2.inRange(hsv, lower_blue, upper_blue)
 
     # 4.只保留原图中的蓝色部分
@@ -80,7 +80,7 @@ while(True):
         break
 ```
 
-其中，`bitwise_and()`函数暂时不用管，后面会讲到。那蓝色的HSV值的上下限lower和upper范围是怎么得到的呢？其实很简单，我们先把标准蓝色的BGR值用`cvtColor()`转换下：
+其中，`bitwise_and()`函数暂时不用管，后面会讲到。那蓝色的 HSV 值的上下限 lower 和 upper 范围是怎么得到的呢？其实很简单，我们先把标准蓝色的 BGR 值用`cvtColor()`转换下：
 
 ```python
 blue = np.uint8([[[255, 0, 0]]])
@@ -94,8 +94,8 @@ print(hsv_blue)  # [[[120 255 255]]]
 
 ## 小结
 
-* `cv2.cvtColor()`函数用来进行颜色空间转换，常用BGR↔Gray，BGR↔HSV。
-* HSV颜色模型常用于颜色识别。要想知道某种颜色在HSV下的值，可以将它的BGR值用`cvtColor()`转换得到。
+* `cv2.cvtColor()`函数用来进行颜色空间转换，常用 BGR↔Gray，BGR↔HSV。
+* HSV 颜色模型常用于颜色识别。要想知道某种颜色在 HSV 下的值，可以将它的 BGR 值用`cvtColor()`转换得到。
 
 ## 练习
 

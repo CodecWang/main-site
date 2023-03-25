@@ -1,6 +1,6 @@
 ---
 date: 2021-07-24
-authors: codecwang
+authors: codec
 image: http://cos.codec.wang/copilot-overview.png
 tags: [Copilot, AI, 自动生成]
 ---

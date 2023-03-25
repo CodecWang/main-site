@@ -1,4 +1,4 @@
-# 番外篇: 鼠标绘图
+# 番外篇：鼠标绘图
 
 ![](http://cos.codec.wang/cv2_live_draw_rectangle.gif)
 
@@ -7,13 +7,13 @@
 ## 目标
 
 * 捕获鼠标事件
-* OpenCV函数：`cv2.setMouseCallback()`
+* OpenCV 函数：`cv2.setMouseCallback()`
 
 ## 教程
 
 ### 知道鼠标在哪儿
 
-OpenCV中，我们需要创建一个鼠标的回调函数来获取鼠标当前的位置、当前的事件如左键按下/左键释放或是右键单击等等，然后执行相应的功能。
+OpenCV 中，我们需要创建一个鼠标的回调函数来获取鼠标当前的位置、当前的事件如左键按下/左键释放或是右键单击等等，然后执行相应的功能。
 
 使用`cv2.setMouseCallback()`来创建鼠标的回调函数，比如我们在左键单击的时候，打印出当前鼠标的位置：
 
@@ -23,7 +23,7 @@ import numpy as np
 
 # 鼠标的回调函数
 def mouse_event(event, x, y, flags, param):
-    # 通过event判断具体是什么事件，这里是左键按下
+    # 通过 event 判断具体是什么事件，这里是左键按下
     if event == cv2.EVENT_LBUTTONDOWN:
         print((x, y))
 
@@ -34,7 +34,7 @@ cv2.setMouseCallback('image', mouse_event)
 
 while(True):
     cv2.imshow('image', img)
-    # 按下ESC键退出
+    # 按下 ESC 键退出
     if cv2.waitKey(20) == 27:
         break
 ```
@@ -53,14 +53,14 @@ print(events)
 
 现在我们来实现一个综合的例子，这个实例会帮助你理解图像交互的一些思想：
 
-在图像上用鼠标画图，可以画圆或矩形，按m键在两种模式下切换。左键按下时开始画图，移动到哪儿画到哪儿，左键释放时结束画图。听上去很复杂，是吗？一步步来看：
+在图像上用鼠标画图，可以画圆或矩形，按 m 键在两种模式下切换。左键按下时开始画图，移动到哪儿画到哪儿，左键释放时结束画图。听上去很复杂，是吗？一步步来看：
 
-* 用鼠标画图：需要定义鼠标的回调函数mouse\_event
-* 画圆或矩形：需要定义一个画图的模式mode
+* 用鼠标画图：需要定义鼠标的回调函数 mouse\_event
+* 画圆或矩形：需要定义一个画图的模式 mode
 * 左键单击、移动、释放：需要捕获三个不同的事件
-* 开始画图，结束画图：需要定义一个画图的标记位drawing
+* 开始画图，结束画图：需要定义一个画图的标记位 drawing
 
-好，开始coding吧：
+好，开始 coding 吧：
 
 ```python
 import cv2
@@ -99,7 +99,7 @@ cv2.setMouseCallback('image', mouse_event)
 
 while(True):
     cv2.imshow('image', img)
-    # 按下m切换模式
+    # 按下 m 切换模式
     if cv2.waitKey(1) == ord('m'):
         mode = not mode
     elif cv2.waitKey(1) == 27:
@@ -112,7 +112,7 @@ while(True):
 
 ## 小结
 
-* 要用鼠标绘图，需要用`cv2.setMouseCallback()`定义回调函数，然后在回调函数中根据不同的event事件，执行不同的功能。
+* 要用鼠标绘图，需要用`cv2.setMouseCallback()`定义回调函数，然后在回调函数中根据不同的 event 事件，执行不同的功能。
 
 ## 练习
 

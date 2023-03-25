@@ -1,7 +1,7 @@
 ---
 date: 2022-06-04
-authors: codecwang
-tags: [记忆化, 闭包, Closure]
+authors: codec
+tags: ["记忆化", 闭包, Closure]
 ---
 
 # Memorized Function

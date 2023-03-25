@@ -1,4 +1,4 @@
-# 挑战任务: 车道检测
+# 挑战任务：车道检测
 
 ![](http://cos.codec.wang/cv2_lane_detection_result_sample.jpg)
 
@@ -12,7 +12,7 @@
 
 > **2. 在所提供的公路视频上检测出车道线并标记：**
 
- 本次挑战内容来自Udacity自动驾驶纳米学位课程，素材中车道保持不变，车道线清晰明确，易于检测，是车道检测的基础版本，网上也有很多针对复杂场景的高级实现，感兴趣的童鞋可以自行了解。
+ 本次挑战内容来自 Udacity 自动驾驶纳米学位课程，素材中车道保持不变，车道线清晰明确，易于检测，是车道检测的基础版本，网上也有很多针对复杂场景的高级实现，感兴趣的童鞋可以自行了解。
 
 **挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，**不然...我也没办法\(￣▽￣\)"
 
@@ -24,12 +24,12 @@
 
 ![](http://cos.codec.wang/cv2_lane_detection_roi_sample.jpg)
 
-如果我们手动把这部分ROI区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但ROI区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，可将所有的线分为两组，每组再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：
+如果我们手动把这部分 ROI 区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但 ROI 区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，可将所有的线分为两组，每组再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：
 
 1. 灰度化
 2. 高斯模糊
-3. Canny边缘检测
-4. 不规则ROI区域截取
+3. Canny 边缘检测
+4. 不规则 ROI 区域截取
 5. 霍夫直线检测
 6. 车道计算
 
@@ -49,12 +49,12 @@ import numpy as np
 
 # 高斯滤波核大小
 blur_ksize = 5
-# Canny边缘检测高低阈值
+# Canny 边缘检测高低阈值
 canny_lth = 50
 canny_hth = 150
 
 def process_an_image(img):
-    # 1. 灰度化、滤波和Canny
+    # 1. 灰度化、滤波和 Canny
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     blur_gray = cv2.GaussianBlur(gray, (blur_ksize, blur_ksize), 1)
     edges = cv2.Canny(blur_gray, canny_lth, canny_hth)
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
 ![&#x8FB9;&#x7F18;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x56FE;](http://cos.codec.wang/cv2_lane_detection_canny_result.jpg)
 
-### ROI截取
+### ROI 截取
 
 按照前面描述的方案，只需保留边缘图中的红线部分区域用于后续的霍夫直线检测，其余都是无用的信息：
 
@@ -78,15 +78,15 @@ if __name__ == "__main__":
 
 ![](http://cos.codec.wang/cv2_understand_mask.jpg)
 
-我们可以创建一个梯形的mask掩膜，然后与边缘检测结果图混合运算，掩膜中白色的部分保留，黑色的部分舍弃。梯形的四个坐标需要手动标记：
+我们可以创建一个梯形的 mask 掩膜，然后与边缘检测结果图混合运算，掩膜中白色的部分保留，黑色的部分舍弃。梯形的四个坐标需要手动标记：
 
 ![&#x63A9;&#x819C;mask](http://cos.codec.wang/cv2_lane_detection_mask_sample.jpg)
 
 ```python
 def process_an_image(img):
-    # 1. 灰度化、滤波和Canny
+    # 1. 灰度化、滤波和 Canny
 
-    # 2. 标记四个坐标点用于ROI截取
+    # 2. 标记四个坐标点用于 ROI 截取
     rows, cols = edges.shape
     points = np.array([[(0, rows), (460, 325), (520, 325), (cols, rows)]])
     # [[[0 540], [460 325], [520 325], [960 540]]]
@@ -118,9 +118,9 @@ min_line_len = 40
 max_line_gap = 20
 
 def process_an_image(img):
-    # 1. 灰度化、滤波和Canny
+    # 1. 灰度化、滤波和 Canny
 
-    # 2. 标记四个坐标点用于ROI截取
+    # 2. 标记四个坐标点用于 ROI 截取
 
     # 3. 霍夫直线提取
     drawing, lines = hough_lines(roi_edges, rho, theta, threshold, min_line_len, max_line_gap)
@@ -145,7 +145,7 @@ def draw_lines(img, lines, color=[0, 0, 255], thickness=1):
 
 ![&#x970D;&#x592B;&#x53D8;&#x6362;&#x7ED3;&#x679C;&#x56FE;](http://cos.codec.wang/cv2_lane_detection_hough_lines_direct_result.jpg)
 
-对本例的这张测试图来说，如果打印出直线的条数`print(len(lines))`，应该是有16条。
+对本例的这张测试图来说，如果打印出直线的条数`print(len(lines))`，应该是有 16 条。
 
 ### 车道计算
 
@@ -167,7 +167,7 @@ $$
 
 经过第二步的筛选，就只剩下可能的左右车道线了，这样只需从多条直线中拟合出一条就行。拟合方法有很多种，最常用的便是最小二乘法，它通过最小化误差的平方和来寻找数据的最佳匹配函数。
 
-具体来说，假设目前可能的左车道线有6条，也就是12个坐标点，包括12个x和12个y，我们的目的是拟合出这样一条直线：
+具体来说，假设目前可能的左车道线有 6 条，也就是 12 个坐标点，包括 12 个 x 和 12 个 y，我们的目的是拟合出这样一条直线：
 
 $$
 f(x_i) = ax_i+b
@@ -179,13 +179,13 @@ $$
 E=\sum(f(x_i)-y_i)^2
 $$
 
-Python中可以直接使用`np.polyfit()`进行最小二乘法拟合。
+Python 中可以直接使用`np.polyfit()`进行最小二乘法拟合。
 
 ```python
 def process_an_image(img):
-    # 1. 灰度化、滤波和Canny
+    # 1. 灰度化、滤波和 Canny
 
-    # 2. 标记四个坐标点用于ROI截取
+    # 2. 标记四个坐标点用于 ROI 截取
 
     # 3. 霍夫直线提取
 
@@ -251,7 +251,7 @@ def least_squares_fit(point_list, ymin, ymax):
     x = [p[0] for p in point_list]
     y = [p[1] for p in point_list]
 
-    # polyfit第三个参数为拟合多项式的阶数，所以1代表线性
+    # polyfit 第三个参数为拟合多项式的阶数，所以 1 代表线性
     fit = np.polyfit(y, x, 1)
     fit_fn = np.poly1d(fit)  # 获取拟合的结果
 
@@ -267,18 +267,18 @@ def least_squares_fit(point_list, ymin, ymax):
 
 ### 视频处理
 
-搞定了一张图，视频也就没什么问题了，关键就是视频帧的提取和合成，为此，我们要用到Python的视频编辑包[moviepy](https://pypi.org/project/moviepy/#files)：
+搞定了一张图，视频也就没什么问题了，关键就是视频帧的提取和合成，为此，我们要用到 Python 的视频编辑包[moviepy](https://pypi.org/project/moviepy/#files)：
 
 ```python
 pip install moviepy
 ```
 
-另外还需要ffmpeg，首次运行moviepy时会自动下载，也可[手动](https://github.com/imageio/imageio-binaries/tree/master/ffmpeg)下载。
+另外还需要 ffmpeg，首次运行 moviepy 时会自动下载，也可[手动](https://github.com/imageio/imageio-binaries/tree/master/ffmpeg)下载。
 
-只需在开头导入moviepy，然后将主函数改掉就可以了，其余代码不需要更改：
+只需在开头导入 moviepy，然后将主函数改掉就可以了，其余代码不需要更改：
 
 ```python
-# 开头导入moviepy
+# 开头导入 moviepy
 from moviepy.editor import VideoFileClip
 
 # 主函数更改为：

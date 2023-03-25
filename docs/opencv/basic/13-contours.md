@@ -8,7 +8,7 @@
 
 * 了解轮廓概念
 * 寻找并绘制轮廓
-* OpenCV函数：`cv2.findContours()`, `cv2.drawContours()`
+* OpenCV 函数：`cv2.findContours()`, `cv2.drawContours()`
 
 ## 教程
 
@@ -20,7 +20,7 @@
 
 ![&#x8FB9;&#x7F18;&#x548C;&#x8F6E;&#x5ED3;&#x7684;&#x533A;&#x522B;](http://cos.codec.wang/cv2_understand_contours.jpg)
 
-寻找轮廓的操作一般用于二值化图，所以通常会使用阈值分割或Canny边缘检测先得到二值图。
+寻找轮廓的操作一般用于二值化图，所以通常会使用阈值分割或 Canny 边缘检测先得到二值图。
 
 > 经验之谈：**寻找轮廓是针对白色物体的**，一定要保证物体是白色，而背景是黑色，**不然很多人在寻找轮廓时会找到图片最外面的一个框**。
 
@@ -38,14 +38,14 @@ ret, thresh = cv2.threshold(img_gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH
 # 寻找二值化图中的轮廓
 image, contours, hierarchy = cv2.findContours(
     thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-print(len(contours))  # 结果应该为2
+print(len(contours))  # 结果应该为 2
 ```
 
-* 参数2：轮廓的查找方式，一般使用cv2.RETR\_TREE，表示提取所有的轮廓并建立轮廓间的层级。更多请参考：[RetrievalModes](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71)
-* 参数3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点。使用cv2.CHAIN\_APPROX\_SIMPLE就表示用尽可能少的像素点表示轮廓。更多请参考：[ContourApproximationModes](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff)
-* 简便起见，这两个参数也可以直接用真值3和2表示。
+* 参数 2：轮廓的查找方式，一般使用 cv2.RETR\_TREE，表示提取所有的轮廓并建立轮廓间的层级。更多请参考：[RetrievalModes](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga819779b9857cc2f8601e6526a3a5bc71)
+* 参数 3：轮廓的近似方法。比如对于一条直线，我们可以存储该直线的所有像素点，也可以只存储起点和终点。使用 cv2.CHAIN\_APPROX\_SIMPLE 就表示用尽可能少的像素点表示轮廓。更多请参考：[ContourApproximationModes](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga4303f45752694956374734a03c54d5ff)
+* 简便起见，这两个参数也可以直接用真值 3 和 2 表示。
 
-函数有3个返回值，image还是原来的二值化图片，hierarchy是轮廓间的层级关系（[番外篇：轮廓层级](/Extra-10-Contours-Hierarchy/)），这两个暂时不用理会。我们主要看contours，它就是找到的轮廓了，以数组形式存储，记录了每条轮廓的所有像素点的坐标\(x,y\)。
+函数有 3 个返回值，image 还是原来的二值化图片，hierarchy 是轮廓间的层级关系（[番外篇：轮廓层级](./extra-10-contours-hierarchy)），这两个暂时不用理会。我们主要看 contours，它就是找到的轮廓了，以数组形式存储，记录了每条轮廓的所有像素点的坐标\(x,y\)。
 
 ![](http://cos.codec.wang/cv2_find_contours_contours.jpg)
 
@@ -57,7 +57,7 @@ print(len(contours))  # 结果应该为2
 cv2.drawContours(img, contours, -1, (0, 0, 255), 2)
 ```
 
-其中参数2就是得到的contours，参数3表示要绘制哪一条轮廓，-1表示绘制所有轮廓，参数4是颜色（B/G/R通道，所以\(0,0,255\)表示红色），参数5是线宽，之前在绘制图形中介绍过。
+其中参数 2 就是得到的 contours，参数 3 表示要绘制哪一条轮廓，-1 表示绘制所有轮廓，参数 4 是颜色（B/G/R 通道，所以\(0,0,255\) 表示红色），参数 5 是线宽，之前在绘制图形中介绍过。
 
 > 经验之谈：很多人画图时明明用了彩色，但没有效果，请检查你是在哪个图上画，画在灰度图和二值图上显然是没有彩色的\(⊙o⊙\)。
 

@@ -1,8 +1,8 @@
 ---
 date: 2020-11-05
-authors: codecwang
+authors: codec
 image: http://cos.codec.wang/monolith-multi-repo-mono-repo.jpg
-tags: [mono-repo, 大仓, Lerna]
+tags: [mono-repo, "大仓", Lerna]
 ---
 
 # 大仓实践录：Lerna/NPM/Yarn Workspace 方案组合和性能对比
@@ -53,7 +53,7 @@ tags: [mono-repo, 大仓, Lerna]
 
 - 版本号：lerna@4.0.0、npm@8.1.2、yarn@1.22.17
 - 系统：DevCloud 开发容器 tlinux-2.2、CPU：8 核（型号未知）、RAM/ROM：16G/200G
-- 每次测试前均删除 node_modules、package-lock.json、yarn.locak，使用`npm cache clean --force`和`yarn clean`清空缓存
+- 每次测试前均删除 node_modules、package-lock.json、yarn.lock，使用`npm cache clean --force`和`yarn clean`清空缓存
 - 使用 [gnomon](https://www.npmjs.com/package/gnomon) 统计时间，如：`lerna bootstrap | gnomon`，每个方案测试三次
 
 ### Lerna + NPM

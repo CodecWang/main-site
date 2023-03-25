@@ -7,15 +7,15 @@
 ## 目标
 
 * 图片间的数学运算，如相加、按位运算等
-* OpenCV函数：`cv2.add()`, `cv2.addWeighted()`, `cv2.bitwise_and()`
+* OpenCV 函数：`cv2.add()`, `cv2.addWeighted()`, `cv2.bitwise_and()`
 
 ## 教程
 
-> 首先恭喜你已经完成了入门篇的学习噢，接下来我们学习一些OpenCV的基础内容，加油\(ง •\_•\)ง
+> 首先恭喜你已经完成了入门篇的学习噢，接下来我们学习一些 OpenCV 的基础内容，加油\(ง •\_•\)ง
 
 ### 图片相加
 
-要叠加两张图片，可以用`cv2.add()`函数，相加两幅图片的形状（高度/宽度/通道数）必须相同。numpy中可以直接用res = img + img1相加，但这两者的结果并不相同：
+要叠加两张图片，可以用`cv2.add()`函数，相加两幅图片的形状（高度/宽度/通道数）必须相同。numpy 中可以直接用 res = img + img1 相加，但这两者的结果并不相同：
 
 ```python
 x = np.uint8([250])
@@ -24,7 +24,7 @@ print(cv2.add(x, y))  # 250+10 = 260 => 255
 print(x + y)  # 250+10 = 260 % 256 = 4
 ```
 
-如果是二值化图片（只有0和255两种值），两者结果是一样的（用numpy的方式更简便一些）。
+如果是二值化图片（只有 0 和 255 两种值），两者结果是一样的（用 numpy 的方式更简便一些）。
 
 ### 图像混合
 
@@ -42,7 +42,7 @@ res = cv2.addWeighted(img1, 0.6, img2, 0.4, 0)
 
 ![&#x56FE;&#x50CF;&#x6DF7;&#x5408;](http://cos.codec.wang/cv2_image_blending_6_4.jpg)
 
-> 经验之谈：α和β都等于1时，就相当于图片相加。
+> 经验之谈：α和β都等于 1 时，就相当于图片相加。
 
 ### 按位操作
 
@@ -54,13 +54,13 @@ res = cv2.addWeighted(img1, 0.6, img2, 0.4, 0)
 
 ![&#x63A9;&#x819C;&#x6982;&#x5FF5;](http://cos.codec.wang/cv2_understand_mask.jpg)
 
-所以我们的思路就是把原图中要放logo的区域抠出来，再把logo放进去就行了：
+所以我们的思路就是把原图中要放 logo 的区域抠出来，再把 logo 放进去就行了：
 
 ```python
 img1 = cv2.imread('lena.jpg')
 img2 = cv2.imread('opencv-logo-white.png')
 
-# 把logo放在左上角，所以我们只关心这一块区域
+# 把 logo 放在左上角，所以我们只关心这一块区域
 rows, cols = img2.shape[:2]
 roi = img1[:rows, :cols]
 
@@ -69,7 +69,7 @@ img2gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 ret, mask = cv2.threshold(img2gray, 10, 255, cv2.THRESH_BINARY)
 mask_inv = cv2.bitwise_not(mask)
 
-# 保留除logo外的背景
+# 保留除 logo 外的背景
 img1_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)
 dst = cv2.add(img1_bg, img2)  # 进行融合
 img1[:rows, :cols] = dst  # 融合后放在原图上
