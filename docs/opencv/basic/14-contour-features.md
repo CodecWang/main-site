@@ -1,19 +1,19 @@
 # 14: 轮廓特征
 
-![](http://cos.codec.wang/cv2_min_rect_rect_bounding.jpg)
+![](https://cos.codec.wang/cv2_min_rect_rect_bounding.jpg)
 
 学习计算轮廓特征，如面积、周长、最小外接矩形等。图片等可到文末引用处下载。
 
 ## 目标
 
-* 计算物体的周长、面积、质心、最小外接矩形等
-* OpenCV 函数：`cv2.contourArea()`, `cv2.arcLength()`, `cv2.approxPolyDP()` 等
+- 计算物体的周长、面积、质心、最小外接矩形等
+- OpenCV 函数：`cv2.contourArea()`, `cv2.arcLength()`, `cv2.approxPolyDP()` 等
 
 ## 教程
 
 在计算轮廓特征之前，我们先用上一节的代码把轮廓找到：
 
-![](http://cos.codec.wang/cv2_31_handwriting_sample.jpg)
+![](https://cos.codec.wang/cv2_31_handwriting_sample.jpg)
 
 ```python
 import cv2
@@ -71,7 +71,7 @@ cx, cy = M['m10'] / M['m00'], M['m01'] / M['m00']  # (205, 281)
 
 形状的外接矩形有两种，如下图，绿色的叫外接矩形，表示不考虑旋转并且能包含整个轮廓的矩形。蓝色的叫最小外接矩，考虑了旋转：
 
-![](http://cos.codec.wang/cv2_min_rect_rect_bounding.jpg)
+![](https://cos.codec.wang/cv2_min_rect_rect_bounding.jpg)
 
 ```python
 x, y, w, h = cv2.boundingRect(cnt)  # 外接矩形
@@ -96,7 +96,7 @@ cv2.drawContours(img_color1, [box], 0, (255, 0, 0), 2)
 cv2.circle(img_color2, (x, y), radius, (0, 0, 255), 2)
 ```
 
-![](http://cos.codec.wang/cv2_min_enclosing_circle.jpg)
+![](https://cos.codec.wang/cv2_min_enclosing_circle.jpg)
 
 ### 拟合椭圆
 
@@ -107,13 +107,13 @@ ellipse = cv2.fitEllipse(cnt)
 cv2.ellipse(img_color2, ellipse, (255, 255, 0), 2)
 ```
 
-![](http://cos.codec.wang/cv2_fitting_ellipse.jpg)
+![](https://cos.codec.wang/cv2_fitting_ellipse.jpg)
 
 ### 形状匹配
 
 `cv2.matchShapes()`可以检测两个形状之间的相似度，返回**值越小，越相似**。先读入下面这张图片：
 
-![](http://cos.codec.wang/cv2_match_shape_shapes.jpg)
+![](https://cos.codec.wang/cv2_match_shape_shapes.jpg)
 
 ```python
 img = cv2.imread('shapes.jpg', 0)
@@ -144,25 +144,24 @@ print(cv2.matchShapes(cnt_b, cnt_a, 1, 0.0))  # 0.418
 
 常用的轮廓特征：
 
-* `cv2.contourArea()`算面积，`cv2.arcLength()`算周长，`cv2.boundingRect()`算外接矩。
-* `cv2.minAreaRect()`算最小外接矩，`cv2.minEnclosingCircle()`算最小外接圆。
-* `cv2.matchShapes()`进行形状匹配。
+- `cv2.contourArea()`算面积，`cv2.arcLength()`算周长，`cv2.boundingRect()`算外接矩。
+- `cv2.minAreaRect()`算最小外接矩，`cv2.minEnclosingCircle()`算最小外接圆。
+- `cv2.matchShapes()`进行形状匹配。
 
 ## 接口文档
 
-* [cv2.contourArea\(\)](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga2c759ed9f497d4a618048a2f56dc97f1)
-* [cv2.arcLength\(\)](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8d26483c636be6b35c3ec6335798a47c)
-* [cv2.moments\(\)](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga556a180f43cab22649c23ada36a8a139)
-* [cv2.boundingRect\(\)](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga103fcbda2f540f3ef1c042d6a9b35ac7)
-* [cv2.minAreaRect\(\)](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga3d476a3417130ae5154aea421ca7ead9)
-* [cv2.minEnclosingCircle\(\)](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8ce13c24081bbc7151e9326f412190f1)
-* [cv2.fitEllipse\(\)](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf259efaad93098103d6c27b9e4900ffa)
-* [cv2.matchShapes\(\)](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaadc90cb16e2362c9bd6e7363e6e4c317)
-* [cv2.ShapeMatchModes](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f)
+- [cv2.contourArea()](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga2c759ed9f497d4a618048a2f56dc97f1)
+- [cv2.arcLength()](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8d26483c636be6b35c3ec6335798a47c)
+- [cv2.moments()](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga556a180f43cab22649c23ada36a8a139)
+- [cv2.boundingRect()](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga103fcbda2f540f3ef1c042d6a9b35ac7)
+- [cv2.minAreaRect()](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga3d476a3417130ae5154aea421ca7ead9)
+- [cv2.minEnclosingCircle()](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#ga8ce13c24081bbc7151e9326f412190f1)
+- [cv2.fitEllipse()](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf259efaad93098103d6c27b9e4900ffa)
+- [cv2.matchShapes()](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaadc90cb16e2362c9bd6e7363e6e4c317)
+- [cv2.ShapeMatchModes](https://docs.opencv.org/4.0.0/d3/dc0/group__imgproc__shape.html#gaf2b97a230b51856d09a2d934b78c015f)
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/14-Contour-Features)
-* [Contour Features](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_features/py_contour_features.html)
-* [Contours : More Functions](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.html)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/14-Contour-Features)
+- [Contour Features](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contour_features/py_contour_features.html)
+- [Contours : More Functions](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_contours_more_functions/py_contours_more_functions.html)

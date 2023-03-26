@@ -1,16 +1,16 @@
 # 番外篇：卷积基础 - 图片边框
 
-![](http://cos.codec.wang/cv2_understand_padding.jpg)
+![](https://cos.codec.wang/cv2_understand_padding.jpg)
 
 了解卷积/滤波的基础知识，给图片添加边框。
 
-卷积的概念其实很好理解，下面我就给大家做个最简单的解释，绝对轻松加愉快的辣 o\(_￣▽￣_\)o
+卷积的概念其实很好理解，下面我就给大家做个最简单的解释，绝对轻松加愉快的辣 o\(_￣ ▽ ￣_\)o
 
 ## 卷积
 
 什么是二维卷积呢？看下面一张图就一目了然：
 
-![](http://cos.codec.wang/cv2_understand_convolution.jpg)
+![](https://cos.codec.wang/cv2_understand_convolution.jpg)
 
 卷积就是循环对**图像跟一个核逐个元素相乘再求和得到另外一副图像的操作**，比如结果图中第一个元素 5 是怎么算的呢？原图中 3×3 的区域与 3×3 的核逐个元素相乘再相加：
 
@@ -20,7 +20,7 @@ $$
 
 算完之后，整个框再往右移一步继续计算，横向计算完后，再往下移一步继续计算……网上有一副很经典的动态图，方便我们理解卷积：
 
-![](http://cos.codec.wang/cv2_understand_cnn.gif)
+![](https://cos.codec.wang/cv2_understand_cnn.gif)
 
 ## padding
 
@@ -28,7 +28,7 @@ $$
 
 > 事实上，原图为 n×n，卷积核为 f×f，最终结果图大小为\(n-f+1\) × \(n-f+1\)。
 
-![](http://cos.codec.wang/cv2_understand_padding.jpg)
+![](https://cos.codec.wang/cv2_understand_padding.jpg)
 
 那么扩展的这一层应该填充什么值呢？OpenCV 中有好几种填充方式，都使用`cv2.copyMakeBorder()`函数实现，一起来看看。
 
@@ -36,9 +36,9 @@ $$
 
 `cv2.copyMakeBorder()`用来给图片添加边框，它有下面几个参数：
 
-* src：要处理的原图
-* top, bottom, left, right：上下左右要扩展的像素数
-* **borderType**：边框类型，这个就是需要关注的填充方式，详情请参考：[BorderTypes](https://docs.opencv.org/3.3.1/d2/de8/group__core__array.html#ga209f2f4869e304c82d07739337eae7c5)
+- src：要处理的原图
+- top, bottom, left, right：上下左右要扩展的像素数
+- **borderType**：边框类型，这个就是需要关注的填充方式，详情请参考：[BorderTypes](https://docs.opencv.org/3.3.1/d2/de8/group__core__array.html#ga209f2f4869e304c82d07739337eae7c5)
 
 其中默认方式和固定值方式最常用，我们详细说明一下：
 
@@ -55,7 +55,7 @@ cons = cv2.copyMakeBorder(img, 1, 1, 1, 1, cv2.BORDER_CONSTANT, value=0)
 print(cons)
 ```
 
-![](http://cos.codec.wang/cv2_zero_padding_output.jpg)
+![](https://cos.codec.wang/cv2_zero_padding_output.jpg)
 
 ### 默认边框类型
 
@@ -68,11 +68,11 @@ print(default)
 
 首先进行上下填充，填充成与原图像边界对称的值，如下图：
 
-![](http://cos.codec.wang/cv2_up_down_padding_first.jpg)
+![](https://cos.codec.wang/cv2_up_down_padding_first.jpg)
 
 同理再进行左右两边的填充，最后把四个顶点补充上就好了：
 
-![](http://cos.codec.wang/cv2_right_left_padding_second2.jpg)
+![](https://cos.codec.wang/cv2_right_left_padding_second2.jpg)
 
 > 经验之谈：一般情况下默认方式更加合理，因为边界的像素值更加接近。具体应视场合而定。
 
@@ -98,7 +98,7 @@ kernel = np.ones((3, 3), np.float32) / 10
 dst = cv2.filter2D(img, -1, kernel)
 ```
 
-![](http://cos.codec.wang/cv2_convolution_kernel_3_3.jpg)
+![](https://cos.codec.wang/cv2_convolution_kernel_3_3.jpg)
 
 可以看到这个核对图像进行了模糊处理，这是卷积的众多功能之一。当然卷积还有很多知识没有学到，后面我们再继续深入。
 
@@ -108,7 +108,6 @@ dst = cv2.filter2D(img, -1, kernel)
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-08-Padding-and-Convolution)
-* [Basic Operations on Images](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html)
-* [图像卷积与滤波的一些知识点](http://blog.csdn.net/zouxy09/article/details/49080029)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-08-Padding-and-Convolution)
+- [Basic Operations on Images](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html)
+- [图像卷积与滤波的一些知识点](http://blog.csdn.net/zouxy09/article/details/49080029)

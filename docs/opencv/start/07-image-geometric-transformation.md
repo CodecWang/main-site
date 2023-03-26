@@ -1,6 +1,6 @@
 # 07: 图像几何变换
 
-![](http://cos.codec.wang/cv2_perspective_transformations_inm.jpg)
+![](https://cos.codec.wang/cv2_perspective_transformations_inm.jpg)
 
 学习如何旋转、平移、缩放和翻转图片。图片等可到文末引用处下载。
 
@@ -43,7 +43,7 @@ dst = cv2.flip(img, 1)
 
 其中，参数 2 = 0：垂直翻转\(沿 x 轴\)，参数 2 &gt; 0: 水平翻转\(沿 y 轴\)，参数 2 &lt; 0: 水平垂直翻转。
 
-![](http://cos.codec.wang/cv2_flip_image_sample.jpg)
+![](https://cos.codec.wang/cv2_flip_image_sample.jpg)
 
 ### 平移图片
 
@@ -76,7 +76,7 @@ cv2.imshow('shift', dst)
 cv2.waitKey(0)
 ```
 
-![](http://cos.codec.wang/cv2_translation_100_50.jpg)
+![](https://cos.codec.wang/cv2_translation_100_50.jpg)
 
 ### 旋转图片
 
@@ -95,7 +95,7 @@ cv2.imshow('rotation', dst)
 cv2.waitKey(0)
 ```
 
-![逆时针旋转45°并缩放](http://cos.codec.wang/cv2_rotation_45_degree.jpg)
+![逆时针旋转45°并缩放](https://cos.codec.wang/cv2_rotation_45_degree.jpg)
 
 ## 小结
 

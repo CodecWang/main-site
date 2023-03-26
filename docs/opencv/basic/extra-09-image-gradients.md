@@ -1,6 +1,6 @@
 # 番外篇：图像梯度
 
-![](http://cos.codec.wang/cv2_horizen_vertical_edge_detection.jpg)
+![](https://cos.codec.wang/cv2_horizen_vertical_edge_detection.jpg)
 
 了解图像梯度和边缘检测的相关概念。图片等可到文末引用处下载。
 
@@ -10,7 +10,7 @@
 
 如果你还记得高数中用一阶导数来求极值的话，就很容易理解了：把图片想象成连续函数，因为边缘部分的像素值是与旁边像素明显有区别的，所以对图片局部求极值，就可以得到整幅图片的边缘信息了。不过图片是二维的离散函数，导数就变成了差分，这个差分就称为图像的梯度。
 
-当然，大部分人应该是早忘记高数了\(￣▽￣\)"，所以看不懂的话，就把上面的解释划掉，我们重新从卷积的角度来看看。
+当然，大部分人应该是早忘记高数了\(￣ ▽ ￣\)"，所以看不懂的话，就把上面的解释划掉，我们重新从卷积的角度来看看。
 
 ### 垂直边缘提取
 
@@ -28,7 +28,7 @@ $$
 
 这个核是用来提取图片中的垂直边缘的，怎么做到的呢？看下图：
 
-![](http://cos.codec.wang/cv2_understand_sobel_edge_detection.jpg)
+![](https://cos.codec.wang/cv2_understand_sobel_edge_detection.jpg)
 
 当前列左右两侧的元素进行差分，由于边缘的值明显小于（或大于）周边像素，所以边缘的差分结果会明显不同，这样就提取出了垂直边缘。同理，把上面那个矩阵转置一下，就是提取水平边缘。这种差分操作就称为图像的梯度计算：
 
@@ -42,7 +42,7 @@ k2 = \left[
   \right]
 $$
 
-![&#x5782;&#x76F4;&#x548C;&#x6C34;&#x5E73;&#x8FB9;&#x7F18;&#x63D0;&#x53D6;](http://cos.codec.wang/cv2_horizen_vertical_edge_detection.jpg)
+![垂直和水平边缘提取](https://cos.codec.wang/cv2_horizen_vertical_edge_detection.jpg)
 
 > 还记得滤波函数`cv2.filter2D()`吗？（[番外篇：卷积基础](https://opencv.codec.wang/basic/extra-08-padding-and-convolution)）我们来手动实现上面的功能：
 
@@ -174,7 +174,7 @@ OpenCV 中直接使用`cv2.Laplacian()`函数：
 laplacian = cv2.Laplacian(img, -1)  # 使用 Laplacian 算子
 ```
 
-![](http://cos.codec.wang/cv2_laplacian.jpg)
+![](https://cos.codec.wang/cv2_laplacian.jpg)
 
 Laplacian 算子是二阶边缘检测的典型代表，一/二阶边缘检测各有优缺点，大家可自行了解。
 
@@ -184,9 +184,8 @@ Laplacian 算子是二阶边缘检测的典型代表，一/二阶边缘检测各
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-09-Image-Gradients)
-* [Image Gradients](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_gradients/py_gradients.html)
-* [Sobel 导数](http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html#sobel-derivatives)
-* [维基百科：边缘检测](https://zh.wikipedia.org/wiki/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B)
-* [数字图像 - 边缘检测原理 - Sobel, Laplace, Canny 算子](https://www.jianshu.com/p/2334bee37de5)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-09-Image-Gradients)
+- [Image Gradients](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_gradients/py_gradients.html)
+- [Sobel 导数](http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html#sobel-derivatives)
+- [维基百科：边缘检测](https://zh.wikipedia.org/wiki/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B)
+- [数字图像 - 边缘检测原理 - Sobel, Laplace, Canny 算子](https://www.jianshu.com/p/2334bee37de5)

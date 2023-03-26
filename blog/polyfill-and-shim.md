@@ -1,13 +1,13 @@
 ---
 date: 2020-08-30
 authors: codec
-image: http://cos.codec.wang/what-is-polyfill.jpg
+image: https://cos.codec.wang/what-is-polyfill.jpg
 tags: [Polyfill, Shim]
 ---
 
 # Polyfill 和 Shim
 
-![](http://cos.codec.wang/what-is-polyfill.jpg)
+![](https://cos.codec.wang/what-is-polyfill.jpg)
 
 说实话，这两个术语名字取的，确实让人难以一下子理解。但理解了之后又不得不佩服这取名：妙啊。
 
@@ -46,7 +46,7 @@ Polyfill 本身是一个网络词汇，意思是软质的填充物。创造者�
 
 Remy Sharp 有次喝咖啡的时候想着用一个词来表达这种含义："_如果浏览器没有原生实现某个 API，就用 JavaScript(或 flash 或其他手段) 来实现它_"。于是他就从一个叫 Polyfilla 的墙料产品上获得灵感，拍脑袋造了这个词 🤣……
 
-![](http://cos.codec.wang/polyfill-life-example.jpg)
+![](https://cos.codec.wang/polyfill-life-example.jpg)
 
 现在还没有标准的中文译法，可以理解为"**腻子代码**"，腻 (ni) 子是一种用来填充和清除墙面缺陷的材料：把 IE 和 Chrome 想像成两面墙，Chrome 这面墙光滑平整，能做很多事，IE 这面墙上有各种裂缝缺陷。通过腻子可以填充这些裂缝，抹平缺陷，让两面墙用起来没差别。
 
@@ -81,7 +81,7 @@ function myIsInteger(value) {
 
 总结：Shim 可以封装自己的 API，概念比 Polyfill 大一点，两者并不冲突。有人也从两个单词的"软/硬"含义理解：Polyfill 填充你感受不到它的存在，而 Shim 填充则能明显地感知到。
 
-![](http://cos.codec.wang/understand-shim-and-polyfill-example.jpg)
+![](https://cos.codec.wang/understand-shim-and-polyfill-example.jpg)
 
 ## 使用场景
 

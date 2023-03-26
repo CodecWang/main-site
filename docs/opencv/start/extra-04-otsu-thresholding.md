@@ -1,6 +1,6 @@
 # 番外篇：Otsu 阈值法
 
-![](http://cos.codec.wang/cv2_bimodal_image_two_peaks.jpg)
+![](https://cos.codec.wang/cv2_bimodal_image_two_peaks.jpg)
 
 大部分图像处理任务都需要先进行二值化操作，阈值的选取很关键，Otsu 阈值法会自动计算阈值。
 
@@ -12,7 +12,7 @@
 
 双峰图片就是指图片的灰度直方图上有两个峰值，直方图就是每个值（0~255）的像素点个数统计，后面会详细介绍。
 
-![](http://cos.codec.wang/cv2_bimodal_image_two_peaks.jpg)
+![](https://cos.codec.wang/cv2_bimodal_image_two_peaks.jpg)
 
 Otsu 算法假设这副图片由前景色和背景色组成，通过统计学方法（最大类间方差）选取一个阈值，将前景和背景尽可能分开，我们先来看下代码，然后详细说明下算法原理。
 
@@ -68,7 +68,7 @@ for i in range(3):
 plt.show()
 ```
 
-![固定阈值 vs Otsu阈值](http://cos.codec.wang/cv2_otsu_vs_simple_thresholding.jpg)
+![固定阈值 vs Otsu阈值](https://cos.codec.wang/cv2_otsu_vs_simple_thresholding.jpg)
 
 可以看到，Otsu 阈值明显优于固定阈值，省去了不断尝试阈值判断效果好坏的过程。其中，绘制直方图时，使用了 numpy 中的[ravel\(\)](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html)函数，它会将原矩阵压缩成一维数组，便于画直方图。
 
@@ -88,7 +88,7 @@ Otsu 阈值法将整幅图分为前景（目标）和背景，以下是一些符
 
 结合下图会更容易理解一些，有一副大小为 4×4 的图片，假设阈值 T 为 1，那么：
 
-![](http://cos.codec.wang/cv2_otsu_theory_sample.jpg)
+![](https://cos.codec.wang/cv2_otsu_theory_sample.jpg)
 
 其实很好理解，$ N_0+N_1 $就是总的像素点个数，也就是行数乘列数：
 

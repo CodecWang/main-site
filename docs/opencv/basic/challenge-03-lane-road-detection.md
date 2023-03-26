@@ -1,6 +1,6 @@
 # 挑战任务：车道检测
 
-![](http://cos.codec.wang/cv2_lane_detection_result_sample.jpg)
+![](https://cos.codec.wang/cv2_lane_detection_result_sample.jpg)
 
 挑战任务：实际公路的车道线检测。图片等可到文末引用处下载。
 
@@ -8,13 +8,13 @@
 
 > **1. 在所提供的公路图片上检测出车道线并标记：**
 
-![](http://cos.codec.wang/cv2_lane_detection_result_sample.jpg)
+![](https://cos.codec.wang/cv2_lane_detection_result_sample.jpg)
 
 > **2. 在所提供的公路视频上检测出车道线并标记：**
 
- 本次挑战内容来自 Udacity 自动驾驶纳米学位课程，素材中车道保持不变，车道线清晰明确，易于检测，是车道检测的基础版本，网上也有很多针对复杂场景的高级实现，感兴趣的童鞋可以自行了解。
+本次挑战内容来自 Udacity 自动驾驶纳米学位课程，素材中车道保持不变，车道线清晰明确，易于检测，是车道检测的基础版本，网上也有很多针对复杂场景的高级实现，感兴趣的童鞋可以自行了解。
 
-**挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，**不然...我也没办法\(￣▽￣\)"
+**挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，**不然...我也没办法\(￣ ▽ ￣\)"
 
 ## 挑战解答
 
@@ -22,7 +22,7 @@
 
 要检测出当前车道，就是要检测出左右两条车道直线。由于无人车一直保持在当前车道，那么无人车上的相机拍摄的视频中，车道线的位置应该基本固定在某一个范围内：
 
-![](http://cos.codec.wang/cv2_lane_detection_roi_sample.jpg)
+![](https://cos.codec.wang/cv2_lane_detection_roi_sample.jpg)
 
 如果我们手动把这部分 ROI 区域抠出来，就会排除掉大部分干扰。接下来检测直线肯定是用霍夫变换，但 ROI 区域内的边缘直线信息还是很多，考虑到只有左右两条车道线，一条斜率为正，一条为负，可将所有的线分为两组，每组再通过均值或最小二乘法拟合的方式确定唯一一条线就可以完成检测。总体步骤如下：
 
@@ -39,7 +39,7 @@
 
 灰度化和滤波操作是大部分图像处理的必要步骤。灰度化不必多说，因为不是基于色彩信息识别的任务，所以没有必要用彩色图，可以大大减少计算量。而滤波会削弱图像噪点，排除干扰信息。另外，根据前面学习的知识，边缘提取是基于图像梯度的，梯度对噪声很敏感，所以平滑滤波操作必不可少。
 
-![&#x539F;&#x56FE; vs &#x7070;&#x5EA6;&#x6EE4;&#x6CE2;&#x56FE;](http://cos.codec.wang/cv2_lane_detection_gray_blur_result.jpg)
+![原图 vs 灰度滤波图](https://cos.codec.wang/cv2_lane_detection_gray_blur_result.jpg)
 
 这次的代码我们分模块来写，规范一点。其中`process_an_image()`是主要的图像处理流程：
 
@@ -66,21 +66,21 @@ if __name__ == "__main__":
     cv2.waitKey(0)
 ```
 
-![&#x8FB9;&#x7F18;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x56FE;](http://cos.codec.wang/cv2_lane_detection_canny_result.jpg)
+![边缘检测结果图](https://cos.codec.wang/cv2_lane_detection_canny_result.jpg)
 
 ### ROI 截取
 
 按照前面描述的方案，只需保留边缘图中的红线部分区域用于后续的霍夫直线检测，其余都是无用的信息：
 
-![](http://cos.codec.wang/cv2_lane_detection_canny_roi_reserve.jpg)
+![](https://cos.codec.wang/cv2_lane_detection_canny_roi_reserve.jpg)
 
 如何实现呢？还记得图像混合中的这张图吗？
 
-![](http://cos.codec.wang/cv2_understand_mask.jpg)
+![](https://cos.codec.wang/cv2_understand_mask.jpg)
 
 我们可以创建一个梯形的 mask 掩膜，然后与边缘检测结果图混合运算，掩膜中白色的部分保留，黑色的部分舍弃。梯形的四个坐标需要手动标记：
 
-![&#x63A9;&#x819C;mask](http://cos.codec.wang/cv2_lane_detection_mask_sample.jpg)
+![掩膜 mask](https://cos.codec.wang/cv2_lane_detection_mask_sample.jpg)
 
 ```python
 def process_an_image(img):
@@ -101,9 +101,9 @@ def roi_mask(img, corner_points):
     return masked_img
 ```
 
-这样，结果图"roi\_edges"应该是：
+这样，结果图"roi_edges"应该是：
 
-![&#x53EA;&#x4FDD;&#x7559;&#x5173;&#x952E;&#x533A;&#x57DF;&#x7684;&#x8FB9;&#x7F18;&#x68C0;&#x6D4B;&#x56FE;](http://cos.codec.wang/cv2_lane_detection_masked_roi_edges.jpg)
+![只保留关键区域的边缘检测图](https://cos.codec.wang/cv2_lane_detection_masked_roi_edges.jpg)
 
 ### 霍夫直线提取
 
@@ -143,7 +143,7 @@ def draw_lines(img, lines, color=[0, 0, 255], thickness=1):
 
 `draw_lines()`是用来画直线检测的结果，后面我们会接着处理直线，所以这里注释掉了，可以取消注释看下效果：
 
-![&#x970D;&#x592B;&#x53D8;&#x6362;&#x7ED3;&#x679C;&#x56FE;](http://cos.codec.wang/cv2_lane_detection_hough_lines_direct_result.jpg)
+![霍夫变换结果图](https://cos.codec.wang/cv2_lane_detection_hough_lines_direct_result.jpg)
 
 对本例的这张测试图来说，如果打印出直线的条数`print(len(lines))`，应该是有 16 条。
 
@@ -263,7 +263,7 @@ def least_squares_fit(point_list, ymin, ymax):
 
 这段代码比较多，请每个步骤单独来看。最后得到的是左右两条车道线的起点和终点坐标，可以选择画出车道线，这里我直接填充了整个区域：
 
-![](http://cos.codec.wang/cv2_lane_detection_result_sample.jpg)
+![](https://cos.codec.wang/cv2_lane_detection_result_sample.jpg)
 
 ### 视频处理
 
@@ -293,8 +293,7 @@ if __name__ == "__main__":
 
 ## 引用
 
-* [图片和视频素材](http://cos.codec.wang/cv2_lane_detection_material.zip)
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Challenge-03-Lane-Road-Detection)
-* [从零开始学习无人驾驶技术 --- 车道检测](https://zhuanlan.zhihu.com/p/25354571)
-* [无人驾驶之高级车道线检测](https://blog.csdn.net/u010665216/article/details/80152458)
-
+- [图片和视频素材](https://cos.codec.wang/cv2_lane_detection_material.zip)
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Challenge-03-Lane-Road-Detection)
+- [从零开始学习无人驾驶技术 --- 车道检测](https://zhuanlan.zhihu.com/p/25354571)
+- [无人驾驶之高级车道线检测](https://blog.csdn.net/u010665216/article/details/80152458)

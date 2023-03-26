@@ -1,13 +1,13 @@
 # 09: 图像混合
 
-![](http://cos.codec.wang/cv2_image_blending_6_4.jpg)
+![](https://cos.codec.wang/cv2_image_blending_6_4.jpg)
 
 学习图片间的数学运算，图像混合。图片等可到文末引用处下载。
 
 ## 目标
 
-* 图片间的数学运算，如相加、按位运算等
-* OpenCV 函数：`cv2.add()`, `cv2.addWeighted()`, `cv2.bitwise_and()`
+- 图片间的数学运算，如相加、按位运算等
+- OpenCV 函数：`cv2.add()`, `cv2.addWeighted()`, `cv2.bitwise_and()`
 
 ## 教程
 
@@ -28,7 +28,7 @@ print(x + y)  # 250+10 = 260 % 256 = 4
 
 ### 图像混合
 
-图像混合`cv2.addWeighted()`也是一种图片相加的操作，只不过两幅图片的权重不一样，γ相当于一个修正值：
+图像混合`cv2.addWeighted()`也是一种图片相加的操作，只不过两幅图片的权重不一样，γ 相当于一个修正值：
 
 $$
 dst = \alpha\times img1+\beta\times img2 + \gamma
@@ -40,19 +40,19 @@ img2 = cv2.imread('opencv-logo-white.png')
 res = cv2.addWeighted(img1, 0.6, img2, 0.4, 0)
 ```
 
-![&#x56FE;&#x50CF;&#x6DF7;&#x5408;](http://cos.codec.wang/cv2_image_blending_6_4.jpg)
+![图像混合](https://cos.codec.wang/cv2_image_blending_6_4.jpg)
 
-> 经验之谈：α和β都等于 1 时，就相当于图片相加。
+> 经验之谈：α 和 β 都等于 1 时，就相当于图片相加。
 
 ### 按位操作
 
 按位操作包括按位与/或/非/异或操作，有什么用途呢？比如说我们要实现下图的效果：
 
-![](http://cos.codec.wang/cv2_bitwise_operations_demo.jpg)
+![](https://cos.codec.wang/cv2_bitwise_operations_demo.jpg)
 
 如果将两幅图片直接相加会改变图片的颜色，如果用图像混合，则会改变图片的透明度，所以我们需要用按位操作。首先来了解一下[掩膜](https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin)（mask）的概念：掩膜是用一副二值化图片对另外一幅图片进行局部的遮挡，看下图就一目了然了：
 
-![&#x63A9;&#x819C;&#x6982;&#x5FF5;](http://cos.codec.wang/cv2_understand_mask.jpg)
+![掩膜概念](https://cos.codec.wang/cv2_understand_mask.jpg)
 
 所以我们的思路就是把原图中要放 logo 的区域抠出来，再把 logo 放进去就行了：
 
@@ -79,19 +79,18 @@ img1[:rows, :cols] = dst  # 融合后放在原图上
 
 ## 小结
 
-* `cv2.add()`用来叠加两幅图片，`cv2.addWeighted()`也是叠加两幅图片，但两幅图片的权重不一样。
-* `cv2.bitwise_and()`, `cv2.bitwise_not()`, `cv2.bitwise_or()`, `cv2.bitwise_xor()`分别执行按位与/或/非/异或运算。掩膜就是用来对图片进行全局或局部的遮挡。
+- `cv2.add()`用来叠加两幅图片，`cv2.addWeighted()`也是叠加两幅图片，但两幅图片的权重不一样。
+- `cv2.bitwise_and()`, `cv2.bitwise_not()`, `cv2.bitwise_or()`, `cv2.bitwise_xor()`分别执行按位与/或/非/异或运算。掩膜就是用来对图片进行全局或局部的遮挡。
 
 ## 接口文档
 
-* [cv2.add\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga10ac1bfb180e2cfda1701d06c24fdbd6)
-* [cv2.addWeighted\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#gafafb2513349db3bcff51f54ee5592a19)
-* [cv2.bitwise\_and\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14)
-* [cv2.bitwise\_not\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga0002cf8b418479f4cb49a75442baee2f)
+- [cv2.add()](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga10ac1bfb180e2cfda1701d06c24fdbd6)
+- [cv2.addWeighted()](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#gafafb2513349db3bcff51f54ee5592a19)
+- [cv2.bitwise_and()](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14)
+- [cv2.bitwise_not()](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga0002cf8b418479f4cb49a75442baee2f)
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/09-Image-Blending)
-* [掩膜](https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin)
-* [Arithmetic Operations on Images](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/09-Image-Blending)
+- [掩膜](https://baike.baidu.com/item/%E6%8E%A9%E8%86%9C/8544392?fr=aladdin)
+- [Arithmetic Operations on Images](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html)

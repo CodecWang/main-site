@@ -1,13 +1,13 @@
 # 番外篇：鼠标绘图
 
-![](http://cos.codec.wang/cv2_live_draw_rectangle.gif)
+![](https://cos.codec.wang/cv2_live_draw_rectangle.gif)
 
 学习如何用鼠标实时绘图。图片等可到文末引用处下载。
 
 ## 目标
 
-* 捕获鼠标事件
-* OpenCV 函数：`cv2.setMouseCallback()`
+- 捕获鼠标事件
+- OpenCV 函数：`cv2.setMouseCallback()`
 
 ## 教程
 
@@ -55,10 +55,10 @@ print(events)
 
 在图像上用鼠标画图，可以画圆或矩形，按 m 键在两种模式下切换。左键按下时开始画图，移动到哪儿画到哪儿，左键释放时结束画图。听上去很复杂，是吗？一步步来看：
 
-* 用鼠标画图：需要定义鼠标的回调函数 mouse\_event
-* 画圆或矩形：需要定义一个画图的模式 mode
-* 左键单击、移动、释放：需要捕获三个不同的事件
-* 开始画图，结束画图：需要定义一个画图的标记位 drawing
+- 用鼠标画图：需要定义鼠标的回调函数 mouse_event
+- 画圆或矩形：需要定义一个画图的模式 mode
+- 左键单击、移动、释放：需要捕获三个不同的事件
+- 开始画图，结束画图：需要定义一个画图的标记位 drawing
 
 好，开始 coding 吧：
 
@@ -108,22 +108,21 @@ while(True):
 
 效果应该如下图所示：
 
-![](http://cos.codec.wang/cv2_mouse_drawing_rectangle_circle.jpg)
+![](https://cos.codec.wang/cv2_mouse_drawing_rectangle_circle.jpg)
 
 ## 小结
 
-* 要用鼠标绘图，需要用`cv2.setMouseCallback()`定义回调函数，然后在回调函数中根据不同的 event 事件，执行不同的功能。
+- 要用鼠标绘图，需要用`cv2.setMouseCallback()`定义回调函数，然后在回调函数中根据不同的 event 事件，执行不同的功能。
 
 ## 练习
 
 1.（选做）实现用鼠标画矩形，跟实例差不多，但只实时画一个，类似下面动图：
 
-![&#x5B9E;&#x65F6;&#x753B;&#x4E00;&#x4E2A;&#x77E9;&#x5F62;](http://cos.codec.wang/cv2_live_draw_rectangle.gif)
+![实时画一个矩形](https://cos.codec.wang/cv2_live_draw_rectangle.gif)
 
 2.（选做）做一个在白色面板上绘图的简单程序，可用滑动条调整颜色和笔刷大小。
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-06-Drawing-with-Mouse)
-* [Mouse as a Paint-Brush](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Extra-06-Drawing-with-Mouse)
+- [Mouse as a Paint-Brush](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html)

@@ -1,14 +1,14 @@
 # 05: 颜色空间转换
 
-![](http://cos.codec.wang/cv2_exercise_tracking_three_colors.jpg)
+![](https://cos.codec.wang/cv2_exercise_tracking_three_colors.jpg)
 
 学习如何进行图片的颜色空间转换，视频中追踪特定颜色的物体。图片等可到文末引用处下载。
 
 ## 目标
 
-* 颜色空间转换，如 BGR↔Gray，BGR↔HSV 等
-* 追踪视频中特定颜色的物体
-* OpenCV 函数：`cv2.cvtColor()`, `cv2.inRange()`
+- 颜色空间转换，如 BGR↔Gray，BGR↔HSV 等
+- 追踪视频中特定颜色的物体
+- OpenCV 函数：`cv2.cvtColor()`, `cv2.inRange()`
 
 ## 教程
 
@@ -39,7 +39,7 @@ print(flags)
 
 [HSV](https://baike.baidu.com/item/HSV/547122)是一个常用于颜色识别的模型，相比 BGR 更易区分颜色，转换模式用`COLOR_BGR2HSV`表示。
 
-> 经验之谈：OpenCV 中色调 H 范围为\[0,179\]，饱和度S是\[0,255\]，明度V是\[0,255\]。虽然H的理论数值是0°~360°，但8位图像像素点的最大值是255，所以OpenCV中除以了2，某些软件可能使用不同的尺度表示，所以同其他软件混用时，记得归一化。
+> 经验之谈：OpenCV 中色调 H 范围为\[0,179\]，饱和度 S 是\[0,255\]，明度 V 是\[0,255\]。虽然 H 的理论数值是 0°~360°，但 8 位图像像素点的最大值是 255，所以 OpenCV 中除以了 2，某些软件可能使用不同的尺度表示，所以同其他软件混用时，记得归一化。
 
 现在，我们实现一个使用 HSV 来只显示视频中蓝色物体的例子，步骤如下：
 
@@ -48,7 +48,7 @@ print(flags)
 3. 提取蓝色范围的物体
 4. 只显示蓝色物体
 
-![](http://cos.codec.wang/cv2_blue_object_tracking.jpg)
+![](https://cos.codec.wang/cv2_blue_object_tracking.jpg)
 
 ```python
 import numpy as np
@@ -94,23 +94,22 @@ print(hsv_blue)  # [[[120 255 255]]]
 
 ## 小结
 
-* `cv2.cvtColor()`函数用来进行颜色空间转换，常用 BGR↔Gray，BGR↔HSV。
-* HSV 颜色模型常用于颜色识别。要想知道某种颜色在 HSV 下的值，可以将它的 BGR 值用`cvtColor()`转换得到。
+- `cv2.cvtColor()`函数用来进行颜色空间转换，常用 BGR↔Gray，BGR↔HSV。
+- HSV 颜色模型常用于颜色识别。要想知道某种颜色在 HSV 下的值，可以将它的 BGR 值用`cvtColor()`转换得到。
 
 ## 练习
 
 1. 尝试在视频中同时提取红色、蓝色、绿色的物体。（效果如下）
 
-![](http://cos.codec.wang/cv2_exercise_tracking_three_colors.jpg)
+![](https://cos.codec.wang/cv2_exercise_tracking_three_colors.jpg)
 
 ## 接口文档
 
-* [cv2.cvtColor\(\)](https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab)
-* [cv2.inRange\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981)
-* [cv2.bitwise\_and\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14)
+- [cv2.cvtColor\(\)](https://docs.opencv.org/4.0.0/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab)
+- [cv2.inRange\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981)
+- [cv2.bitwise_and\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14)
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/05-Changing-Colorspaces)
-* [Changing Colorspaces](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/05-Changing-Colorspaces)
+- [Changing Colorspaces](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html)

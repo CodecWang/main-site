@@ -1,6 +1,6 @@
 # 挑战任务：画动态时钟
 
-![](http://cos.codec.wang/cv2_draw_clock_dynamic_sample.gif)
+![](https://cos.codec.wang/cv2_draw_clock_dynamic_sample.gif)
 
 挑战任务：使用 OpenCV 绘制一个随系统时间动态变化的时钟。
 
@@ -8,11 +8,11 @@
 
 > **完成如下图所展示的动态时钟，时钟需随系统时间变化，中间显示当前日期。**
 
-![](http://cos.codec.wang/cv2_draw_clock_dynamic_sample.gif)
+![](https://cos.codec.wang/cv2_draw_clock_dynamic_sample.gif)
 
 其实本次任务涉及的 OpenCV 知识并不多，但有助于提升大家的编程实践能力。
 
-**挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，**不然...我也没办法\(￣▽￣\)"
+**挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，**不然...我也没办法\(￣ ▽ ￣\)"
 
 ## 挑战解答
 
@@ -20,13 +20,13 @@
 
 本次挑战任务旨在提升大家的动手实践能力，解决实际问题，所以我们得先有个解题思路和方案。观察下常见的时钟表盘：
 
-![](http://cos.codec.wang/cv2_draw_clock_actual_clock_sample.jpg)
+![](https://cos.codec.wang/cv2_draw_clock_actual_clock_sample.jpg)
 
 整个表盘其实只有 3 根表针在动，所以可以先画出静态表盘，然后获取系统当前时间，根据时间实时动态绘制 3 根表针就解决了。
 
 ### 绘制表盘
 
-表盘上只有60条分/秒刻线和12条小时刻线，当然还有表盘的外部轮廓圆，也就是重点在如何画72根线。先把简单的圆画出来：
+表盘上只有 60 条分/秒刻线和 12 条小时刻线，当然还有表盘的外部轮廓圆，也就是重点在如何画 72 根线。先把简单的圆画出来：
 
 ```python
 import cv2
@@ -46,7 +46,7 @@ img[:] = (255, 255, 255)
 cv2.circle(img, center, radius, (0, 0, 0), thickness=5)
 ```
 
-![](http://cos.codec.wang/cv2_draw_clock_blank_circle.jpg)
+![](https://cos.codec.wang/cv2_draw_clock_blank_circle.jpg)
 
 前面我们使用 OpenCV 画直线的时候，需知道直线的起点和终点坐标，那么画 72 根线就变成了获取 72 组坐标。
 
@@ -59,7 +59,7 @@ $$
 \end{matrix}
 $$
 
-![](http://cos.codec.wang/cv2_draw_clock_center_shift.jpg)
+![](https://cos.codec.wang/cv2_draw_clock_center_shift.jpg)
 
 先只考虑将坐标系原点移动到左上角，角度依然是平面坐标系中的逆时针计算，那么新坐标是：
 
@@ -70,11 +70,11 @@ $$
 \end{matrix}
 $$
 
-对于60条分/秒刻线，刻线间的夹角是360°/60=6°，对于小时刻线，角度是360°/12=30°，这样就得到了72组起点坐标，那怎么得到终点坐标呢？其实同样的原理，用一个同心的小圆来计算得到B点：
+对于 60 条分/秒刻线，刻线间的夹角是 360°/60=6°，对于小时刻线，角度是 360°/12=30°，这样就得到了 72 组起点坐标，那怎么得到终点坐标呢？其实同样的原理，用一个同心的小圆来计算得到 B 点：
 
-![](http://cos.codec.wang/cv2_draw_clock_a_b_position.jpg)
+![](https://cos.codec.wang/cv2_draw_clock_a_b_position.jpg)
 
-通过A/B两点就可以画出直线：
+通过 A/B 两点就可以画出直线：
 
 ```python
 pt1 = []
@@ -103,15 +103,15 @@ for i in range(12):
 # 到这里基本的表盘图就已经画出来了
 ```
 
-![](http://cos.codec.wang/cv2_draw_clock_blank_clock.jpg)
+![](https://cos.codec.wang/cv2_draw_clock_blank_clock.jpg)
 
 ### 角度换算
 
-接下来算是一个小难点，首先**时钟的起始坐标在正常二维坐标系的 90°方向，其次时钟跟图像一样，都是顺时针计算角度的**，所以三者需要统一下：
+接下来算是一个小难点，首先**时钟的起始坐标在正常二维坐标系的 90° 方向，其次时钟跟图像一样，都是顺时针计算角度的**，所以三者需要统一下：
 
-![](http://cos.codec.wang/cv2_draw_clock_different_clock_contrast.jpg)
+![](https://cos.codec.wang/cv2_draw_clock_different_clock_contrast.jpg)
 
-因为角度是完全对称的，顺逆时针没有影响，所以平面坐标系完全不用理会，放在这里只是便于大家理解。对于时钟坐标和图像坐标，时钟 0 的 0°对应图像的 270°，时钟 15 的 90°对应图像的 360°，时钟 30 的 180°对应图像的 450°（360°+90°）...
+因为角度是完全对称的，顺逆时针没有影响，所以平面坐标系完全不用理会，放在这里只是便于大家理解。对于时钟坐标和图像坐标，时钟 0 的 0° 对应图像的 270°，时钟 15 的 90° 对应图像的 360°，时钟 30 的 180° 对应图像的 450°（360°+90°）...
 
 所以两者之间的关系便是：
 
@@ -162,11 +162,10 @@ while(1):
         break
 ```
 
-![](http://cos.codec.wang/cv2_draw_clock_sample.jpg)
+![](https://cos.codec.wang/cv2_draw_clock_sample.jpg)
 
-本此挑战旨在锻炼一步步解决实际问题的思路（虽然有点数学知识\(￣▽￣\)"），大家再接再厉噢！
+本此挑战旨在锻炼一步步解决实际问题的思路（虽然有点数学知识\(￣ ▽ ￣\)"），大家再接再厉噢！
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Challenge-01-Draw-Dynamic-Clock)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/Challenge-01-Draw-Dynamic-Clock)

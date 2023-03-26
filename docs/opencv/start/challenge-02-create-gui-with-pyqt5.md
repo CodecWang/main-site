@@ -1,6 +1,6 @@
-# 挑战任务: PyQt5 编写 GUI 界面
+# 挑战任务：PyQt5 编写 GUI 界面
 
-![](http://cos.codec.wang/cv2_pyqt_gui_sample.jpg)
+![](https://cos.codec.wang/cv2_pyqt_gui_sample.jpg)
 
 拓展挑战：编写 GUI 图像处理应用程序。
 
@@ -10,7 +10,7 @@
 
 > **了解 Python 编写**[**GUI**](https://baike.baidu.com/item/GUI)**界面的方法，使用 PyQt5 编写如下的图像处理应用程序，实现打开摄像头、捕获图片、读取本地图片、灰度化和 Otsu 自动阈值分割的功能。**
 
-![](http://cos.codec.wang/cv2_pyqt_gui_sample.jpg)
+![](https://cos.codec.wang/cv2_pyqt_gui_sample.jpg)
 
 **挑战题不会做也木有关系，但请务必在自行尝试后，再看下面的解答噢，**不然...我也没办法\(￣ ▽ ￣\)"
 
@@ -65,19 +65,19 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 ```
 
-![](http://cos.codec.wang/cv2_pyqt5_hello_world_sample.jpg)
+![](https://cos.codec.wang/cv2_pyqt5_hello_world_sample.jpg)
 
 ### 界面设计
 
 根据我们的挑战内容，解决思路是使用 Qt Designer 来设计界面，使用 Python 完成代码逻辑。打开 designer.exe，会弹出创建新窗体的窗口，我们直接点击“create”：
 
-![](http://cos.codec.wang/cv2_pyqt5_designer_main_ui.jpg)
+![](https://cos.codec.wang/cv2_pyqt5_designer_main_ui.jpg)
 
 界面的左侧是 Qt 的常用控件"Widget Box"，右侧有一个控件属性窗口"Property Editor"，其余暂时用不到。本例中我们只用到了"Push Button"控件和"Label"控件：最上面的三个 Label 控件用于显示图片，可以在属性窗口调整它的大小，我们统一调整到 150×150：
 
-![](http://cos.codec.wang/cv2_pyqt5_main_ui_rough.jpg)
+![](https://cos.codec.wang/cv2_pyqt5_main_ui_rough.jpg)
 
-![](http://cos.codec.wang/cv2_pyqt5_designer_property_windows.jpg)
+![](https://cos.codec.wang/cv2_pyqt5_designer_property_windows.jpg)
 
 另外，控件上显示的文字"text"属性和控件的名字"objectName"属性需要修改，便于显示和代码调用。可以按照下面我推荐的命名：
 
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
 这样大致界面就出来了，很简单：
 
-![](http://cos.codec.wang/cv2_pyqt5_main_ui_word.jpg)
+![](https://cos.codec.wang/cv2_pyqt5_main_ui_word.jpg)
 
 ### 按钮事件
 
@@ -102,19 +102,19 @@ if __name__ == '__main__':
 
 点击 Designer 工具栏的"Edit Signals/Slots"按钮，进入槽函数编辑界面，点击旁边的"Edit Widgets"可以恢复正常视图：
 
-![](http://cos.codec.wang/cv2_pyqt5_designer_edit_singals_slots.jpg)
+![](https://cos.codec.wang/cv2_pyqt5_designer_edit_singals_slots.jpg)
 
 然后点击按钮并拖动，当产生类似于电路中的接地符号时释放鼠标，参看下面动图：
 
-![](http://cos.codec.wang/cv2_pyqt5_how_to_create_slots.gif)
+![](https://cos.codec.wang/cv2_pyqt5_how_to_create_slots.gif)
 
 在弹出的配置窗口中，可以看到左侧是按钮的常用事件，我们选择点击事件"clicked\(\)"，然后添加一个名为"btnOpenCamera_Clicked\(\)"的槽函数：
 
-![](http://cos.codec.wang/cv2_pyqt5_how_to_create_slots2.gif)
+![](https://cos.codec.wang/cv2_pyqt5_how_to_create_slots2.gif)
 
 重复上面的步骤，给五个按钮添加五个槽函数，最终结果如下：
 
-![](http://cos.codec.wang/cv2_pyqt5_main_click_event.jpg)
+![](https://cos.codec.wang/cv2_pyqt5_main_click_event.jpg)
 
 到此，我们就完成了界面设计的所有工作，按下 Ctrl+S 保存当前窗口为.ui 文件。.ui 文件其实是按照 XML 格式标记的内容，可以用文本编辑器将.ui 文件打开看看。
 
@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
 打开 cmd 命令行，切换到 ui 文件的保存目录。Windows 下有个小技巧，可以在目录的地址栏输入 cmd，一步切换到当前目录：
 
-![](http://cos.codec.wang/cv2_pyqt5_pyuic_quick_cmd.gif)
+![](https://cos.codec.wang/cv2_pyqt5_pyuic_quick_cmd.gif)
 
 然后执行这条指令：
 
@@ -160,7 +160,7 @@ class PyQtMainEntry(QMainWindow, Ui_MainWindow):
         self.camera = cv2.VideoCapture(0)
         self.is_camera_opened = False  # 摄像头有没有打开标记
 
-        # 定时器：30ms捕获一帧
+        # 定时器：30ms 捕获一帧
         self._timer = QtCore.QTimer(self)
         self._timer.timeout.connect(self._queryFrame)
         self._timer.setInterval(30)
@@ -190,7 +190,7 @@ class PyQtMainEntry(QMainWindow, Ui_MainWindow):
         # 后面这几行代码几乎都一样，可以尝试封装成一个函数
         rows, cols, channels = self.captured.shape
         bytesPerLine = channels * cols
-        # Qt显示图片时，需要先转换成QImgage类型
+        # Qt 显示图片时，需要先转换成 QImgage 类型
         QImg = QImage(self.captured.data, cols, rows, bytesPerLine, QImage.Format_RGB888)
         self.labelCapture.setPixmap(QPixmap.fromImage(QImg).scaled(
             self.labelCapture.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
@@ -203,7 +203,7 @@ class PyQtMainEntry(QMainWindow, Ui_MainWindow):
         filename,  _ = QFileDialog.getOpenFileName(self, '打开图片')
         if filename:
             self.captured = cv2.imread(str(filename))
-            # OpenCV图像以BGR通道存储，显示时需要从BGR转到RGB
+            # OpenCV 图像以 BGR 通道存储，显示时需要从 BGR 转到 RGB
             self.captured = cv2.cvtColor(self.captured, cv2.COLOR_BGR2RGB)
 
             rows, cols, channels = self.captured.shape
@@ -224,14 +224,14 @@ class PyQtMainEntry(QMainWindow, Ui_MainWindow):
 
         rows, columns = self.cpatured.shape
         bytesPerLine = columns
-        # 灰度图是单通道，所以需要用Format_Indexed8
+        # 灰度图是单通道，所以需要用 Format_Indexed8
         QImg = QImage(self.cpatured.data, columns, rows, bytesPerLine, QImage.Format_Indexed8)
         self.labelResult.setPixmap(QPixmap.fromImage(QImg).scaled(
             self.labelResult.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 
     def btnThreshold_Clicked(self):
         '''
-        Otsu自动阈值分割
+        Otsu 自动阈值分割
         '''
         if not hasattr(self, "captured"):
             return
@@ -241,7 +241,7 @@ class PyQtMainEntry(QMainWindow, Ui_MainWindow):
 
         rows, columns = self.cpatured.shape
         bytesPerLine = columns
-        # 阈值分割图也是单通道，也需要用Format_Indexed8
+        # 阈值分割图也是单通道，也需要用 Format_Indexed8
         QImg = QImage(self.cpatured.data, columns, rows, bytesPerLine, QImage.Format_Indexed8)
         self.labelResult.setPixmap(QPixmap.fromImage(QImg).scaled(
             self.labelResult.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
@@ -269,7 +269,7 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 ```
 
-![](http://cos.codec.wang/cv2_pyqt_gui_sample2.jpg)
+![](https://cos.codec.wang/cv2_pyqt_gui_sample2.jpg)
 
 本文只是抛砖引玉，介绍了 PyQt5 的简单使用，想要深入学习，可以参考本文开头的参考资料噢\(●ˇ∀ˇ●\)
 

@@ -1,7 +1,7 @@
 ---
 date: 2020-08-29
 authors: codec
-image: http://cos.codec.wang/can-i-use-browser-compatiblity-fetch.jpg
+image: https://cos.codec.wang/can-i-use-browser-compatiblity-fetch.jpg
 tags: ["兼容性", "浏览器"]
 ---
 
@@ -15,7 +15,7 @@ https://caniuse.com/
 
 <!--truncate-->
 
-![](http://cos.codec.wang/can-i-use-browser-compatiblity-fetch.jpg)
+![](https://cos.codec.wang/can-i-use-browser-compatiblity-fetch.jpg)
 
 搜索关键字就会给出该特性在桌面和移动端主流浏览器中的兼容数据：
 
@@ -30,4 +30,4 @@ https://caniuse.com/
 
 https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API
 
-![](http://cos.codec.wang/mdn-browser-compatiblity-fetch-api.jpg)
+![](https://cos.codec.wang/mdn-browser-compatiblity-fetch-api.jpg)

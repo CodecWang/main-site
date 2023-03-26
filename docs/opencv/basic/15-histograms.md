@@ -1,6 +1,6 @@
 # 15: 直方图
 
-![](http://cos.codec.wang/cv2_understand_histogram.jpg)
+![](https://cos.codec.wang/cv2_understand_histogram.jpg)
 
 学习计算并绘制直方图，直方图均衡化等。图片等可到文末引用处下载。
 
@@ -16,7 +16,7 @@
 
 简单来说，直方图就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为 0 的有多少个，1 的有多少个……:
 
-![](http://cos.codec.wang/cv2_understand_histogram.jpg)
+![](https://cos.codec.wang/cv2_understand_histogram.jpg)
 
 在计算直方图之前，有几个术语先来了解一下：
 
@@ -79,7 +79,7 @@ plt.plot(hist)
 plt.show()
 ```
 
-![](http://cos.codec.wang/cv2_calc_draw_histogram.jpg)
+![](https://cos.codec.wang/cv2_calc_draw_histogram.jpg)
 
 从直方图上可以看到图片的大部分区域集中在 150 偏白的附近，这其实并不是很好的效果，下面我们来看看如何改善它。
 
@@ -89,7 +89,7 @@ plt.show()
 
 一副效果好的图像通常在直方图上的分布比较均匀，直方图均衡化就是用来改善图像的全局亮度和对比度。其实从观感上就可以发现，前面那幅图对比度不高，偏灰白。对均衡化算法感兴趣的同学可参考：[维基百科：直方图均衡化](https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96)
 
-![](http://cos.codec.wang/cv2_understand_histogram_equalization.jpg)
+![](https://cos.codec.wang/cv2_understand_histogram_equalization.jpg)
 
 ```python
 equ = cv2.equalizeHist(img)
@@ -102,9 +102,9 @@ cv2.imshow('equalization', np.hstack((img, equ)))  # 并排显示
 cv2.waitKey(0)
 ```
 
-![](http://cos.codec.wang/cv2_before_after_equalization.jpg)
+![](https://cos.codec.wang/cv2_before_after_equalization.jpg)
 
-![均衡化前后的直方图对比](http://cos.codec.wang/cv2_before_after_equalization_histogram.jpg)
+![均衡化前后的直方图对比](https://cos.codec.wang/cv2_before_after_equalization_histogram.jpg)
 
 可以看到均衡化后图片的亮度和对比度效果明显好于原图。
 
@@ -112,7 +112,7 @@ cv2.waitKey(0)
 
 不难看出来，直方图均衡化是应用于整幅图片的，会有什么问题呢？看下图：
 
-![](http://cos.codec.wang/cv2_understand_adaptive_histogram.jpg)
+![](https://cos.codec.wang/cv2_understand_adaptive_histogram.jpg)
 
 很明显，因为全局调整亮度和对比度的原因，脸部太亮，大部分细节都丢失了。
 
@@ -124,13 +124,13 @@ clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
 cl1 = clahe.apply(img)
 ```
 
-![](http://cos.codec.wang/cv2_adaptive_histogram.jpg)
+![](https://cos.codec.wang/cv2_adaptive_histogram.jpg)
 
 ## 练习
 
 1. `cv2.calcHist()`函数中的参数 3 是指要计算的区域\(mask：目标区域白色，其余黑色\)，编写一个只计算图片左上角 200×200 区域直方图的程序。
 
-![](http://cos.codec.wang/cv2_histogram_mask.jpg)
+![](https://cos.codec.wang/cv2_histogram_mask.jpg)
 
 ## 小结
 

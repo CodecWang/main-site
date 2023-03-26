@@ -1,13 +1,13 @@
 # 16: 模板匹配
 
-![](http://cos.codec.wang/cv2_understand_template_matching.jpg)
+![](https://cos.codec.wang/cv2_understand_template_matching.jpg)
 
 学习使用模板匹配在图像中寻找物体。图片等可到文末引用处下载。
 
 ## 目标
 
-* 使用模板匹配在图像中寻找物体
-* OpenCV 函数：`cv2.matchTemplate()`, `cv2.minMaxLoc()`
+- 使用模板匹配在图像中寻找物体
+- OpenCV 函数：`cv2.matchTemplate()`, `cv2.minMaxLoc()`
 
 ## 教程
 
@@ -15,7 +15,7 @@
 
 [模板匹配](https://baike.baidu.com/item/模板匹配)就是用来在大图中找小图，也就是说在一副图像中寻找另外一张模板图像的位置：
 
-![](http://cos.codec.wang/cv2_understand_template_matching.jpg)
+![](https://cos.codec.wang/cv2_understand_template_matching.jpg)
 
 用`cv2.matchTemplate()`实现模板匹配。首先我们来读入图片和模板：
 
@@ -41,7 +41,7 @@ right_bottom = (left_top[0] + w, left_top[1] + h)  # 右下角
 cv2.rectangle(img, left_top, right_bottom, 255, 2)  # 画出矩形位置
 ```
 
-![](http://cos.codec.wang/cv2_ccoeff_matching_template.jpg)
+![](https://cos.codec.wang/cv2_ccoeff_matching_template.jpg)
 
 ### 原理
 
@@ -49,12 +49,12 @@ cv2.rectangle(img, left_top, right_bottom, 255, 2)  # 画出矩形位置
 
 模板匹配的原理其实很简单，就是不断地在原图中移动模板图像去比较，有 6 种不同的比较方法，详情可参考：[TemplateMatchModes](https://docs.opencv.org/3.3.1/df/dfb/group__imgproc__object.html#ga3a7850640f1fe1f58fe91a2d7583695d)
 
-* 平方差匹配 CV\_TM\_SQDIFF：用两者的平方差来匹配，最好的匹配值为 0
-* 归一化平方差匹配 CV\_TM\_SQDIFF\_NORMED
-* 相关匹配 CV\_TM\_CCORR：用两者的乘积匹配，数值越大表明匹配程度越好
-* 归一化相关匹配 CV\_TM\_CCORR\_NORMED
-* 相关系数匹配 CV\_TM\_CCOEFF：用两者的相关系数匹配，1 表示完美的匹配，-1 表示最差的匹配
-* 归一化相关系数匹配 CV\_TM\_CCOEFF\_NORMED
+- 平方差匹配 CV_TM_SQDIFF：用两者的平方差来匹配，最好的匹配值为 0
+- 归一化平方差匹配 CV_TM_SQDIFF_NORMED
+- 相关匹配 CV_TM_CCORR：用两者的乘积匹配，数值越大表明匹配程度越好
+- 归一化相关匹配 CV_TM_CCORR_NORMED
+- 相关系数匹配 CV_TM_CCOEFF：用两者的相关系数匹配，1 表示完美的匹配，-1 表示最差的匹配
+- 归一化相关系数匹配 CV_TM_CCOEFF_NORMED
 
 归一化的意思就是将值统一到 0~1，这些方法的对比代码可到[源码处](#引用)查看。模板匹配也是应用卷积来实现的：假设原图大小为 W×H，模板图大小为 w×h，那么生成图大小是\(W-w+1\)×\(H-h+1\)，生成图中的每个像素值表示原图与模板的匹配程度。
 
@@ -71,7 +71,7 @@ h, w = template.shape[:2]
 
 # 2.标准相关模板匹配
 res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)
-threshold = 0.8 
+threshold = 0.8
 
 # 3.这边是 Python/Numpy 的知识，后面解释
 loc = np.where(res >= threshold)  # 匹配程度大于%80 的坐标 y,x
@@ -80,11 +80,11 @@ for pt in zip(*loc[::-1]):  # *号表示可选参数
     cv2.rectangle(img_rgb, pt, right_bottom, (0, 0, 255), 2)
 ```
 
-![](http://cos.codec.wang/cv2_template_matching_multi.jpg)
+![](https://cos.codec.wang/cv2_template_matching_multi.jpg)
 
-第3步有几个Python/Numpy的重要知识，来大致看下：
+第 3 步有几个 Python/Numpy 的重要知识，来大致看下：
 
-* [np.where\(\)](https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html)在这里返回 res 中值大于 0.8 的所有坐标，如：
+- [np.where\(\)](https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html)在这里返回 res 中值大于 0.8 的所有坐标，如：
 
 ```python
 x = np.arange(9.).reshape(3, 3)
@@ -92,9 +92,9 @@ print(np.where(x > 5))
 # 结果 (先 y 坐标，再 x 坐标)：(array([2, 2, 2]), array([0, 1, 2]))
 ```
 
-![](http://cos.codec.wang/cv2_np_where_function.jpg)
+![](https://cos.codec.wang/cv2_np_where_function.jpg)
 
-* [zip\(\)](https://docs.python.org/3/library/functions.html#zip)函数，功能强大到难以解释，举个简单例子就知道了：
+- [zip\(\)](https://docs.python.org/3/library/functions.html#zip)函数，功能强大到难以解释，举个简单例子就知道了：
 
 ```python
 x = [1, 2, 3]
@@ -102,7 +102,7 @@ y = [4, 5, 6]
 print(list(zip(x, y)))  # [(1, 4), (2, 5), (3, 6)]
 ```
 
-这样大家就能理解前面代码的用法了吧：因为 loc 是先 y 坐标再 x 坐标，所以用 loc\[::-1\]翻转一下，然后再用zip函数拼接在一起。
+这样大家就能理解前面代码的用法了吧：因为 loc 是先 y 坐标再 x 坐标，所以用 loc\[::-1\]翻转一下，然后再用 zip 函数拼接在一起。
 
 ## 练习
 
@@ -110,13 +110,12 @@ print(list(zip(x, y)))  # [(1, 4), (2, 5), (3, 6)]
 
 ## 小结
 
-* 模板匹配用来在大图中找小图。
-* `cv2.matchTemplate()`用来进行模板匹配。
+- 模板匹配用来在大图中找小图。
+- `cv2.matchTemplate()`用来进行模板匹配。
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/16-Template-Matching)
-* [Template Matching](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html)
-* [模板匹配](http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/histograms/template_matching/template_matching.html#template-matching)
-* [TemplateMatchModes](https://docs.opencv.org/3.3.1/df/dfb/group__imgproc__object.html#ga3a7850640f1fe1f58fe91a2d7583695d)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/16-Template-Matching)
+- [Template Matching](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_template_matching/py_template_matching.html)
+- [模板匹配](http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/imgproc/histograms/template_matching/template_matching.html#template-matching)
+- [TemplateMatchModes](https://docs.opencv.org/3.3.1/df/dfb/group__imgproc__object.html#ga3a7850640f1fe1f58fe91a2d7583695d)

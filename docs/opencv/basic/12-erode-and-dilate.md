@@ -1,6 +1,6 @@
 # 12: 腐蚀与膨胀
 
-![](http://cos.codec.wang/cv2_understand_morphological.jpg)
+![](https://cos.codec.wang/cv2_understand_morphological.jpg)
 
 学习常用形态学操作：腐蚀膨胀，开运算和闭运算。图片等可到文末引用处下载。
 
@@ -16,7 +16,7 @@
 
 形态学操作其实就是**改变物体的形状**，比如腐蚀就是"变瘦"，膨胀就是"变胖"，看下图就明白了：
 
-![](http://cos.codec.wang/cv2_understand_morphological.jpg)
+![](https://cos.codec.wang/cv2_understand_morphological.jpg)
 
 > 经验之谈：形态学操作一般作用于二值化图，来连接相邻的元素或分离成独立的元素。**腐蚀和膨胀是针对图片中的白色部分！**
 
@@ -24,7 +24,7 @@
 
 腐蚀的效果是把图片"变瘦"，其原理是在原图的小区域内取局部最小值。因为是二值化图，只有 0 和 255，所以小区域内有一个是 0 该像素点就为 0：
 
-![](http://cos.codec.wang/cv2_understand_erosion.jpg)
+![](https://cos.codec.wang/cv2_understand_erosion.jpg)
 
 这样原图中边缘地方就会变成 0，达到了瘦身目的（小胖福利\(●ˇ∀ˇ●\)）
 
@@ -47,7 +47,7 @@ kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))  # 椭圆结构
 kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5))  # 十字形结构
 ```
 
-![](http://cos.codec.wang/cv2_morphological_struct_element.jpg)
+![](https://cos.codec.wang/cv2_morphological_struct_element.jpg)
 
 ### 膨胀
 
@@ -75,7 +75,7 @@ img = cv2.imread('j_noise_in.bmp', 0)
 closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)  # 闭运算
 ```
 
-![](http://cos.codec.wang/cv2_morphological_opening_closing.jpg)
+![](https://cos.codec.wang/cv2_morphological_opening_closing.jpg)
 
 > 经验之谈：很多人对开闭运算的作用不是很清楚（好吧，其实是比较容易混 ◑﹏◐），但看上图 ↑，不用怕：如果我们的目标物体外面有很多无关的小区域，就用开运算去除掉；如果物体内部有很多小黑洞，就用闭运算填充掉。
 
@@ -90,7 +90,7 @@ img = cv2.imread('school.bmp', 0)
 gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)
 ```
 
-![](http://cos.codec.wang/cv2_morphological_gradient.jpg)
+![](https://cos.codec.wang/cv2_morphological_gradient.jpg)
 
 - 顶帽：原图减去开运算后的图：`src - opening`
 

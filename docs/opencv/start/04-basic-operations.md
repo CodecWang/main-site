@@ -1,15 +1,15 @@
 # 04: 图像基本操作
 
-![](http://cos.codec.wang/cv2_lena_face_roi_crop.jpg)
+![](https://cos.codec.wang/cv2_lena_face_roi_crop.jpg)
 
 学习获取和修改像素点的值，ROI 感兴趣区域，通道分离合并等基本操作。图片等可到文末引用处下载。
 
 ## 目标
 
-* 访问和修改图片像素点的值
-* 获取图片的宽、高、通道数等属性
-* 了解感兴趣区域 ROI
-* 分离和合并图像通道
+- 访问和修改图片像素点的值
+- 获取图片的宽、高、通道数等属性
+- 了解感兴趣区域 ROI
+- 分离和合并图像通道
 
 ## 教程
 
@@ -76,7 +76,7 @@ print(img.size)  # 263*247*3=194883
 
 [ROI](https://baike.baidu.com/item/ROI/1125333#viewPageContent)：Region of Interest，感兴趣区域。什么意思呢？比如我们要检测眼睛，因为眼睛肯定在脸上，所以我们感兴趣的只有脸这部分，其他都不 care，所以可以单独把脸截取出来，这样就可以大大节省计算量，提高运行速度。
 
-![&#x53EA;&#x5173;&#x5FC3;&#x8138;\( &#x256F;&#x25A1;&#x2570; \)](http://cos.codec.wang/cv2_lena_face_roi_crop.jpg)
+![只关心脸( ╯□╰ )](https://cos.codec.wang/cv2_lena_face_roi_crop.jpg)
 
 截取 ROI 非常简单，指定图片的范围即可（后面我们学了特征后，就可以自动截取辣，\(ง •\_•\)ง）：
 
@@ -106,8 +106,8 @@ cv2.waitKey(0)
 
 ## 小结
 
-* `img[y,x]`获取/设置像素点值，`img.shape`：图片的形状（行数、列数、通道数）,`img.dtype`：图像的数据类型。
-* `img[y1:y2,x1:x2]`进行 ROI 截取，`cv2.split()/cv2.merge()`通道分割/合并。更推荐的获取单通道方式：`b = img[:, :, 0]`。
+- `img[y,x]`获取/设置像素点值，`img.shape`：图片的形状（行数、列数、通道数）,`img.dtype`：图像的数据类型。
+- `img[y1:y2,x1:x2]`进行 ROI 截取，`cv2.split()/cv2.merge()`通道分割/合并。更推荐的获取单通道方式：`b = img[:, :, 0]`。
 
 ## 练习
 
@@ -115,11 +115,10 @@ cv2.waitKey(0)
 
 ## 接口文档
 
-* [cv2.split\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga0547c7fed86152d7e9d0096029c8518a)
-* [cv2.merge\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga7d7b4d6c6ee504b30a20b1680029c7b4)
+- [cv2.split\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga0547c7fed86152d7e9d0096029c8518a)
+- [cv2.merge\(\)](https://docs.opencv.org/4.0.0/d2/de8/group__core__array.html#ga7d7b4d6c6ee504b30a20b1680029c7b4)
 
 ## 引用
 
-* [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/04-Basic-Operations)
-* [Basic Operations on Images](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html#basic-ops)
-
+- [本节源码](https://github.com/codecwang/OpenCV-Python-Tutorial/tree/master/04-Basic-Operations)
+- [Basic Operations on Images](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_core/py_basic_ops/py_basic_ops.html#basic-ops)

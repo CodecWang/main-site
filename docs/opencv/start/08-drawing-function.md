@@ -1,6 +1,6 @@
 # 08: 绘图功能
 
-![](http://cos.codec.wang/cv2_drawing_functions.jpg)
+![](https://cos.codec.wang/cv2_drawing_functions.jpg)
 
 学习画线、圆和矩形等多种几何形状，给图片添加文字。图片等可到文末引用处下载。
 
@@ -32,7 +32,7 @@ cv2.imshow('img', img)
 cv2.waitKey(0)
 ```
 
-![绘制各种几何形状](http://cos.codec.wang/cv2_drawing_functions.jpg)
+![绘制各种几何形状](https://cos.codec.wang/cv2_drawing_functions.jpg)
 
 上图就是本教程绘制的最终效果，下面一步步来看：
 
@@ -137,7 +137,7 @@ cv2.putText(img, 'ex2tron', (10, 500), font,
 
 1. 你能用已学的绘图功能画出 OpenCV 的 logo 吗？\(提示：椭圆和圆\)
 
-![OpenCV logo](http://cos.codec.wang/cv2_draw_opencv_logo.jpg)
+![OpenCV logo](https://cos.codec.wang/cv2_draw_opencv_logo.jpg)
 
 ## 接口文档
 

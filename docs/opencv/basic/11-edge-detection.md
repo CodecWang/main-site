@@ -1,6 +1,6 @@
 # 11: 边缘检测
 
-![](http://cos.codec.wang/cv2_canny_edge_detection_threshold.jpg)
+![](https://cos.codec.wang/cv2_canny_edge_detection_threshold.jpg)
 
 学习使用 Canny 获取图像的边缘。图片等可到文末引用处下载。
 
@@ -26,7 +26,7 @@ cv2.imshow('canny', np.hstack((img, edges)))
 cv2.waitKey(0)
 ```
 
-![](http://cos.codec.wang/cv2_canny_edge_detection.jpg)
+![](https://cos.codec.wang/cv2_canny_edge_detection.jpg)
 
 `cv2.Canny()`进行边缘检测，参数 2、3 表示最低、高阈值，下面来解释下具体原理。
 
@@ -66,7 +66,7 @@ $$
 
 梯度其实已经表示了轮廓，但为了进一步筛选，可以在上面的四个角度方向上再取局部极大值：
 
-![](http://cos.codec.wang/cv2_understand_canny_direction.jpg)
+![](https://cos.codec.wang/cv2_understand_canny_direction.jpg)
 
 比如，A 点在 45° 方向上大于 B/C 点，那就保留它，把 B/C 设置为 0。
 
@@ -74,7 +74,7 @@ $$
 
 经过前面三步，就只剩下 0 和可能的边缘梯度值了，为了最终确定下来，需要设定高低阈值：
 
-![](http://cos.codec.wang/cv2_understand_canny_max_min_val.jpg)
+![](https://cos.codec.wang/cv2_understand_canny_max_min_val.jpg)
 
 - 像素点的值大于最高阈值，那肯定是边缘（上图 A）
 - 同理像素值小于最低阈值，那肯定不是边缘
@@ -96,13 +96,13 @@ cv2.waitKey(0)
 
 代码中我用了[番外篇：Otsu 阈值法](../start/extra-04-otsu-thresholding)中的自动阈值分割，如果你不太了解，大可以使用传统的方法，不过如果是下面这种图片，推荐用 Otsu 阈值法。另外 Python 中某个值不用的话，就写个下划线'\_'。
 
-![](http://cos.codec.wang/cv2_canny_edge_detection_threshold.jpg)
+![](https://cos.codec.wang/cv2_canny_edge_detection_threshold.jpg)
 
 ## 练习
 
 1. （选做）如果你不太理解高低阈值的效果，创建两个滑动条来调节它们的值看看：
 
-![](http://cos.codec.wang/cv2_trackbar_maxval_minval_canny.gif)
+![](https://cos.codec.wang/cv2_trackbar_maxval_minval_canny.gif)
 
 ## 小结
 

@@ -6,7 +6,7 @@ sidebar_label: "OpenCV"
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/CodecWang/opencv-python-tutorial?style=social)](https://github.com/CodecWang/opencv-python-tutorial)
 
-![](http://cos.codec.wang/opencv-python-tutorial-amend-new-cover.png)
+![](https://cos.codec.wang/opencv-python-tutorial-amend-new-cover.png)
 
 ### 入门篇
 
@@ -51,4 +51,4 @@ sidebar_label: "OpenCV"
 
 > 如果您觉得写的不错的话，欢迎打赏，我会努力写出更好的内容！✊🤟
 
-![](http://cos.codec.wang/wechat_alipay_pay_pic.png)
+![](https://cos.codec.wang/wechat_alipay_pay_pic.png)

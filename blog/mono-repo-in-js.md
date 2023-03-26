@@ -1,7 +1,7 @@
 ---
 date: 2020-11-05
 authors: codec
-image: http://cos.codec.wang/monolith-multi-repo-mono-repo.jpg
+image: https://cos.codec.wang/monolith-multi-repo-mono-repo.jpg
 tags: [mono-repo, "大仓", Lerna]
 ---
 
@@ -13,7 +13,7 @@ tags: [mono-repo, "大仓", Lerna]
 
 我们以一个通常的 Node JS 项目为例，简要说明这几种仓库管理方式，如下图：
 
-![](http://cos.codec.wang/monolith-multi-repo-mono-repo.jpg)
+![](https://cos.codec.wang/monolith-multi-repo-mono-repo.jpg)
 
 <!--truncate-->
 
@@ -92,7 +92,7 @@ mono-repo
 
 该命令会执行类似`npm install`的功能，不过 Lerna 会一次性安装所有包的所有依赖，默认将依赖安装在各个包的 node_modules 下，并不会将共同的依赖提升到顶层 node_modules，可以通过添加`--hoist`来做到：`lerna bootstrap --hoist`。
 
-![](http://cos.codec.wang/lerna-hoist.jpg)
+![](https://cos.codec.wang/lerna-hoist.jpg)
 
 每次都加上`—-hoist`会比较麻烦，可以配置 lerna.json 的 bootstrap 选项默认执行提升：
 
@@ -110,7 +110,7 @@ mono-repo
 
 **Lerna 判断版本号的字符串一模一样时才认为是同样的依赖，并不是特别的智能**（后面介绍的 Yarn Workspace 是根据语义版本判断，无此问题）。比如 pkgA 依赖的 lodash 是 4.17.21，pkgB 依赖的是 ^4.17.21，lerna 认为这是两个版本，所以仍然会保留 pkgB 的 node_modules 和 package-lock.json...
 
-![](http://cos.codec.wang/lerna-hoist-version-judge.jpg)
+![](https://cos.codec.wang/lerna-hoist-version-judge.jpg)
 
 - 安装依赖
 
@@ -163,7 +163,7 @@ lerna exec -- rm -rf dist --scope=pkgA
 
 Lerna 支持两种版本发布模式，默认为固定模式，也就是所有包的版本号会跟随 lerna.json - version 字段中定义的版本号。将 version 的值更改为 independent 后，就变成了独立模式，此时对于变更的包，Lerna 会让开发者决定每个包是语义版本中的哪种变更：patch、minor 还是 major。
 
-![](http://cos.codec.wang/publish-version.jpg)
+![](https://cos.codec.wang/publish-version.jpg)
 
 ```json
 {

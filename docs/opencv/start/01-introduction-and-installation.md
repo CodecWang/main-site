@@ -1,6 +1,6 @@
 # 01: 简介与安装
 
-![](http://cos.codec.wang/cv2_install_opencv-python.jpg)
+![](https://cos.codec.wang/cv2_install_opencv-python.jpg)
 
 相信大部分人知道的 OpenCV 都是用 C++来开发的，那为什么我推荐使用 Python 呢？
 
@@ -12,7 +12,7 @@
 
 比如我分别用 Python 和 C++实现读入图片和调整图片的亮度对比度，结果如下：
 
-![](http://cos.codec.wang/cv2_python_vs_cplus_speed.jpg)
+![](https://cos.codec.wang/cv2_python_vs_cplus_speed.jpg)
 
 **可以看到某些情况下 Python 的运行速度甚至好于 C++，代码行数也直接少一半多！**
 
@@ -22,7 +22,7 @@
 
 近些年，人工智能 AI 相关技术的快速发展大家有目共睹。在编程语言方面，更多人希望的是具备高效开发效率、跨平台、高度扩展性的语言，尤其是一些 AI 巨头优先推出支持 Python 语言的深度学习框架，如 Facebook 的[PyTorch](https://pytorch.org/)、Google 的[Tensorflow](https://tensorflow.google.cn/)等，可以说 Python 是名副其实的“网红语言”了。
 
-![](http://cos.codec.wang/cv2_ai_ml_dl2.jpg)
+![](https://cos.codec.wang/cv2_ai_ml_dl2.jpg)
 
 从[TIOBE 编程语言排行榜](https://www.tiobe.com/tiobe-index/)也可以看到，Python 发展迅猛，已经逼近 C++的份额。这个排行榜每月更新，就不截图了，我编写时的 TOP5：Java/C/C++/Python/C\#。
 
@@ -78,7 +78,7 @@ print(cv2.__version__)
 
 为了便于学习 OpenCV，我编写了一款教学软件[LearnOpenCVEdu](https://github.com/codecwang/LearnOpenCVEdu)，目前只开发了一部分功能，欢迎 Star 支持:smiley:。
 
-![](http://cos.codec.wang/cv2_learn_opencv_edu_soft_screenshot.jpg)
+![](https://cos.codec.wang/cv2_learn_opencv_edu_soft_screenshot.jpg)
 
 > 经验之谈：虽然我推荐大家使用 OpenCV-Python 进行图像处理，但想要深入理解 OpenCV，C++是必须的，尤其是**OpenCV 源码**！
 

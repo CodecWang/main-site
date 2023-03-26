@@ -1,6 +1,6 @@
 # 番外篇: 凸包及更多轮廓特征
 
-![](http://cos.codec.wang/cv2_understand_convex.jpg)
+![](https://cos.codec.wang/cv2_understand_convex.jpg)
 
 计算凸包及更多轮廓特征。图片等可到文末引用处下载。
 
@@ -28,13 +28,13 @@ cv2.polylines(image, [approx], True, (0, 255, 0), 2)
 
 其中`cv2.approxPolyDP()`的参数 2\(epsilon\)是一个距离值，表示多边形的轮廓接近实际轮廓的程度，值越小，越精确；参数 3 表示是否闭合。
 
-![](http://cos.codec.wang/cv2_understand_approxpoly.jpg)
+![](https://cos.codec.wang/cv2_understand_approxpoly.jpg)
 
 ## 凸包
 
 [凸包](https://baike.baidu.com/item/%E5%87%B8%E5%8C%85/179150?fr=aladdin)跟多边形逼近很像，只不过它是物体最外层的"凸"多边形：集合 A 内连接任意两个点的直线都在 A 的内部，则称集合 A 是凸形的。如下图，红色的部分为手掌的凸包，双箭头部分表示凸缺陷\(Convexity Defects\)，凸缺陷常用来进行手势识别等：
 
-![](http://cos.codec.wang/cv2_understand_convex.jpg)
+![](https://cos.codec.wang/cv2_understand_convex.jpg)
 
 ```python
 # 1.先找到轮廓
@@ -51,7 +51,7 @@ image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
 cv2.polylines(image, [hull], True, (0, 255, 0), 2)
 ```
 
-![](http://cos.codec.wang/cv2_convex_hull.jpg)
+![](https://cos.codec.wang/cv2_convex_hull.jpg)
 
 其中函数`cv2.convexHull()`有个可选参数 returnPoints，默认是 True，代表返回角点的 x/y 坐标；如果为 False 的话，表示返回轮廓中是凸包角点的索引，比如说：
 

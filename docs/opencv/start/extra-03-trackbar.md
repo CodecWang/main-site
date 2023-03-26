@@ -1,6 +1,6 @@
 # 番外篇：滑动条
 
-![](http://cos.codec.wang/cv2_track_bar_rgb.jpg)
+![](https://cos.codec.wang/cv2_track_bar_rgb.jpg)
 
 学习使用滑动条动态调整参数。图片等可到文末引用处下载。
 
@@ -49,7 +49,7 @@ while(True):
     img[:] = [b, g, r]
 ```
 
-![](http://cos.codec.wang/cv2_track_bar_rgb.jpg)
+![](https://cos.codec.wang/cv2_track_bar_rgb.jpg)
 
 ## 小结
 

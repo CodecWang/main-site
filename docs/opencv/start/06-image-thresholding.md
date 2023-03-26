@@ -1,6 +1,6 @@
 # 06: 阈值分割
 
-![](http://cos.codec.wang/cv2_threshold_binary_demo.jpg)
+![](https://cos.codec.wang/cv2_threshold_binary_demo.jpg)
 
 学习使用不同的阈值方法"二值化"图像。图片等可到文末引用处下载。
 
@@ -15,7 +15,7 @@
 
 固定阈值分割很直接，一句话说就是像素点值大于阈值变成一类值，小于阈值变成另一类值。
 
-![](http://cos.codec.wang/cv2_threshold_binary_demo.jpg)
+![](https://cos.codec.wang/cv2_threshold_binary_demo.jpg)
 
 ```python
 import cv2
@@ -61,11 +61,11 @@ for i in range(6):
 plt.show()
 ```
 
-![5 种不同的阈值方式结果](http://cos.codec.wang/cv2_different_threshold_demo.jpg)
+![5 种不同的阈值方式结果](https://cos.codec.wang/cv2_different_threshold_demo.jpg)
 
 > 经验之谈：很多人误以为阈值分割就是[二值化](https://baike.baidu.com/item/%E4%BA%8C%E5%80%BC%E5%8C%96)。从上图中可以发现，两者并不等同，阈值分割结果是两类值，而不是两个值，所以教程开头我把二值化加了引号。
 
-![](http://cos.codec.wang/cv2_different_thresholds_theory.jpg)
+![](https://cos.codec.wang/cv2_different_thresholds_theory.jpg)
 
 ### 自适应阈值
 
@@ -93,7 +93,7 @@ for i in range(4):
 plt.show()
 ```
 
-![自适应阈值对比固定阈值](http://cos.codec.wang/cv2_adaptive_vs_global_thresholding.jpg)
+![自适应阈值对比固定阈值](https://cos.codec.wang/cv2_adaptive_vs_global_thresholding.jpg)
 
 - 参数 1：要处理的原图
 - 参数 2：最大阈值，一般为 255

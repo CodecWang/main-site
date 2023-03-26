@@ -1,6 +1,6 @@
 # 17: 霍夫变换
 
-![](http://cos.codec.wang/cv2_understand_hough_transform.jpg)
+![](https://cos.codec.wang/cv2_understand_hough_transform.jpg)
 
 学习使用霍夫变换识别出图像中的直线和圆。图片等可到文末引用处下载。
 
@@ -16,27 +16,27 @@
 
 霍夫变换常用来在图像中提取直线和圆等几何形状，我来做个简易的解释：
 
-![](http://cos.codec.wang/cv2_understand_hough_transform.jpg)
+![](https://cos.codec.wang/cv2_understand_hough_transform.jpg)
 
 学过几何的都知道，直线可以分别用直角坐标系和极坐标系来表示：
 
-![](http://cos.codec.wang/cv2_line_expression_in_coordinate.jpg)
+![](https://cos.codec.wang/cv2_line_expression_in_coordinate.jpg)
 
-那么经过某个点\(x0,y0\)的所有直线都可以用这个式子来表示：
+那么经过某个点 (x0,y0) 的所有直线都可以用这个式子来表示：
 
 $$
 r_\theta=x_0\cdot\cos \theta+y_0\cdot\sin \theta
 $$
 
-也就是说每一个\(r,θ\)都表示一条经过\(x0,y0\)直线，那么同一条直线上的点必然会有同样的\(r,θ\)。如果将某个点所有的\(r,θ\)绘制成下面的曲线，那么同一条直线上的点的\(r,θ\)曲线会相交于一点：
+也就是说每一个 (r,θ) 都表示一条经过 (x0,y0) 直线，那么同一条直线上的点必然会有同样的 (r,θ)。如果将某个点所有的 (r,θ) 绘制成下面的曲线，那么同一条直线上的点的 (r,θ) 曲线会相交于一点：
 
-![](http://cos.codec.wang/cv2_curve_of_r_theta.jpg)
+![](https://cos.codec.wang/cv2_curve_of_r_theta.jpg)
 
-OpenCV 中首先计算\(r,θ\) 累加数，累加数超过一定值后就认为在同一直线上。
+OpenCV 中首先计算 (r,θ) 累加数，累加数超过一定值后就认为在同一直线上。
 
 ### 霍夫直线变换
 
-OpenCV 中用`cv2.HoughLines()`在二值图上实现霍夫变换，函数返回的是一组直线的\(r,θ\)数据：
+OpenCV 中用`cv2.HoughLines()`在二值图上实现霍夫变换，函数返回的是一组直线的 (r,θ) 数据：
 
 ```python
 import cv2
@@ -75,7 +75,7 @@ for line in lines:
     cv2.line(drawing, (x1, y1), (x2, y2), (0, 0, 255))
 ```
 
-![](http://cos.codec.wang/cv2_hough_line_function.jpg)
+![](https://cos.codec.wang/cv2_hough_line_function.jpg)
 
 ### 统计概率霍夫直线变换
 
@@ -102,11 +102,11 @@ for line in lines:
 
 `cv2.LINE_AA`在之前绘图功能中讲解过，表示抗锯齿线型。
 
-![](http://cos.codec.wang/cv2_hough_lines_p_function.jpg)
+![](https://cos.codec.wang/cv2_hough_lines_p_function.jpg)
 
 ### 霍夫圆变换
 
-霍夫圆变换跟直线变换类似，只不过线是用\(r,θ\)表示，圆是用\(x_center,y_center,r\)来表示，从二维变成了三维，数据量变大了很多；所以一般使用霍夫梯度法减少计算量，对该算法感兴趣的同学可参考：[Circle Hough Transform](https://en.wikipedia.org/wiki/Circle_Hough_Transform)
+霍夫圆变换跟直线变换类似，只不过线是用 (r,θ) 表示，圆是用$(x_center,y_center,r)$ 来表示，从二维变成了三维，数据量变大了很多；所以一般使用霍夫梯度法减少计算量，对该算法感兴趣的同学可参考：[Circle Hough Transform](https://en.wikipedia.org/wiki/Circle_Hough_Transform)
 
 ```python
 drawing = np.zeros(img.shape[:], dtype=np.uint8)
@@ -129,7 +129,7 @@ for i in circles[0, :]:
     cv2.circle(drawing, (i[0], i[1]), 2, (0, 0, 255), 3)  # 画出圆心
 ```
 
-![](http://cos.codec.wang/cv2_hough_circles_function.jpg)
+![](https://cos.codec.wang/cv2_hough_circles_function.jpg)
 
 ## 小结
 

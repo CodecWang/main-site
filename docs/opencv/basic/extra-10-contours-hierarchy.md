@@ -1,6 +1,6 @@
 # 番外篇：轮廓层级
 
-![](http://cos.codec.wang/cv2_understand_hierarchy.jpg)
+![](https://cos.codec.wang/cv2_understand_hierarchy.jpg)
 
 了解轮廓间的层级关系。图片等可到文末引用处[文末引用出](#引用)下载。
 
@@ -10,7 +10,7 @@
 
 很多情况下，图像中的形状之间是有关联的，比如说下图：
 
-![](http://cos.codec.wang/cv2_understand_hierarchy.jpg)
+![](https://cos.codec.wang/cv2_understand_hierarchy.jpg)
 
 图中总共有 8 条轮廓，2 和 2a 分别表示外层和里层的轮廓，3 和 3a 也是一样。从图中看得出来：
 
@@ -61,7 +61,7 @@ cv2.drawContours(img, contours, -1, (0, 0, 255), 2)
 
 > 经验之谈：OpenCV 中找到的轮廓序号跟前面讲的不同噢，如下图：
 
-![](http://cos.codec.wang/cv2_hierarchy_RETR_TREE.jpg)
+![](https://cos.codec.wang/cv2_hierarchy_RETR_TREE.jpg)
 
 现在既然我们了解了层级的概念，那么类似 cv2.RETR_TREE 的轮廓寻找方式又是啥意思呢？
 
@@ -109,7 +109,7 @@ print(len(contours), hierarchy, sep='\n')
   [-1  1 -1 -1]]]
 ```
 
-![](http://cos.codec.wang/cv2_hierarchy_RETR_EXTERNAL.jpg)
+![](https://cos.codec.wang/cv2_hierarchy_RETR_EXTERNAL.jpg)
 
 ### 4. RETR_CCOMP
 
@@ -129,7 +129,7 @@ print(hierarchy)
   [-1  6 -1 -1]]]
 ```
 
-![](http://cos.codec.wang/cv2_hierarchy_RETR_CCOMP.jpg)
+![](https://cos.codec.wang/cv2_hierarchy_RETR_CCOMP.jpg)
 
 > 注意：使用这个参数找到的轮廓序号与之前不同。
 
@@ -139,7 +139,7 @@ print(hierarchy)
 
 1. 如下图，找到 3 个圆环的内环，然后填充成\(180,215,215\) 这种颜色：
 
-![](http://cos.codec.wang/cv2_hierarchy_fill_holes.jpg)
+![](https://cos.codec.wang/cv2_hierarchy_fill_holes.jpg)
 
 ## 引用
 
