@@ -1,7 +1,7 @@
 ---
 date: 2023-04-05
 authors: codec
-image: https://cos.codec.wang/undefinedcopilot-chat-main-ui.jpg
+image: https://cos.codec.wang/copilot-chat-main-ui.jpg
 tags: [Copilot, Github, ChatGPT]
 ---
 
@@ -9,7 +9,7 @@ tags: [Copilot, Github, ChatGPT]
 
 今天更新 VSCode 的时候在更新日志中看到了 Github Copilot，最近 ChatGPT 这么火爆，Copilot 也是跟进了 Chat 模式啊，这还不得马上体验体验...
 
-![](https://cos.codec.wang/undefinedcopilot-chat-vscode-changelog.jpg)
+![](https://cos.codec.wang/copilot-chat-vscode-changelog.jpg)
 
 目前还处于 beta 版，使用起来有几个条件：
 
@@ -23,13 +23,13 @@ tags: [Copilot, Github, ChatGPT]
 
 准备就绪后，VSCode 的侧边栏会多出一个对话图标，打开就是 Copilot 的 Chat 模式了。界面很简洁，聊天框内可以输入普通的文本，也可以用`/`来触发特定的指令，有对话内容后，聊天框上方还会显示一条推荐问题：
 
-![](https://cos.codec.wang/undefinedcopilot-chat-main-ui.jpg)
+![](https://cos.codec.wang/copilot-chat-main-ui.jpg)
 
 ## 非技术类问题
 
 首先是可以把它当作简化版的 ChatGPT 来使用的。默认回答是英文，你可以直接让它用中文回复。但你问一些它答不上来或者非技术相关的问题时，它会拒绝回答，或者虽然回答但会提示说：“我作为一个编程助手，xxx”（翻译：老子不是干这个的...🙃）
 
-![](https://cos.codec.wang/undefinedcopilot-chat-test.jpg)
+![](https://cos.codec.wang/copilot-chat-test.jpg)
 
 我目前测试下来，一些常识类或者数理逻辑的问题它是可以回答的，创作类的就不行了。接下来我们还是看看它的强项：编程助手。
 
@@ -42,19 +42,19 @@ tags: [Copilot, Github, ChatGPT]
 - `/simplify` 简化代码
 - `/tests` 编写单元测试
 
-![](https://cos.codec.wang/undefinedcopilot-chat-slash-topics.jpg)
+![](https://cos.codec.wang/copilot-chat-slash-topics.jpg)
 
 当然`/`这些指令是帮助你使用它，**实际可以不用输**。比如我在 [LeetCode](https://leetcode.cn/problems/generate-parentheses/) 上随便找了道题，先让它帮我把代码写出来。生成的代码可以复制或者直接插入到编辑器中鼠标所在的位置：
 
-![](https://cos.codec.wang/undefinedcopilot-chat-result-insert.jpg)
+![](https://cos.codec.wang/copilot-chat-result-insert.jpg)
 
 这时候输入`一步步解释代码`或者`/explain`，它会开始解释这个函数。以后再也没有看不懂的代码了 🙃..
 
-![](https://cos.codec.wang/undefinedcopilot-chat-explain.jpg)
+![](https://cos.codec.wang/copilot-chat-explain.jpg)
 
 编写单元测试、修复和简化代码都是类似的，就不演示了。它还提供了一些辅助类的指令：`/clear` 清除对话/开启新对话，`/vscode` VSCode 的相关帮助，`/help` Copilot 的相关帮助，比如：
 
-![](https://cos.codec.wang/undefinedcopilot-chat-vscode-minimap.jpg)
+![](https://cos.codec.wang/copilot-chat-vscode-minimap.jpg)
 
 ## Chat 模式的意义
 
