@@ -27,7 +27,7 @@ tags: [New Bing, Bing, ChatGPT]
 
 ![](https://cos.codec.wang/new-bing-frontend-fast.jpg)
 
-整体看下来 Chat 的布局还是蛮简单的，相信熟悉 React 的同学应该分分钟就能复刻出一套。
+整体看下来 Chat 的布局还是蛮简单的，相信熟悉 React/Vue 的同学应该很快就能复刻出一套。
 
 ```bash
 cib-serp
@@ -66,25 +66,7 @@ GPT 是一种 Generative 生成式的语言模型，简单理解就是每次生�
           "timestamp": "2023-04-08T13:16:20.1700814+00:00",
           "messageId": "23f57b4c-467f-4271-83bd-59a839cf910e",
           "offense": "Unknown",
-          "adaptiveCards": [
-            {
-              "type": "AdaptiveCard",
-              "version": "1.0",
-              "body": [
-                {
-                  "type": "TextBlock",
-                  "text": "[1]: https://stackoverflow.com/questions/41092222/how-do-you-get-the-params-from-a-url-after-running-it-with-python-requests \"How do you get the params from a URL after running it with Python requests?\"\n[2]: https://www.appsloveworld.com/coding/dataframe/28/extracting-url-parameters-using-python-and-pyspark \"[Code]-Extracting URL parameters using Python and PySpark\"\n[3]: https://stackoverflow.com/questions/5074803/retrieving-parameters-from-a-url \"python - Retrieving parameters from a URL - Stack Overflow\"\n[4]: https://stackoverflow.com/questions/28328890/python-requests-extract-url-parameters-from-a-string \"Python-Requests, extract url parameters from a string\"\n\nHere's an example Python code to extract URL parameters using `urlparse` and `parse_qs` functions from the `urllib.parse` module:\n\n```\nfrom urllib.parse import urlparse, parse_qs\n\nurl = \"https://www.example.com/some_path?some_key=some_value&another_key=another_value\"\nparsed_url = urlparse(url)\nparams = parse_qs(parsed_url.query)\n\nprint(params)\n```\n\nIn this example, we first import the necessary modules. Then we define",
-                  "wrap": true
-                }
-              ]
-            }
-          ],
-          "sourceAttributions": [],
-          "feedback": { "tag": null, "updatedOn": null, "type": "None" },
-          "contentOrigin": "DeepLeo",
-          "privacy": null
-        }
-      ],
+          "adaptiveCards": [...],
       "requestId": "2ae3d244-c6a5-4f8a-82f7-45ce0e07e6f5"
     }
   ]
@@ -93,13 +75,15 @@ GPT 是一种 Generative 生成式的语言模型，简单理解就是每次生�
 
 ## Markdown 渲染
 
-既然后台返回的是 Markdown，前端就需要将它转换成 HTML 渲染出来。有很多成熟优秀的库可以做这件事，比如 marked、markdown-it 等等。我在 Bing 的代码里面全局搜了一下，Bing 应该用的是 [markdown-it](https://github.com/markdown-it/markdown-it)。
+既然后台返回的是 Markdown，前端就需要将它转换成 HTML 渲染出来。有很多成熟优秀的库可以做这件事，比如 marked、markdown-it 等等。我在 Bing 的代码里面全局搜了一下，Bing 用的是 [markdown-it](https://github.com/markdown-it/markdown-it)。
 
 ![](https://cos.codec.wang/new-bing-frontend-markdown-it.jpg)
 
+markdown-it 配合一些插件就可以显示比较丰富的格式，比如 LaTex 公式、脚注等等。
+
 ## iframe 嵌入 Bing 搜索结果
 
-New Bing 有时候会在回答结果的下面多一个更多内容的卡片，比如问它"北京的天气"、"最新的新闻"、"Tom Cruise 的照片"等等。前面我们说到 message 实际上是 Markdown，显然用 Markdown 是很难渲染出这么复杂的 UI/UX 内容的。查看元素会发现这一块其实是 iframe，再看 [iframe/src](https://www.bing.com/search?showselans=1&IG=0947A48C570E4219857147B1BCF67105&IID=SERP.5027&cw=561&ch=733&kseed=7500&SFX=2&q=Tom+Cruise%E7%9A%84%E7%85%A7%E7%89%87&iframeid=ed7c3dd6-226b-44ae-87fe-16622956b590) 属性值，它实际是将 Bing 的搜索结果页面嵌入了进来：
+New Bing 有时候会在回答结果的下面多一个更多内容的卡片，比如问它"北京的天气"、"最新的新闻"、"Tom Cruise 的照片"等等，这让 Bing 的功能体验更加丰富。前面我们说到 message 实际上是 Markdown，显然用 Markdown 是很难渲染出这么复杂的 UI/UX 内容的。查看元素会发现这一块其实是 iframe，再看 [iframe/src](https://www.bing.com/search?showselans=1&IG=0947A48C570E4219857147B1BCF67105&IID=SERP.5027&cw=561&ch=733&kseed=7500&SFX=2&q=Tom+Cruise%E7%9A%84%E7%85%A7%E7%89%87&iframeid=ed7c3dd6-226b-44ae-87fe-16622956b590) 属性值，它实际是将 Bing 的搜索结果页面嵌入了进来：
 
 ![](https://cos.codec.wang/new-bing-front-end-iframe.jpg)
 

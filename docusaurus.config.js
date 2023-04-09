@@ -43,7 +43,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
-          blogSidebarCount: 8,
+          // blogSidebarCount: 8,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/CodecWang/main-site/tree/master/",
