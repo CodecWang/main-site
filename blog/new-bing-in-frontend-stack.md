@@ -5,7 +5,7 @@ image: https://cos.codec.wang/new-bing-frontend-html-mode.jpg
 tags: [New Bing, Bing, ChatGPT]
 ---
 
-# 从前端角度扒一扒 New Bing
+# 从前端角度看 New Bing: Web Components、WebSocket...
 
 相信大家今年以来有关 ChatGPT、谷歌 Bard、微软 New Bing 的文章或新闻看过不少了。今天呢，闲着没事我们换个角度来看下 New Bing 都用了哪些前端技术。
 
