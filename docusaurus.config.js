@@ -140,6 +140,23 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: "85CRDURY77",
+        // Public API key: it is safe to commit it
+        apiKey: "a7c23daef47c185b7f7c351ac98534a5",
+
+        indexName: "codec",
+
+        // Optional: see doc section below
+        contextualSearch: true,
+
+        // Optional: Algolia search parameters
+        searchParameters: {},
+
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: "search",
+      },
     }),
   stylesheets: [
     {
