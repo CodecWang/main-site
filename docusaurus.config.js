@@ -77,7 +77,7 @@ const config = {
               },
             ],
           },
-          { to: "blog", label: "Blog", position: "left" },
+          { to: "blog", label: "Posts", position: "left" },
           {
             href: "https://github.com/CodecWang",
             label: "GitHub",
@@ -92,8 +92,12 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "Posts",
                 to: "/blog",
+              },
+              {
+                label: "opencv-python-tutorial",
+                to: "/docs/opencv",
               },
             ],
           },
@@ -101,9 +105,12 @@ const config = {
             title: "Community",
             items: [
               {
-                // autocorrect: false
-                label: "粤ICP备20002165号-1",
-                href: "https://beian.miit.gov.cn/",
+                label: "Bilibili",
+                href: "https://space.bilibili.com/23664899/",
+              },
+              {
+                label: "YouTube",
+                href: "https://www.youtube.com/@codecwang/",
               },
             ],
           },
@@ -111,12 +118,9 @@ const config = {
             title: "More",
             items: [
               {
-                label: "Blog",
-                to: "/blog",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/CodecWang",
+                // autocorrect: false
+                label: "粤ICP备20002165号-1",
+                href: "https://beian.miit.gov.cn/",
               },
             ],
           },
