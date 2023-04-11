@@ -171,6 +171,15 @@ const config = {
       crossorigin: "anonymous",
     },
   ],
+  plugins: [
+    [
+      "@rainyjune/docusaurus-plugin-baidu-analytics",
+      {
+        trackingID: "64ccc7b59da2d66ad72b1bebf237e4f1", // Your Baidu Analytics Tracking ID. Required.
+        isDebugMode: false, // Enable debug mode or not. Optional, default to `false`.
+      },
+    ],
+  ],
 };
 
 module.exports = config;
