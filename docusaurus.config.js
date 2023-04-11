@@ -69,10 +69,16 @@ const config = {
         },
         hideOnScroll: true,
         items: [
+          { to: "blog", label: "Posts", position: "right" },
+          {
+            to: "blog/archive",
+            label: "Archive",
+            position: "right",
+          },
           {
             type: "dropdown",
             label: "Docs",
-            position: "left",
+            position: "right",
             to: "docs/opencv",
             items: [
               {
@@ -81,7 +87,6 @@ const config = {
               },
             ],
           },
-          { to: "blog", label: "Posts", position: "left" },
           {
             href: "https://github.com/CodecWang",
             label: "GitHub",
@@ -121,6 +126,7 @@ const config = {
           {
             title: "More",
             items: [
+              { to: "/", label: "About Me" },
               {
                 // autocorrect: false
                 label: "粤ICP备20002165号-1",
@@ -149,15 +155,11 @@ const config = {
         appId: "85CRDURY77",
         // Public API key: it is safe to commit it
         apiKey: "a7c23daef47c185b7f7c351ac98534a5",
-
         indexName: "codec",
-
         // Optional: see doc section below
         contextualSearch: true,
-
         // Optional: Algolia search parameters
         searchParameters: {},
-
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
       },
@@ -170,15 +172,6 @@ const config = {
         "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
       crossorigin: "anonymous",
     },
-  ],
-  plugins: [
-    [
-      "@rainyjune/docusaurus-plugin-baidu-analytics",
-      {
-        trackingID: "64ccc7b59da2d66ad72b1bebf237e4f1", // Your Baidu Analytics Tracking ID. Required.
-        isDebugMode: false, // Enable debug mode or not. Optional, default to `false`.
-      },
-    ],
   ],
 };
 
