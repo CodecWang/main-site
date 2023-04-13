@@ -5,9 +5,11 @@ image: https://cos.codec.wang/copilot-chat-main-ui.jpg
 tags: [Copilot, Github, ChatGPT]
 ---
 
-# Github Copilot Chat 模式体验
+# Github Copilot X Chat 模式体验
 
 今天更新 VSCode 的时候在更新日志中看到了 Github Copilot，最近 ChatGPT 这么火爆，Copilot 也是跟进了 Chat 模式啊，这还不得马上体验体验...
+
+> [Copilot Next](https://githubnext.com/)包含很多项目，Chat 模式只是其中之一，[Labs](https://githubnext.com/projects/copilot-labs/)也比较有趣，大家可以体验下～
 
 ![](https://cos.codec.wang/copilot-chat-vscode-changelog.jpg)
 
