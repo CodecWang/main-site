@@ -1,6 +1,6 @@
 ---
 date: 2022-06-04
-authors: codec
+authors: arthur
 tags: ["记忆化", 闭包, Closure]
 ---
 

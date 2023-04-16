@@ -1,6 +1,6 @@
 ---
 date: 2020-08-29
-authors: codec
+authors: arthur
 image: https://cos.codec.wang/can-i-use-browser-compatiblity-fetch.jpg
 tags: ["兼容性", "浏览器"]
 ---

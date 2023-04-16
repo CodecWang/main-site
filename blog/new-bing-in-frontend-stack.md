@@ -1,6 +1,6 @@
 ---
 date: 2023-04-08
-authors: codec
+authors: arthur
 image: https://cos.codec.wang/new-bing-frontend-html-mode.jpg
 tags: [New Bing, Bing, ChatGPT]
 ---

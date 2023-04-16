@@ -1,6 +1,6 @@
 ---
 date: 2020-11-05
-authors: codec
+authors: arthur
 image: https://cos.codec.wang/monolith-multi-repo-mono-repo.jpg
 tags: [mono-repo, "大仓", Lerna]
 ---

@@ -1,6 +1,6 @@
 ---
 date: 2021-04-17
-authors: codec
+authors: arthur
 image: https://cos.codec.wang/understand-side-effect.jpg
 tags: [Side Effect, "副作用", useEffect]
 ---

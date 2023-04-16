@@ -1,6 +1,6 @@
 ---
 date: 2023-04-05
-authors: codec
+authors: arthur
 image: https://cos.codec.wang/copilot-chat-main-ui.jpg
 tags: [Copilot, Github, ChatGPT]
 ---

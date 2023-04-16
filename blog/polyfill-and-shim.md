@@ -1,6 +1,6 @@
 ---
 date: 2020-08-30
-authors: codec
+authors: arthur
 image: https://cos.codec.wang/what-is-polyfill.jpg
 tags: [Polyfill, Shim]
 ---
