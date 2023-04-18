@@ -1,13 +1,15 @@
 ---
 date: 2023-04-16
 authors: arthur
-image: https://cos.codec.wang/new-bing-frontend-html-mode.jpg
-tags: [WSL, WSL2, "前端开发环境", zsh]
+image: https://cos.codec.wang/wsl2-frontend-microsoft-loves-linux.jpg
+tags: [WSL, "前端", "开发环境", zsh, frontend]
 ---
 
-# WSL2 搭建 Windows 更高效的前端开发环境
+# 用 WSL2 搭建 Windows 更好用的前端开发环境
 
-我一直觉得 Windows 并不适合一些方向的开发，尤其 frontend/server，默认没有 bash，也没有好用的终端。不过巨硬从 Win10 开始引入 WSL(Windows Linux 子系统)，到后面的 Windows Terminal，都对开发者更加友好。我平常 Mac/Windows 会切着用，服务器的话一般是 CentOS/Ubuntu，也经常会做一些前端基础设施的搭建，目前 WSL 的这套配置用着还是很丝滑的，所以这里分享下最佳实践 💡。
+🧑🏻‍💻 Windows 我一直认为并不适合一些方向的开发，尤其 frontend/server，没有 bash 和好用的终端。不过巨硬从 Win10 开始引入 WSL(Windows Linux 子系统)，到后面的 Windows Terminal，都对开发者更加友好。我平常 Mac/Windows 会切着用，服务器是 CentOS/Ubuntu，之前经常做一些前端基础设施的搭建，目前 WSL 的这套配置：`Ubuntu`、`zsh/oh-my/zsh`、`n/node/npm`、`Windows Terminal`、`VSCode`...用着还是很舒服的，所以分享下最佳实践～
+
+- 配置脚本：[setup-wsl-for-frontend.sh](https://gist.github.com/CodecWang/83fee91efa153ec67ddccdd1cd22d1b2)
 
 ![](https://cos.codec.wang/wsl2-frontend-microsoft-loves-linux.jpg)
 
@@ -34,15 +36,6 @@ wsl --install
 - 用户名和密码
 
 装好之后，在开始菜单找到 Ubuntu 并打开，第一次是需要设置用户名和密码的，这个用户名密码也是具备管理员`sudo`权限的。
-
-- 文件系统
-
-需要注意的是我们现在有了两套系统，系统的文件类型并不一致，跨系统访问和传输文件的话效率会下降很多，最好各存各的，以用户目录为例：
-
-- 如果你在 Windows 上开发，就将文件放在：`C:\Users\<UserName>\`
-- 如果你在 Ubuntu 上开发，就将文件放在：`\\wsl$\ubuntu\home\<UserName>\`
-
-如果想在 WSL 里用资源管理器打开目录的话，可以输入`explorer.exe .`。另外，Windows 的文件路径在 Ubuntu 上会挂载到`/mnt/`，比如在 WSL 里访问 Windows C 盘的用户目录就是`cd /mnt/c/Users/<UserName>/`。
 
 ## zsh/oh-my-zsh
 
@@ -97,7 +90,7 @@ git config --global user.email "youremail@domain.com"
 ssh-keygen
 ```
 
-## Node/n/npm
+## n/node/npm
 
 [n](https://github.com/tj/n) 是一个 Node.js 的多版本管理工具，由于不同的项目可能用到不同的 Node 版本，所以用 n 的就可以很方便地切换。
 
@@ -134,3 +127,35 @@ Ubuntu 的 WSL 装好后，在 Windows Terminal 的新建选项卡里就已经�
 另外如果目录是存储在 WSL 下面，那么在 Windows 下用 VSCode 打开这个目录的时候就会提示让你在 WSL 环境下打开：
 
 ![](https://cos.codec.wang/wsl2-frontend-vscode-reopen-in-wsl.jpg)
+
+## 文件系统
+
+需要注意的是我们现在有了两套系统，两者的文件类型并不一致，跨系统访问和传输文件的话效率会下降很多，最好各存各的，以用户目录为例：
+
+- 如果在 Windows 上开发，就将文件放在：`C:\Users\<UserName>\`
+- 如果在 Ubuntu 上开发，就将文件放在：`\\wsl$\ubuntu\home\<UserName>\`
+
+想在 WSL 里用资源管理器打开目录的话，可以输入`explorer.exe .`。另外，Windows 的文件路径在 Ubuntu 上会挂载到`/mnt/`，比如在 WSL 里访问 Windows C 盘的用户目录就是`cd /mnt/c/Users/<UserName>/`。
+
+## 运行多个 Linux 发行版
+
+WSL 理论上支持安装运行任意多个不同的 Linux 发行版，比如我再安装一个`Debian`：
+
+```bash
+wsl --install -d Debian
+```
+
+使用时可以在不同的发行版之间切换，可以用`wsl --list`来查看已安装的发行版，当然新的环境需要重新配置。
+
+![](https://cos.codec.wang/wsl2-frontend-multi-os.jpg)
+
+## 卸载
+
+每个发行版可以理解为都是独立的系统，一旦卸载，**所有数据/软件/设置都会删除**，所以要提前将数据拷贝到 Windows 目录哦。卸载的话很简单：
+
+```bash
+# 比如卸载Ubuntu：wsl --unregister Ubuntu
+wsl --unregister <DistributionName>
+```
+
+通常一台 Windows 电脑上配一个 WSL 环境足够，配置好之后基本不会去动它。现在我们就既能使用 Windows 的强大生态和兼容性，又能有性能不错的 Linux shell 环境。
