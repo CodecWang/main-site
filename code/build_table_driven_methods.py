@@ -1,8 +1,8 @@
 # 构建：表驱动法
-# ex2tron 2018年04月08日
+# ex2tron 2018 年 04 月 08 日
 # http://ex2tron.wang
 
-# 笨的方法：使用if-else或switch-case
+# 笨的方法：使用 if-else 或 switch-case
 month = int(input())
 if (month == 1):
     day = 31
