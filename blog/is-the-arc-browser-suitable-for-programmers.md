@@ -43,7 +43,7 @@ Arc 浏览器，官方宣称语是：`we're building a better way to use the int
 
 Arc 的管理核心是空间 Space，在快捷操作栏中间的三个图标就是我创建的三个空间：开发、日常和创作。左右滑动可以切换空间，滑至最左侧就可以看到所有空间：
 
-![](https://cos.codec.wang/arc-browser-workspaces.jpg)
+![](https://cos.codec.wang/arc-browser-workspaces.gif)
 
 空间可以自定义图标/名称/深浅渐变主题等，每个空间可以有不同的主题，切换很丝滑：
 
