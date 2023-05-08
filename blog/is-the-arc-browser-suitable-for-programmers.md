@@ -104,7 +104,7 @@ Arc 对拖拽支持也很好，可以将 tab 在 Favorites、Pinned 和 Today �
 
 ![](https://cos.codec.wang/arc-browser-split-tabs-pinned.jpg)
 
-### **预览 Little Arc**
+### **预览和 Little Arc**
 
 这个是我经常用到也是用的最舒服的一个功能。如果大家用过 MacOS 的按空格预览功能，就知道很多时候我们只想预览文件，并不想打开它。同理，对别人分享过来的链接或者网页上的链接，我们大概率只是想预览下，并不想让它成为一个 tab。成为 tab 意味着你需要手动关闭它，浏览器开一堆标签页的痛点应该很多人都有吧 🙃。
 
