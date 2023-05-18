@@ -71,8 +71,6 @@ countDaysBetweenDates 方法写完后，我们可以给它编写单元测试用�
 
 ![](https://cos.codec.wang/copilot-auto-test-02.png)
 
-不过这里生成的日期总是和我注释里写的差一个月，注释写 7 月生成 6 月，写 6 月生成 5 月...原因不明。
-
 官网还有个测试 React 计数组件 Counter 的例子，我把英文注释改成了中文注释，同样是可以的：
 
 ![](https://cos.codec.wang/copilot-auto-test-03.png)
