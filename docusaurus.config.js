@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "CodecWang",
+  title: "Arthur Wang",
   tagline: "",
   url: "https://codec.wang",
   baseUrl: "/",
@@ -62,7 +62,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "CodecWang",
+        title: "Arthur's Blog",
         logo: {
           alt: "logo",
           src: "img/logo.svg",
