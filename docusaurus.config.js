@@ -62,7 +62,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Arthur's Blog",
+        title: "Arthur Wang",
         logo: {
           alt: "logo",
           src: "img/logo.svg",

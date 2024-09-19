@@ -1,7 +1,3 @@
-# ex2tron's blog:
-# http://ex2tron.wang
-# 2019年5月1日
-
 import string
 
 # 定义64字符

@@ -1,7 +1,3 @@
-# ex2tron's blog:
-# http://ex2tron.wang
-# 2019年5月1日
-
 import base64
 
 print(base64.b64encode(b'Man'))  # 'TWFu'

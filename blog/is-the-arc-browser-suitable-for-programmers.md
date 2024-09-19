@@ -17,7 +17,7 @@ Arc 浏览器，官方宣称语是：`we're building a better way to use the int
 
 ## 安装
 
-目前只支持 MacOS/IOS 设备：前往[官网](https://thebrowser.company/)填写邮箱后进入候补列表，之后等待通知就行。也可以通过邀请链接获取访问权限，已申请通过的会有 5 个赠送名额（有需要的可以 [EMail](mailto:codecwang@outlook.com)）。
+目前只支持 MacOS/IOS 设备：前往[官网](https://thebrowser.company/)填写邮箱后进入候补列表，之后等待通知就行。也可以通过邀请链接获取访问权限，已申请通过的会有 5 个赠送名额（有需要的可以 [EMail](mailto:codecwang42@gmail.com)）。
 
 第一次打开先进行简单的配置，比如登录、从其他浏览器导入数据、设置主题等，**Arc 浏览器必须登录才能使用**。y1s1，这这好看是真滴好看，操作也很流畅。
 
