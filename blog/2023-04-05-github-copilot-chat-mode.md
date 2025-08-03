@@ -7,13 +7,37 @@ tags: [Copilot, Github, ChatGPT]
 
 今天更新 VSCode 的时候在更新日志中看到了 Github Copilot，最近 ChatGPT 这么火爆，Copilot 也是跟进了 Chat 模式啊，这还不得马上体验体验...
 
+<div style={{
+  position: 'relative',
+  width: '100%',
+  paddingBottom: '56.25%',
+  height: 0,
+  overflow: 'hidden',
+}}>
+  <iframe
+    src="//player.bilibili.com/player.html?isOutside=true&aid=867061244&bvid=BV1UV4y1S7Gi&cid=1084446675&p=1&autoplay=0"
+    scrolling="no"
+    frameBorder="no"
+    allowFullScreen
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    }}
+  />
+</div>
+
+## 安装
+
+<!-- truncate -->
+
 > [Copilot Next](https://githubnext.com/)包含很多项目，Chat 模式只是其中之一，[Labs](https://githubnext.com/projects/copilot-labs/)也比较有趣，大家可以体验下～
 
 ![](https://cos.codec.wang/copilot-chat-vscode-changelog.jpg)
 
 目前还处于 beta 版，使用起来有几个条件：
-
-<!--truncate-->
 
 1. 有 Chat 模式的权限，没有可以先加入候补：[GitHub Copilot chat waitlist](https://github.com/github-copilot/chat_waitlist_signup/join)
 2. 使用 [VSCode Insiders](https://code.visualstudio.com/insiders/?utm_source=VsCode&utm_medium=ReleaseNotes&utm_content=1) 版本

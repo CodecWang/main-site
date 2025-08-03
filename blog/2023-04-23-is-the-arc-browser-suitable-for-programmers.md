@@ -7,13 +7,35 @@ tags: [浏览器, Arc Browser, Edge]
 
 Arc 浏览器，官方宣称语是：`we're building a better way to use the internet`，很多博主的文章和视频也经常以"改变了我的工作方式"、"改变了浏览器的交互"为标题。目前还是得先加入等待列表，通过后才可以使用，这让我一个纯情理工男 🙃 觉得有点营销过度啊。
 
-之前我申请到了 Arc 的权限，最近一直当作主力浏览器浏览和开发调试，下面就分享下深度体验。会和 Edge 浏览器做对比，优缺点都会讲到，尤其是对开发人员是否适合等问题。
+之前我申请到了 Arc 的权限，最近一直当主力浏览器浏览和开发调试，下面就分享下深度体验。会和 Edge 浏览器做对比，优缺点都会讲到，尤其是对开发人员是否适合等问题。
 
-![](https://cos.codec.wang/arc-browser-cover.jpg)
-
-<!--truncate-->
+<div style={{
+  position: 'relative',
+  width: '100%',
+  paddingBottom: '56.25%',
+  height: 0,
+  overflow: 'hidden',
+}}>
+  <iframe
+    src="//player.bilibili.com/player.html?isOutside=true&aid=528263632&bvid=BV1QM411g7fu&cid=1120646635&p=1&autoplay=0"
+    scrolling="no"
+    frameBorder="no"
+    allowFullScreen
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    }}
+  />
+</div>
 
 ## 安装
+
+<!-- truncate -->
+
+![](https://cos.codec.wang/arc-browser-cover.jpg)
 
 目前只支持 MacOS/IOS 设备：前往[官网](https://thebrowser.company/)填写邮箱后进入候补列表，之后等待通知就行。也可以通过邀请链接获取访问权限，已申请通过的会有 5 个赠送名额（有需要的可以 [EMail](mailto:codecwang42@gmail.com)）。
 

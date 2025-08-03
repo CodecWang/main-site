@@ -7,7 +7,31 @@ tags: [Copilot, AI, Termius, GitHub, 大模型]
 
 2023 可谓是大模型 AI 爆火的一年，除了 ChatGPT 这类面向大众的大模型 AI 外，各行各业都在把握风口，比如笔记类的 Notion AI、办公类的 Office Copilot 等。面向开发者的不疑最出名的就是[GitHub Copilot](https://github.com/features/copilot)，它不仅有包含 Chat 形式的 IDE 插件，还在如 CLI、Code Review(Pull Request)、Docs 等开发的各个环节都有探索，大家可以在[GitHub Next](https://githubnext.com/)中找到相关的项目。前段时间 GitHub Copilot CLI 发布了 Beta 版本，本文就简单分享下它的使用体验、跟我平常在用的 Termius Autocomplete 的对比。
 
-![](https://cos.codec.wang/gh-copilot-termius.gif)
+<div style={{
+  position: 'relative',
+  width: '100%',
+  paddingBottom: '56.25%',
+  height: 0,
+  overflow: 'hidden',
+}}>
+  <iframe
+    src="//player.bilibili.com/player.html?isOutside=true&aid=880828466&bvid=BV1wK4y167HT&cid=1393958044&p=1&autoplay=0"
+    scrolling="no"
+    frameBorder="no"
+    allowFullScreen
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    }}
+  />
+</div>
+
+<!-- truncate -->
+
+<br/>
 
 ## 前提条件
 

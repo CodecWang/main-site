@@ -5,6 +5,8 @@ authors: [arthur]
 tags: [AI, ChatGPT, "浏览器", Arc Browser, 大模型]
 ---
 
+今年随着 ChatGPT 的出圈爆火，出现了一堆集成 AI 大模型的产品，浏览器、游戏甚至车机...之前[分享过 Arc 浏览器](https://codec.wang/blog/is-the-arc-browser-suitable-for-programmers)，它的很多创新我很喜欢，最近它也整合了一些 AI 能力：[Arc Max](https://arc.net/max)，下面就来具体看下。
+
 <div style={{
   position: 'relative',
   width: '100%',
@@ -27,13 +29,11 @@ tags: [AI, ChatGPT, "浏览器", Arc Browser, 大模型]
   />
 </div>
 
-<!--truncate-->
-
 <br/>
 
-今年随着 ChatGPT 的出圈爆火，出现了一堆集成 AI 大模型的产品，浏览器、游戏甚至车机...之前[分享过 Arc 浏览器](https://codec.wang/blog/is-the-arc-browser-suitable-for-programmers)，它的很多创新我很喜欢，最近它也整合了一些 AI 能力：[Arc Max](https://arc.net/max)，下面就来具体看下。
-
 先列大家可能关心的几个点：
+
+<!--truncate-->
 
 1. 需要梯子
 2. 支持中文，但没英文好

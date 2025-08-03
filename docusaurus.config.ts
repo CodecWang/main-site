@@ -33,7 +33,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "zh-CN",
-    locales: ["zh-CN", "en"],
+    locales: ["zh-CN"],
   },
 
   presets: [
@@ -52,10 +52,7 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          editUrl: "https://github.com/CodecWang/main-site/tree/master/",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -96,7 +93,7 @@ const config: Config = {
           ],
         },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/CodecWang",
           label: "GitHub",
           position: "right",
         },
@@ -106,10 +103,10 @@ const config: Config = {
       style: "dark",
       links: [
         {
-          title: "文档",
+          title: "文章",
           items: [
             {
-              label: "OpenCV-Python初学者教程",
+              label: "OpenCV-Python 初学者教程",
               to: "/docs/opencv",
             },
             {

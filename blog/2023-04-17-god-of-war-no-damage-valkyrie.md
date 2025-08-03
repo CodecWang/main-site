@@ -1,8 +1,8 @@
 ---
-slug: from-arc-to-zen
-title: Arc 已死! Zen 浏览器上位
+slug: god-of-war-no-damage-valkyrie
+title: 战神 诸神黄昏 - 无伤女武神葛娜
 authors: [arthur]
-tags: [Arc, "浏览器", Zen Browser]
+tags: [Copilot, 大模型, CodeGeeX]
 ---
 
 <div style={{
@@ -13,7 +13,7 @@ tags: [Arc, "浏览器", Zen Browser]
   overflow: 'hidden',
 }}>
   <iframe
-    src="//player.bilibili.com/player.html?isOutside=true&aid=114642978346350&bvid=BV1xBT1zzEeo&cid=25808148451&p=1&autoplay=0"
+    src="//player.bilibili.com/player.html?isOutside=true&aid=527612202&bvid=BV1iM411L7F2&cid=1100317681&p=1&autoplay=0"
     scrolling="no"
     frameBorder="no"
     allowFullScreen

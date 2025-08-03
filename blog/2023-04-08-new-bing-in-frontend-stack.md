@@ -7,13 +7,35 @@ tags: [New Bing, Bing, ChatGPT]
 
 相信大家今年以来有关 ChatGPT、谷歌 Bard、微软 New Bing 的文章或新闻看过不少了。今天呢，闲着没事我们换个角度来看下 New Bing 都用了哪些前端技术。
 
+<div style={{
+  position: 'relative',
+  width: '100%',
+  paddingBottom: '56.25%',
+  height: 0,
+  overflow: 'hidden',
+}}>
+  <iframe
+    src="//player.bilibili.com/player.html?isOutside=true&aid=227303765&bvid=BV1Jh411M7T1&cid=1089442059&p=1&autoplay=0"
+    scrolling="no"
+    frameBorder="no"
+    allowFullScreen
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    }}
+  />
+</div>
+
 ## Web Components 和 Fast
+
+<!-- truncate -->
 
 首先打开 [Bing](https://www.bing.com/?mkt=en-us&cc=us) 首页，搜索任意内容，打开开发者工具（Windows: F12，Mac: ⌥ + ⌘ + i），然后定位 Chat 的元素。可以发现整个 New Bing 都是在 id 为`b_sydConvCont`的 div 下，它的全称应该是`bing sydney conversation content`，sydney 就是 Chat 聊天机器人的内部代号。
 
 ![](https://cos.codec.wang/new-bing-frontend-html-mode.jpg)
-
-<!--truncate-->
 
 当我们在 Search 和 Chat 模式来回切换的时候，可以发现`cib-serp`标签的 mode 属性会在`off-stage`和`conversation`之间变化，手动更改这个 mode 值也可以实现两个模式的切换。继续展开`cib-serp`组件的 shadow-root 就可以看到整个 Chat 模式的 DOM 结构了。
 

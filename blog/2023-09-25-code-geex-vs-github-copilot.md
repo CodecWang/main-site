@@ -1,8 +1,8 @@
 ---
-slug: from-arc-to-zen
-title: Arc 已死! Zen 浏览器上位
+slug: code-geex-vs-github-copilot
+title: GitHub Copilot 最佳平替？来自清华的免费编程助手 CodeGeeX 对比体验！
 authors: [arthur]
-tags: [Arc, "浏览器", Zen Browser]
+tags: [Copilot, 大模型, CodeGeeX]
 ---
 
 <div style={{
@@ -13,7 +13,7 @@ tags: [Arc, "浏览器", Zen Browser]
   overflow: 'hidden',
 }}>
   <iframe
-    src="//player.bilibili.com/player.html?isOutside=true&aid=114642978346350&bvid=BV1xBT1zzEeo&cid=25808148451&p=1&autoplay=0"
+    src="//player.bilibili.com/player.html?isOutside=true&aid=961306589&bvid=BV1nH4y1m75C&cid=1278155610&p=1&autoplay=0"
     scrolling="no"
     frameBorder="no"
     allowFullScreen
