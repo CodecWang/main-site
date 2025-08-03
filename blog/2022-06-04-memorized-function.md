@@ -1,10 +1,9 @@
 ---
-date: 2022-06-04
-authors: arthur
-tags: ["记忆化", 闭包, Closure]
+slug: memorized-function
+title: Memorized Function
+authors: [arthur]
+tags: [记忆化, 闭包, Closure]
 ---
-
-# Memorized Function
 
 <iframe
   src="https://codesandbox.io/embed/memorized-function-vybjf8?expanddevtools=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2Ffactorial.js&theme=dark&view=editor"

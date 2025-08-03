@@ -1,11 +1,9 @@
 ---
-date: 2024-01-01
-authors: arthur
-image: https://cos.codec.wang/gh-copilot-explain.jpg
-tags: [Copilot, AI, Termius, GitHub, "大模型"]
+slug: copilot-cli-and-termius-ai
+title: AI 写指令？GitHub Copilot CLI VS Termius Autocomplete
+authors: [arthur]
+tags: [Copilot, AI, Termius, GitHub, 大模型]
 ---
-
-# AI 写指令？GitHub Copilot CLI VS Termius Autocomplete
 
 2023 可谓是大模型 AI 爆火的一年，除了 ChatGPT 这类面向大众的大模型 AI 外，各行各业都在把握风口，比如笔记类的 Notion AI、办公类的 Office Copilot 等。面向开发者的不疑最出名的就是[GitHub Copilot](https://github.com/features/copilot)，它不仅有包含 Chat 形式的 IDE 插件，还在如 CLI、Code Review(Pull Request)、Docs 等开发的各个环节都有探索，大家可以在[GitHub Next](https://githubnext.com/)中找到相关的项目。前段时间 GitHub Copilot CLI 发布了 Beta 版本，本文就简单分享下它的使用体验、跟我平常在用的 Termius Autocomplete 的对比。
 

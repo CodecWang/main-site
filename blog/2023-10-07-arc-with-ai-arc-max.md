@@ -1,11 +1,35 @@
 ---
-date: 2023-10-07
-authors: arthur
-image: https://cos.codec.wang/arc-enable-arc-max.jpg
-tags: [Arc, AI, ChatGPT, "浏览器", Arc Browser, "大模型"]
+slug: arc-with-ai-arc-max
+title: Arc 浏览器 & AI - Arc Max
+authors: [arthur]
+tags: [AI, ChatGPT, "浏览器", Arc Browser, 大模型]
 ---
 
-# Arc 浏览器 + AI: Arc Max
+<div style={{
+  position: 'relative',
+  width: '100%',
+  paddingBottom: '56.25%',
+  height: 0,
+  overflow: 'hidden',
+}}>
+  <iframe
+    src="//player.bilibili.com/player.html?isOutside=true&aid=789415021&bvid=BV15C4y1d7JF&cid=1293315912&p=1&autoplay=0"
+    scrolling="no"
+    frameBorder="no"
+    allowFullScreen
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    }}
+  />
+</div>
+
+<!--truncate-->
+
+<br/>
 
 今年随着 ChatGPT 的出圈爆火，出现了一堆集成 AI 大模型的产品，浏览器、游戏甚至车机...之前[分享过 Arc 浏览器](https://codec.wang/blog/is-the-arc-browser-suitable-for-programmers)，它的很多创新我很喜欢，最近它也整合了一些 AI 能力：[Arc Max](https://arc.net/max)，下面就来具体看下。
 

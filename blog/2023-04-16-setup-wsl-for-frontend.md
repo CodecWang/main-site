@@ -1,11 +1,9 @@
 ---
-date: 2023-04-16
+slug: setup-wsl-for-frontend
+title: WSL2 搭建 Windows 更好用的前端开发环境
 authors: arthur
-image: https://cos.codec.wang/wsl2-frontend-microsoft-loves-linux.jpg
 tags: [WSL, "前端", "开发环境", zsh, frontend]
 ---
-
-# WSL2 搭建 Windows 更好用的前端开发环境
 
 🧑🏻‍💻 Windows 我一直认为并不适合一些方向的开发，尤其 frontend/server，没有 bash 和好用的终端。不过巨硬从 Win10 开始引入 WSL(Windows Linux 子系统)，到后面的 Windows Terminal，都对开发者更加友好。我平常 Mac/Windows 会切着用，服务器是 CentOS/Ubuntu，之前经常做一些前端基础设施的搭建，目前 WSL 的这套配置：`Ubuntu`、`zsh/oh-my/zsh`、`n/node/npm`、`Windows Terminal`、`VSCode`...用着还是很舒服的，所以分享下最佳实践～
 

@@ -1,11 +1,9 @@
 ---
-date: 2021-07-24
-authors: arthur
-image: https://cos.codec.wang/copilot-overview.png
-tags: [Copilot, AI, 自动生成]
+slug: microsoft-github-copilot
+title: AI 结对编程：Github Copilot 探索实践
+authors: [arthur]
+tags: [Copilot, AI, GPT]
 ---
-
-# AI 结对编程：Github Copilot 探索实践
 
 - [官网](https://copilot.github.com/)
 - [Introducing GitHub Copilot: your AI pair programmer](https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/)

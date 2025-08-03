@@ -1,11 +1,9 @@
 ---
-date: 2021-04-17
+slug: what-is-side-effect-in-programming
+title: 什么是 Side Effect？
 authors: arthur
-image: https://cos.codec.wang/understand-side-effect.jpg
-tags: [Side Effect, "副作用", useEffect]
+tags: [Side Effect, useEffect]
 ---
-
-# 什么是 Side Effect？
 
 ![](https://cos.codec.wang/understand-side-effect.jpg)
 

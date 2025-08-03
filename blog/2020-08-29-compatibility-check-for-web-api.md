@@ -1,11 +1,9 @@
 ---
-date: 2020-08-29
-authors: arthur
-image: https://cos.codec.wang/can-i-use-browser-compatiblity-fetch.jpg
-tags: ["兼容性", "浏览器"]
+slug: compatibility-check-for-web-api
+title: 浏览器兼容性自查
+authors: [arthur]
+tags: [兼容性, 浏览器]
 ---
-
-# 浏览器兼容性自查
 
 在解决浏览器兼容性问题或使用一些较新的 Web 技术时，经常需要查看各浏览器对 HTML/CSS/JS/SVG/Web/HTTP 等某些接口的支持程度。以下是两种不错的自查方式：
 

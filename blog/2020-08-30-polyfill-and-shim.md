@@ -1,11 +1,9 @@
 ---
-date: 2020-08-30
-authors: arthur
-image: https://cos.codec.wang/what-is-polyfill.jpg
+slug: polyfill-and-shim
+title: Polyfill 和 Shim
+authors: [arthur]
 tags: [Polyfill, Shim]
 ---
-
-# Polyfill 和 Shim
 
 ![](https://cos.codec.wang/what-is-polyfill.jpg)
 

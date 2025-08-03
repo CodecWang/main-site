@@ -4,7 +4,7 @@
 
 - 🧑🏻‍💻 I’m a full-stack web developer.
 - 👁️ Also familiar with computer vision.
-- 🍿 Like 🚗/📷, watching 🎞️ and playing console 🎮.
+- 🍿 Like 🚗 & 📷, watching 🎞️ and playing console 🎮.
 - 📬 [codecwang42@gmail.com](mailto:codecwang42@gmail.com)
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=codecwang&theme=transparent)](https://github.com/CodecWang/)

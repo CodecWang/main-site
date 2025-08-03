@@ -1,11 +1,9 @@
 ---
-date: 2020-11-05
-authors: arthur
-image: https://cos.codec.wang/monolith-multi-repo-mono-repo.jpg
+slug: mono-repo-in-js
+title: 大仓实践录：Lerna/NPM/Yarn Workspace 方案组合和性能对比
+authors: [arthur]
 tags: [mono-repo, "大仓", Lerna]
 ---
-
-# 大仓实践录：Lerna/NPM/Yarn Workspace 方案组合和性能对比
 
 ## 单仓和大仓
 

@@ -155,7 +155,7 @@ $$
 G(i)=\alpha *exp(-\frac{(i-\frac{ksize-1}{2})^2}{2\sigma^2})
 $$
 
-其中 i=0…ksize-1，α 是一个常数，也称为缩放因子，它使得\\(\sum{G\(i\)}=1\\)
+<!-- 其中 i=0…ksize-1，α 是一个常数，也称为缩放因子，它使得\\(\sum{G\(i\)}=1\\) -->
 
 比如我们可以用[`cv2.getGaussianKernel(ksize,sigma)`](https://docs.opencv.org/3.3.1/d4/d86/group__imgproc__filter.html#gac05a120c1ae92a6060dd0db190a61afa)来生成一维卷积核：
 

@@ -1,11 +1,9 @@
 ---
-date: 2023-04-05
-authors: arthur
-image: https://cos.codec.wang/copilot-chat-main-ui.jpg
+slug: github-copilot-chat-mode
+title: Github Copilot X Chat 模式体验
+authors: [arthur]
 tags: [Copilot, Github, ChatGPT]
 ---
-
-# Github Copilot X Chat 模式体验
 
 今天更新 VSCode 的时候在更新日志中看到了 Github Copilot，最近 ChatGPT 这么火爆，Copilot 也是跟进了 Chat 模式啊，这还不得马上体验体验...
 
